@@ -1,5 +1,12 @@
 ---
 import "@/styles/app.css";
+import { cn } from "@/utils/libs/tailwaind";
+
+interface Props {
+	overflow?: boolean;
+}
+
+const { overflow }: Props = Astro.props;
 ---
 
 <!doctype html>
@@ -7,12 +14,19 @@ import "@/styles/app.css";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Restaurant" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link 
+			rel="preload" 
+			href="/fonts/wotfard/wotfard-regular.woff2"
+			as="font"
+			type="font/woff2"
+		/>
+		<slot name="head-preload" />
 		<title>Restaurant</title>
 	</head>
-	<body>
+	<body class={cn(!overflow ? "h-dvh overflow-hidden" : "")}>
 		<slot />
 	</body>
 </html>
-

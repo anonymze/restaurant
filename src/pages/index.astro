@@ -40,7 +40,7 @@ const optimizedPlatImage = await getImage({
 	</Fragment>
 
 	<div class="flex flex-col w-full h-full md:flex-row">
-		<div class="flex-1 h-1/2 md:h-full">
+		<div class="relative flex-1 h-1/2 md:h-full">
 			<Image
 				src={optimizedPlanteImage.src}
 				width={PlanteImg.width}
@@ -51,8 +51,12 @@ const optimizedPlatImage = await getImage({
 				loading="eager"
 				fetchpriority="high"
 			/>
+
+			<button class="absolute inset-0 w-fit h-fit p-4 m-auto bg-red-500">
+				<span class="text-white">Click me</span>
+			</button>
 		</div>
-		<div class="flex-1 h-1/2 md:h-full">
+		<div class="relative flex-1 h-1/2 md:h-full">
 			<Image
 				src={optimizedPlatImage.src}
 				width={PlatImg.width}
@@ -63,6 +67,20 @@ const optimizedPlatImage = await getImage({
 				loading="eager"
 				fetchpriority="high"
 			/>
+
+			<button class="absolute inset-0 w-fit h-fit p-4 m-auto bg-red-500">
+				<span class="text-white">Click me</span>
+			</button>
 		</div>
 	</div>
 </Layout>
+
+<script>
+	const imageContainers = document.querySelectorAll("div");
+
+	for (const container of imageContainers) {
+		container.addEventListener("click", (e) => {
+			console.log(e.target);
+		});
+	}
+</script>

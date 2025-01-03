@@ -1,12 +1,27 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import "@/styles/app.css";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Image } from "astro:assets";
+import Layout from "@/layouts/layout.astro";
+import Plante from "@/assets/images/plante.jpg";
+import Plat from "@/assets/images/plat.jpg";
 ---
 
 <Layout>
-	<Welcome />
+	<div class="flex w-full">
+		<div class="flex-1 bg-red-500">
+			<Image
+				src={Plante}
+				widths={[240, 540, 720, Plante.width]}
+				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${Plante.width}px`}
+				alt="A description of my image."
+			/>
+		</div>
+		<div class="flex-1 bg-blue-500">
+			<Image
+				src={Plat}
+				widths={[240, 540, 720, Plat.width]}
+				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${Plat.width}px`}
+				alt="A description of my image."
+			/>
+		</div>
+	</div>
 </Layout>

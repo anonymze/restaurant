@@ -10,10 +10,11 @@ interface AnimatedButtonProps {
 export default function AnimatedButton({ text, className }: AnimatedButtonProps) {
   return (
     <motion.div
+		className="w-fit h-fit mx-auto"
       whileHover={{ scale: 1.02 }}
       transition={{ stiffness: 400, damping: 10, duration: 0.15}}
     >
-      <Button className={className}>
+      <Button variant="outline" className={className}>
         {text}
       </Button>
     </motion.div>

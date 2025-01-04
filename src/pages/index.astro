@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import PlanteImg from "@/assets/images/plante.jpg";
 import PlatImg from "@/assets/images/plat.jpg";
-import { Vegan } from "lucide-react";
 import AnimatedButton from "@/components/animated-button";
 
 import { getImage } from "astro:assets";
@@ -42,10 +41,11 @@ const optimizedPlatImage = await getImage({
 		/>
 	</Fragment>
 
-	
 	<div class="flex flex-col w-full h-full md:flex-row">
 		<div class="relative flex-1 h-1/2 md:h-full">
-			<h1 class="absolute top-16 right-0 z-10 h-fit text-8xl tracking-wide text-primary drop-shadow">Mauvaise</h1>
+			<h1 class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 h-fit text-6xl text-primary text-shadow md:top-16 md:left-0 md:translate-x-0 md:text-8xl">
+				Mauvaise
+			</h1>
 			<Image
 				src={optimizedPlanteImage.src}
 				width={PlanteImg.width}
@@ -58,8 +58,10 @@ const optimizedPlatImage = await getImage({
 			/>
 
 			<div class="peer absolute inset-0 z-10 m-auto text-center w-fit h-fit">
-				<h2 class="mb-3 p-1 pb-2 text-5xl tracking-wide text-white text-shadow backdrop-blur-xs uppercase">Notre carte</h2>
-				<AnimatedButton 
+				<h2 class="mb-3 p-1 pb-2 text-4xl tracking-wide text-white text-shadow backdrop-blur-xs uppercase md:text-5xl">
+					Notre carte
+				</h2>
+				<AnimatedButton
 					client:load
 					text="Carte des menus"
 					className="w-fit h-fit px-8 py-3 bg-primary/90 text-white uppercase"
@@ -78,7 +80,11 @@ const optimizedPlatImage = await getImage({
 		</div>
 
 		<div class="relative flex-1 h-1/2 group md:h-full">
-			<h1 class="absolute top-16 left-0 z-10 flex items-end gap-2 h-fit pt-6 text-8xl tracking-wide text-dark drop-shadow">Herbe <Vegan className="w-10 h-10 mb-2" /></h1>
+			<h1
+				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex items-end gap-2 h-fit text-6xl text-dark text-shadow md:text-8xl md:top-16 md:pt-8 md:left-0 md:translate-x-0"
+			>
+				Herbe.
+			</h1>
 			<Image
 				src={optimizedPlatImage.src}
 				width={PlatImg.width}
@@ -90,12 +96,14 @@ const optimizedPlatImage = await getImage({
 				fetchpriority="high"
 			/>
 
-			<div class="peer absolute inset-0 z-10 m-auto text-center w-fit h-fit ">
-				<h2 class="mb-3 p-1 pb-2 text-5xl tracking-wide text-white text-shadow backdrop-blur-xs uppercase">Réservation</h2>
-				<AnimatedButton 
+			<div class="peer absolute inset-0 z-10 m-auto text-center w-fit h-fit">
+				<h2 class="mb-3 p-1 pb-2 text-4xl tracking-wide text-white text-shadow backdrop-blur-xs uppercase md:text-5xl">
+					Réservation
+				</h2>
+				<AnimatedButton
 					client:load
 					text="Réserver"
-					className="w-fit h-fit px-8 py-3 bg-black/90 hover:bg-black/90 text-white uppercase"
+					className="w-fit h-fit px-8 py-3 bg-black/90 text-white uppercase"
 				/>
 			</div>
 
@@ -114,8 +122,7 @@ const optimizedPlatImage = await getImage({
 
 <style>
 	.text-shadow {
-		color: white;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-		backdrop-filter: blur(5px);
+		text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	}
+
 </style>

@@ -6,6 +6,7 @@ import PlatImg from "@/assets/images/plat.webp";
 import AnimatedButton from "@/components/animated-button";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwaind";
+import { VeganIcon } from "lucide-react";
 
 const optimizedPlanteImage = await getImage({
 	src: PlanteImg,
@@ -89,7 +90,7 @@ const optimizedPlatImage = await getImage({
 			<h1
 				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex items-end gap-2 h-fit text-6xl text-dark text-shadow md:text-8xl md:top-16 md:pt-8 md:left-3 md:translate-x-0"
 			>
-				Herbe.
+				Herbe <VeganIcon width={32} height={32} className="mb-2 ml-2 stroke-[3]" />
 			</h1>
 			<Image
 				src={optimizedPlatImage.src}

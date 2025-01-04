@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import PlanteImg from "@/assets/images/plante.jpg";
 import PlatImg from "@/assets/images/plat.jpg";
+import { Button } from "@/components/ui/button";
+import AnimatedButton from "@/components/animated-button";
 
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwaind";
@@ -53,14 +55,21 @@ const optimizedPlatImage = await getImage({
 				fetchpriority="high"
 			/>
 
-			<button class="peer absolute inset-0 m-auto p-4 w-fit h-fit z-10 bg-red-500 text-white">Carte des menus</button>
+			<div class="peer absolute inset-0 m-auto text-center w-fit h-fit z-10">
+				<h2 class="mb-3 text-5xl text-white tracking-wide">Notre carte</h2>
+				<AnimatedButton 
+					client:visible
+					text="Carte des menus"
+					className="w-fit h-fit px-8 py-3 bg-white/90 hover:bg-white"
+				/>
+			</div>
 
 			<div
 				class={cn(
 					"absolute inset-0",
 					"bg-gradient-to-t from-white/10 to-transparent",
 					"after:block after:w-full after:h-full after:bg-gradient-to-t after:from-white/50 after:to-transparent after:opacity-0 after:transition-opacity after:duration-300",
-					"peer-hover:after:opacity-50 hover:after:opacity-50"
+					"peer-hover:after:opacity-40 hover:after:opacity-40"
 				)}
 			>
 			</div>
@@ -78,14 +87,21 @@ const optimizedPlatImage = await getImage({
 				fetchpriority="high"
 			/>
 
-			<button class="peer absolute inset-0 m-auto p-4 w-fit h-fit z-10 bg-red-500 text-white">Réservation</button>
+			<div class="peer absolute inset-0 m-auto text-center w-fit h-fit z-10">
+				<h2 class="mb-3 text-5xl text-white tracking-wide">Réservation</h2>
+				<AnimatedButton 
+					client:visible
+					text="Réserver"
+					className="w-fit h-fit px-8 py-3 bg-white/90 hover:bg-white"
+				/>
+			</div>
 
 			<div
 				class={cn(
 					"absolute inset-0",
 					"bg-gradient-to-t from-white/10 to-transparent",
 					"after:block after:w-full after:h-full after:bg-gradient-to-t after:from-white/50 after:to-transparent after:opacity-0 after:transition-opacity after:duration-300",
-					"peer-hover:after:opacity-50 hover:after:opacity-50"
+					"peer-hover:after:opacity-40 hover:after:opacity-40"
 				)}
 			>
 			</div>

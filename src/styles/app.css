@@ -11,10 +11,12 @@ h1 {
   text-transform: uppercase;
 }
 
-h2,
-h3,
-p {
-  color: hsl(var(--dark));
+@layer base {
+  h2,
+  h3,
+  p {
+    color: hsl(var(--dark));
+  }
 }
 
 /* .perfect-shadow {

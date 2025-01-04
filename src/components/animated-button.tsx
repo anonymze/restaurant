@@ -11,7 +11,7 @@ export default function AnimatedButton({ text, className }: AnimatedButtonProps)
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      transition={{ stiffness: 400, damping: 10, duration: 0.15 }}
+      transition={{ stiffness: 400, damping: 10, duration: 0.15}}
     >
       <Button className={className}>
         {text}

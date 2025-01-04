@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import PlanteImg from "@/assets/images/plante.jpg";
 import PlatImg from "@/assets/images/plat.jpg";
-import { Button } from "@/components/ui/button";
+import { Vegan } from "lucide-react";
 import AnimatedButton from "@/components/animated-button";
 
 import { getImage } from "astro:assets";
@@ -42,8 +42,10 @@ const optimizedPlatImage = await getImage({
 		/>
 	</Fragment>
 
+	
 	<div class="flex flex-col w-full h-full md:flex-row">
 		<div class="relative flex-1 h-1/2 md:h-full">
+			<h1 class="absolute top-16 right-0 z-10 h-fit text-8xl tracking-wide text-primary drop-shadow">Mauvaise</h1>
 			<Image
 				src={optimizedPlanteImage.src}
 				width={PlanteImg.width}
@@ -55,12 +57,12 @@ const optimizedPlatImage = await getImage({
 				fetchpriority="high"
 			/>
 
-			<div class="peer absolute inset-0 m-auto text-center w-fit h-fit z-10">
-				<h2 class="mb-3 p-1 pb-2 text-5xl tracking-wide text-white text-shadow backdrop-blur-xs">Notre carte</h2>
+			<div class="peer absolute inset-0 z-10 m-auto text-center w-fit h-fit">
+				<h2 class="mb-3 p-1 pb-2 text-5xl tracking-wide text-white text-shadow backdrop-blur-xs uppercase">Notre carte</h2>
 				<AnimatedButton 
 					client:load
 					text="Carte des menus"
-					className="w-fit h-fit px-8 py-3 bg-white/90 hover:bg-white"
+					className="w-fit h-fit px-8 py-3 bg-primary/90 text-white uppercase"
 				/>
 			</div>
 
@@ -76,6 +78,7 @@ const optimizedPlatImage = await getImage({
 		</div>
 
 		<div class="relative flex-1 h-1/2 group md:h-full">
+			<h1 class="absolute top-16 left-0 z-10 flex items-end gap-2 h-fit pt-6 text-8xl tracking-wide text-dark drop-shadow">Herbe <Vegan className="w-10 h-10 mb-2" /></h1>
 			<Image
 				src={optimizedPlatImage.src}
 				width={PlatImg.width}
@@ -87,12 +90,12 @@ const optimizedPlatImage = await getImage({
 				fetchpriority="high"
 			/>
 
-			<div class="peer absolute inset-0 m-auto text-center w-fit h-fit z-10">
-				<h2 class="mb-3 p-1 pb-2] text-5xl tracking-wide text-white text-shadow backdrop-blur-xs">Réservation</h2>
+			<div class="peer absolute inset-0 z-10 m-auto text-center w-fit h-fit ">
+				<h2 class="mb-3 p-1 pb-2 text-5xl tracking-wide text-white text-shadow backdrop-blur-xs uppercase">Réservation</h2>
 				<AnimatedButton 
 					client:load
 					text="Réserver"
-					className="w-fit h-fit px-8 py-3 bg-white/90 hover:bg-white"
+					className="w-fit h-fit px-8 py-3 bg-black/90 hover:bg-black/90 text-white uppercase"
 				/>
 			</div>
 
@@ -108,16 +111,6 @@ const optimizedPlatImage = await getImage({
 		</div>
 	</div>
 </Layout>
-
-<script>
-	const imageContainers = document.querySelectorAll("div");
-
-	for (const container of imageContainers) {
-		container.addEventListener("click", (e) => {
-			console.log(e.target);
-		});
-	}
-</script>
 
 <style>
 	.text-shadow {

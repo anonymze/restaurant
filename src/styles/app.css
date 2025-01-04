@@ -5,13 +5,13 @@ body {
   color: hsl(var(--foreground));
 }
 
-h1 {
-  font-size: 26px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 @layer base {
+	h1 {
+		font-size: 26px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	
   h2,
   h3,
   p {

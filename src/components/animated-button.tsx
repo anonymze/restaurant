@@ -10,8 +10,8 @@ interface AnimatedButtonProps {
 export default function AnimatedButton({ text, className }: AnimatedButtonProps) {
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      transition={{ stiffness: 400, damping: 100, duration: 0.15 }}
+      whileHover={{ scale: 1.02 }}
+      transition={{ stiffness: 400, damping: 10, duration: 0.15 }}
     >
       <Button className={className}>
         {text}

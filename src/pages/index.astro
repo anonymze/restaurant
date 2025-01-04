@@ -5,6 +5,7 @@ import PlanteImg from "@/assets/images/plante.jpg";
 import PlatImg from "@/assets/images/plat.jpg";
 
 import { getImage } from "astro:assets";
+import { cn } from "@/utils/libs/tailwaind";
 
 const optimizedPlanteImage = await getImage({
 	src: PlanteImg,
@@ -52,11 +53,20 @@ const optimizedPlatImage = await getImage({
 				fetchpriority="high"
 			/>
 
-			<button class="absolute inset-0 w-fit h-fit p-4 m-auto bg-red-500">
-				<span class="text-white">Click me</span>
-			</button>
+			<button class="peer absolute inset-0 m-auto p-4 w-fit h-fit z-10 bg-red-500 text-white">Carte des menus</button>
+
+			<div
+				class={cn(
+					"absolute inset-0",
+					"bg-gradient-to-t from-white/10 to-transparent",
+					"after:block after:w-full after:h-full after:bg-gradient-to-t after:from-white/50 after:to-transparent after:opacity-0 after:transition-opacity after:duration-300",
+					"peer-hover:after:opacity-50 hover:after:opacity-50"
+				)}
+			>
+			</div>
 		</div>
-		<div class="relative flex-1 h-1/2 md:h-full">
+
+		<div class="relative flex-1 h-1/2 group md:h-full">
 			<Image
 				src={optimizedPlatImage.src}
 				width={PlatImg.width}
@@ -68,9 +78,17 @@ const optimizedPlatImage = await getImage({
 				fetchpriority="high"
 			/>
 
-			<button class="absolute inset-0 w-fit h-fit p-4 m-auto bg-red-500">
-				<span class="text-white">Click me</span>
-			</button>
+			<button class="peer absolute inset-0 m-auto p-4 w-fit h-fit z-10 bg-red-500 text-white">Réservation</button>
+
+			<div
+				class={cn(
+					"absolute inset-0",
+					"bg-gradient-to-t from-white/10 to-transparent",
+					"after:block after:w-full after:h-full after:bg-gradient-to-t after:from-white/50 after:to-transparent after:opacity-0 after:transition-opacity after:duration-300",
+					"peer-hover:after:opacity-50 hover:after:opacity-50"
+				)}
+			>
+			</div>
 		</div>
 	</div>
 </Layout>

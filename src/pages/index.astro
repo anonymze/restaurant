@@ -1,10 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
-import PlanteImg from "@/assets/images/plante.jpg";
-import PlatImg from "@/assets/images/plat.jpg";
+import PlanteImg from "@/assets/images/plante.webp";
+import PlatImg from "@/assets/images/plat.webp";
 import AnimatedButton from "@/components/animated-button";
-
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwaind";
 
@@ -131,35 +130,6 @@ const optimizedPlatImage = await getImage({
 	.text-shadow {
 		text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	}
-
-	.image-fade {
-		@apply opacity-0 transition-opacity duration-500;
-	}
-	.image-fade.loaded {
-		@apply opacity-100;
-	}
 </style>
 
-<script>
-	let allCompleted = false;
-	const images = document.querySelectorAll('.image-fade');
-	let loadedImages = 0;
 
-	const markAsLoaded = (img: HTMLImageElement) => {
-		loadedImages++;
-		if (loadedImages === images.length && !allCompleted) {
-			allCompleted = true;
-			images.forEach(image => image.classList.add('loaded'));
-		}
-	};
-
-	images.forEach((img) => {
-		if (img instanceof HTMLImageElement) {
-			if (img.complete) {
-				markAsLoaded(img);
-			} else {
-				img.addEventListener('load', () => markAsLoaded(img));
-			}
-		}
-	});
-</script>

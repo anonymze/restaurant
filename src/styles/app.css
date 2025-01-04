@@ -2,7 +2,7 @@
 @import "./_reset.css";
 
 body {
-  color: hsl(var(--foreground));
+	font-family: var(--font-display);
 }
 
 @layer base {

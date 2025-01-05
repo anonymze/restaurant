@@ -4,6 +4,7 @@ import { VeganIcon } from "lucide-react";
 import PlanteImg from "@/assets/images/plante.webp";
 import { Image } from "astro:assets";
 import { TabsDemo } from "@/components/hey";
+import AnimatedLink from "@/components/animated-link";
 ---
 
 <Layout>
@@ -20,19 +21,15 @@ import { TabsDemo } from "@/components/hey";
 	</header>
 
 	<main>
-			<TabsDemo client:load />
+		<TabsDemo client:load />
 	</main>
 
-	<a
+	<AnimatedLink
+		client:load
+		title="Redirection à la page de réservation du restaurant"
 		href="/reservation"
-		title="Redirige vers la page de réservation"
-		class="fixed bottom-6 right-6
-         bg-primary text-white
-         px-6 py-3
-         shadow-lg
-         transition-colors
-         z-10
-         hover:bg-primary/90"
-		>Réserver une table</a
+		className="fixed bottom-6 right-6 z-10 bg-green-700/90"
 	>
+		Réserver une table
+	</AnimatedLink>
 </Layout>

@@ -40,7 +40,7 @@ export function TabsMenu({ titles, entries }: TabsMenuProps) {
 								<img
 									className="object-cover"
 									src="https://placehold.jp/150x150.png"
-									alt={entry.name}
+									alt={entry.name} 
 									width={96}
 									height={96}
 									loading="lazy"

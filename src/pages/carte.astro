@@ -3,11 +3,12 @@ import Layout from "@/layouts/layout.astro";
 import { VeganIcon } from "lucide-react";
 import PlanteImg from "@/assets/images/plante.webp";
 import { Image } from "astro:assets";
-import { TabsDemo } from "@/components/hey";
+import { TabsMenu } from "@/components/tabs-menu";
 import AnimatedLink from "@/components/animated-link";
+import Footer from "@/layouts/footer.astro";
 ---
 
-<Layout>
+<Layout overflow>
 	<header class="grid place-items-center relative h-1/3">
 		<Image src={PlanteImg} alt="Plante" class="absolute top-0 left-0 w-full h-full object-cover z-0" />
 
@@ -20,16 +21,20 @@ import AnimatedLink from "@/components/animated-link";
 		</div>
 	</header>
 
-	<main>
-		<TabsDemo client:load />
+	<main class="relative">
+		<TabsMenu client:load />
+
+		<div class="sticky bottom-6 w-full flex justify-end p-6">
+			<AnimatedLink
+				client:load
+				title="Redirection à la page de réservation du restaurant"
+				href="/reservation"
+				className="bg-green-700/90"
+			>
+				Réserver une table
+			</AnimatedLink>
+		</div>
 	</main>
 
-	<AnimatedLink
-		client:load
-		title="Redirection à la page de réservation du restaurant"
-		href="/reservation"
-		className="fixed bottom-6 right-6 z-10 bg-green-700/90"
-	>
-		Réserver une table
-	</AnimatedLink>
+	<Footer />
 </Layout>

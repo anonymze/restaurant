@@ -1,7 +1,7 @@
 ---
 import "@/styles/app.css";
 import { cn } from "@/utils/libs/tailwaind";
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
 	overflow?: boolean;
@@ -18,17 +18,12 @@ const { overflow }: Props = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content="Restaurant" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link 
-			rel="preload" 
-			href="/fonts/wotfard/wotfard-regular.woff2"
-			as="font"
-			type="font/woff2"
-		/>
+		<link rel="preload" href="/fonts/wotfard/wotfard-regular.woff2" as="font" type="font/woff2" />
 		<slot name="head-preload" />
 		<title>Restaurant</title>
 		<ClientRouter />
 	</head>
-	<body class={cn(!overflow ? "h-dvh overflow-hidden" : "")}>
+	<body class={cn("h-dvh", !overflow && "overflow-hidden")}>
 		<slot />
 	</body>
 </html>

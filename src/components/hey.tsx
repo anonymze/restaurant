@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function TabsDemo() {
 	return (
-		<Tabs defaultValue="entries" className="mt-4 max-w-[800px] mx-auto">
+		<Tabs defaultValue="entries" className="mt-6 max-w-[800px] mx-auto">
 			<TabsList className="grid w-full grid-cols-3 gap-5">
 				<TabsTrigger
 					className="text-primary border border-primary rounded-none  px-4 py-2 font-bold text-lg [&[data-state=active]]:bg-primary [&[data-state=active]]:text-white"

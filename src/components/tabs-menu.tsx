@@ -7,21 +7,21 @@ export function TabsMenu() {
 			<p className="my-5 text-xs ">
 				<span className="text-red-700">*</span> Signifie une présence d'allergènes
 			</p>
-			<TabsList className="grid w-full grid-cols-3 gap-4 h-11 p-0 mb-10 md:gap-5">
+			<TabsList className="grid w-full grid-cols-3 gap-4 h-11 p-0 mb-10 md:gap-5 ">
 				<TabsTrigger
-					className="h-full text-primary border border-primary rounded-none font-bold [&[data-state=active]]:bg-primary [&[data-state=active]]:text-white"
+					className="h-full text-primary border border-primary rounded-none font-bold data-[state=active]:bg-primary [&[data-state=active]>*]:text-white"
 					value="entries"
 				>
-					<h2 className="text-lg">Entrées</h2>
-				</TabsTrigger>
+						<h2 className="text-lg">Entrées</h2>
+					</TabsTrigger>
 				<TabsTrigger
-					className="h-full text-primary border border-primary rounded-none  font-bold [&[data-state=active]]:bg-primary [&[data-state=active]]:text-white"
+					className="h-full text-primary border border-primary rounded-none font-bold data-[state=active]:bg-primary [&[data-state=active]>*]:text-white"
 					value="plates"
 				>
 					<h2 className="text-lg">Plats</h2>
 				</TabsTrigger>
 				<TabsTrigger
-					className="h-full text-primary border border-primary rounded-none font-bold [&[data-state=active]]:bg-primary [&[data-state=active]]:text-white"
+					className="h-full text-primary border border-primary rounded-none font-bold data-[state=active]:bg-primary [&[data-state=active]>*]:text-white"
 					value="desserts"
 				>
 					<h2 className="text-lg">Desserts</h2>
@@ -29,14 +29,14 @@ export function TabsMenu() {
 			</TabsList>
 			<TabsContent value="entries">
 				<section aria-label="Présentation des entrées de la carte">
-				{entries.map((entry) => (
+					{entries.map((entry) => (
 						<ArticleComponent key={entry.name} {...entry} />
 					))}
 				</section>
 			</TabsContent>
 			<TabsContent value="plates">
 				<section aria-label="Présentation des plats de la carte">
-				{entries.map((entry) => (
+					{entries.map((entry) => (
 						<ArticleComponent key={entry.name} {...entry} />
 					))}
 				</section>

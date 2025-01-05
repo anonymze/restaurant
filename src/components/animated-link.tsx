@@ -2,14 +2,14 @@ import { cn } from "@/utils/libs/tailwaind";
 import { motion } from "framer-motion";
 
 
-interface AnimatedButtonProps {
+interface AnimatedLinkProps {
 	children: React.ReactNode;
 	title: string;
 	href: string;
 	className?: string;
 }
 
-export default function AnimatedButton({ children, title, href, className }: AnimatedButtonProps) {
+export default function AnimatedLink({ children, title, href, className }: AnimatedLinkProps) {
 	return (
 		<motion.a
 			href={href}

@@ -3,11 +3,10 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import PlanteImg from "@/assets/images/plante.webp";
 import PlatImg from "@/assets/images/plat.webp";
-import AnimatedButton from "@/components/animated-button";
+import AnimatedLink from "@/components/animated-link";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwaind";
 import { VeganIcon } from "lucide-react";
-import { motion } from "framer-motion";
 import AnimatedText from "@/components/animated-text";
 const optimizedPlanteImage = await getImage({
 	src: PlanteImg,
@@ -69,14 +68,14 @@ const optimizedPlatImage = await getImage({
 				</h2>
 
 
-				<AnimatedButton
+				<AnimatedLink
 					client:load
 					title="Redirection à la page de la carte du restaurant"
 					href="/carte"
 					className="bg-primary/90"
 				>
 					Voir la carte des menus
-				</AnimatedButton>
+				</AnimatedLink>
 			</div>
 
 			<div
@@ -118,14 +117,14 @@ const optimizedPlatImage = await getImage({
 					Réservation
 				</h2>
 
-				<AnimatedButton
+				<AnimatedLink
 					client:load
 					title="Redirection à la page de réservation"
 					href="/reservation"
 					className="bg-green-700/90"
 				>
 					Réserver
-				</AnimatedButton>
+				</AnimatedLink>
 			</div>
 			<div
 				class={cn(

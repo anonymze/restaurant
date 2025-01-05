@@ -3,16 +3,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface TabsMenuProps {
 	titles: string[];
-	content: {
-		image: string;
+	entries: Array<{
 		name: string;
-		description: string;
-		price: number;
-		allergens: boolean;
-	}[];
+		content: Array<{
+			image: string;
+			name: string;
+			description: string;
+			price: number;
+			allergens: boolean;
+		}>;
+	}>;
 }
 
-export function TabsMenu({ titles, content }: TabsMenuProps) {
+export function TabsMenu({ titles, entries }: TabsMenuProps) {
 	return (
 		<Tabs defaultValue="entries" className="mt-6 max-w-[800px] mx-auto px-4">
 			<p className="my-5 text-xs ">
@@ -29,28 +32,32 @@ export function TabsMenu({ titles, content }: TabsMenuProps) {
 					</TabsTrigger>
 				))}
 			</TabsList>
-			<section aria-label="Présentation des entrées de la carte">
-				{content.map((entry) => (
-					<article className="flex flex-row items-center gap-8 h-24 mb-6 ">
-						<img
-							className="object-cover"
-							src="https://placehold.jp/150x150.png"
-							alt={entry.name}
-							width={96}
-							height={96}
-							loading="lazy"
-						/>
+			{entries.map((entry) => (
+				<TabsContent value={entry.name}>
+					<section aria-label="Présentation des entrées de la carte">
+						{entry.content.map((entry) => (
+							<article className="flex flex-row items-center gap-8 h-24 mb-6 ">
+								<img
+									className="object-cover"
+									src="https://placehold.jp/150x150.png"
+									alt={entry.name}
+									width={96}
+									height={96}
+									loading="lazy"
+								/>
 
-						<div className="flex flex-col flex-1 h-full border-b border-gray-400/20 gap-2">
-							<h3 className="text-lg font-bold">{entry.name}</h3>
-							<p className="text-sm text-gray-600">
-								{entry.description} {entry.allergens && <span className="text-red-700">*</span>}
-							</p>
-						</div>
-						<p className="text-primary font-bold ml-auto">{entry.price} €</p>
-					</article>
-				))}
-			</section>
+								<div className="flex flex-col flex-1 h-full border-b border-gray-400/20 gap-2">
+									<h3 className="text-lg font-bold">{entry.name}</h3>
+									<p className="text-sm text-gray-600">
+										{entry.description} {entry.allergens && <span className="text-red-700">*</span>}
+									</p>
+								</div>
+								<p className="text-primary font-bold ml-auto">{entry.price} €</p>
+							</article>
+						))}
+					</section>
+				</TabsContent>
+			))}
 		</Tabs>
 	);
 }

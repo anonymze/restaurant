@@ -9,35 +9,105 @@ import Footer from "@/layouts/footer.astro";
 
 const entries = [
 	{
-		image: "/images/entries/1.jpg",
-		name: "Entrée 1",
-		description: "Description de l'entrée 1",
-		price: 10,
-		allergens: true,
+		name: "entries",
+		content: [
+			{
+				image: "/images/entries/1.jpg",
+				name: "Entrée 1",
+				description: "Description de l'entrée 1",
+				price: 10,
+				allergens: true,
+			},
+			{
+				image: "/images/entries/2.jpg",
+				name: "Entrée 2",
+				description: "Description de l'entrée 2",
+				price: 10,
+				allergens: false,
+			},
+			{
+				image: "/images/entries/3.jpg",
+				name: "Entrée 3",
+				description: "Description de l'entrée 3",
+				allergens: true,
+				price: 10,
+			},
+			{
+				image: "/images/entries/4.jpg",
+				name: "Entrée 4",
+				description: "Description de l'entrée 4",
+				price: 10,
+				allergens: false,
+			},
+		],
 	},
 	{
-		image: "/images/entries/2.jpg",
-		name: "Entrée 2",
-		description: "Description de l'entrée 2",
-		price: 10,
-		allergens: false,
+		name: "plates",
+		content: [
+			{
+				image: "/images/entries/1.jpg",
+				name: "Plat 1",
+				description: "Description de l'entrée 1",
+				price: 10,
+				allergens: true,
+			},
+			{
+				image: "/images/entries/2.jpg",
+				name: "Plat 2",
+				description: "Description de l'entrée 2",
+				price: 10,
+				allergens: false,
+			},
+			{
+				image: "/images/entries/3.jpg",
+				name: "Plat 3",
+				description: "Description de l'entrée 3",
+				allergens: true,
+				price: 10,
+			},
+			{
+				image: "/images/entries/4.jpg",
+				name: "Entrée 4",
+				description: "Description de l'entrée 4",
+				price: 10,
+				allergens: false,
+			},
+		],
 	},
 	{
-		image: "/images/entries/3.jpg",
-		name: "Entrée 3",
-		description: "Description de l'entrée 3",
-		allergens: true,
-		price: 10,
-	},
-	{
-		image: "/images/entries/4.jpg",
-		name: "Entrée 4",
-		description: "Description de l'entrée 4",
-		price: 10,
-		allergens: false,
+		name: "desserts",
+		content: [
+			{
+				image: "/images/entries/1.jpg",
+				name: "Dessert 1",
+				description: "Description de l'entrée 1",
+				price: 10,
+				allergens: true,
+			},
+			{
+				image: "/images/entries/2.jpg",
+				name: "Dessert 2",
+				description: "Description de l'entrée 2",
+				price: 10,
+				allergens: false,
+			},
+			{
+				image: "/images/entries/3.jpg",
+				name: "Dessert 3",
+				description: "Description de l'entrée 3",
+				allergens: true,
+				price: 10,
+			},
+			{
+				image: "/images/entries/4.jpg",
+				name: "Dessert 4",
+				description: "Description de l'entrée 4",
+				price: 10,
+				allergens: false,
+			},
+		],
 	},
 ];
-
 ---
 
 <Layout overflow>
@@ -54,7 +124,7 @@ const entries = [
 	</header>
 
 	<main class="relative">
-		<TabsMenu client:load titles={["Entrées", "Plats", "Desserts"]} content={entries} />
+		<TabsMenu client:load titles={["Entrées", "Plats", "Desserts"]} entries={entries} />
 
 		<div class="sticky bottom-6 w-full flex justify-end p-6">
 			<AnimatedLink
@@ -70,5 +140,3 @@ const entries = [
 
 	<Footer />
 </Layout>
-
-

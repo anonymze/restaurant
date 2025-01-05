@@ -73,7 +73,7 @@ const ArticleComponent = ({
 				height={96}
 			/>
 
-			<div className="flex flex-col flex-1 h-full border-b border-primary gap-2">
+			<div className="flex flex-col flex-1 h-full border-b border-gray-400/20 gap-2">
 				<h3 className="text-lg font-bold">{name}</h3>
 				<p className="text-sm text-gray-500">
 					{description} {allergens && <span className="text-red-700">*</span>}

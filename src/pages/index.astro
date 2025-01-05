@@ -8,7 +8,7 @@ import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwaind";
 import { VeganIcon } from "lucide-react";
 import { motion } from "framer-motion";
-
+import AnimatedText from "@/components/animated-text";
 const optimizedPlanteImage = await getImage({
 	src: PlanteImg,
 	format: "webp",
@@ -47,23 +47,7 @@ const optimizedPlatImage = await getImage({
 			<h1
 				class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 h-fit text-6xl text-primary text-shadow md:top-16 md:right-3 md:left-auto md:translate-x-0 md:text-8xl"
 			>
-				<motion.div
-					client:load
-					initial={{ opacity: 0, y: -10 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{
-						y: {
-							type: "spring",
-							stiffness: 80,
-							damping: 6,
-						},
-						opacity: {
-							duration: 0.2,
-						},
-					}}
-				>
-					Mauvaise
-				</motion.div>
+				<AnimatedText client:load> Mauvaise </AnimatedText>
 			</h1>
 
 			<Image
@@ -105,47 +89,13 @@ const optimizedPlatImage = await getImage({
 			<h1
 				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex items-end gap-2 h-fit text-6xl text-green-700 text-dark text-shadow md:text-8xl md:top-16 md:pt-8 md:left-3 md:translate-x-0"
 			>
-				<motion.div
-					client:load
-					initial={{ opacity: 0, y: -10 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{
-						y: {
-							type: "spring",
-							stiffness: 80,
-							damping: 6,
-							delay: 0.3,
-						},
-						opacity: {
-							duration: 0.2,
-							delay: 0.3,
-						},
-					}}
-				>
-					Herbe
-				</motion.div>
+				<AnimatedText client:load delay={0.3}> Herbe </AnimatedText>
 
-				<motion.div
-					client:load
-					initial={{ opacity: 0, y: -10 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{
-						y: {
-							type: "spring",
-							stiffness: 80,
-							damping: 6,
-							delay: 0.6,
-						},
-						opacity: {
-							duration: 0.2,
-							delay: 0.6,
-						},
-					}}
-				>
+				<AnimatedText client:load delay={0.6}>
 					<VeganIcon
 						className="mb-1 ml-1 w-6 h-6 min-h-6 min-w-6 text-green-700 md:w-7 md:h-7 md:mb-2 md:ml-2 md:stroke-[2.5]"
 					/>
-				</motion.div>
+				</AnimatedText>
 			</h1>
 
 			<Image

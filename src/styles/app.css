@@ -19,6 +19,10 @@ body {
   }
 }
 
+.text-shadow {
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
 /* .perfect-shadow {
 	--base: hsl(var(--tint, 344) 100% 64% / calc(var(--alpha, 60) * 1%));
 	--shade: hsl(from var(--base) calc(h + 8) 25 calc(l - 5));

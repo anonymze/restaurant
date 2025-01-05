@@ -6,6 +6,38 @@ import { Image } from "astro:assets";
 import { TabsMenu } from "@/components/tabs-menu";
 import AnimatedLink from "@/components/animated-link";
 import Footer from "@/layouts/footer.astro";
+
+const entries = [
+	{
+		image: "/images/entries/1.jpg",
+		name: "Entrée 1",
+		description: "Description de l'entrée 1",
+		price: 10,
+		allergens: true,
+	},
+	{
+		image: "/images/entries/2.jpg",
+		name: "Entrée 2",
+		description: "Description de l'entrée 2",
+		price: 10,
+		allergens: false,
+	},
+	{
+		image: "/images/entries/3.jpg",
+		name: "Entrée 3",
+		description: "Description de l'entrée 3",
+		allergens: true,
+		price: 10,
+	},
+	{
+		image: "/images/entries/4.jpg",
+		name: "Entrée 4",
+		description: "Description de l'entrée 4",
+		price: 10,
+		allergens: false,
+	},
+];
+
 ---
 
 <Layout overflow>
@@ -22,7 +54,7 @@ import Footer from "@/layouts/footer.astro";
 	</header>
 
 	<main class="relative">
-		<TabsMenu client:load />
+		<TabsMenu client:load titles={["Entrées", "Plats", "Desserts"]} content={entries} />
 
 		<div class="sticky bottom-6 w-full flex justify-end p-6">
 			<AnimatedLink
@@ -38,3 +70,5 @@ import Footer from "@/layouts/footer.astro";
 
 	<Footer />
 </Layout>
+
+

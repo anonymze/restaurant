@@ -1,6 +1,7 @@
 ---
 import "@/styles/app.css";
 import { cn } from "@/utils/libs/tailwaind";
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	overflow?: boolean;
@@ -25,6 +26,7 @@ const { overflow }: Props = Astro.props;
 		/>
 		<slot name="head-preload" />
 		<title>Restaurant</title>
+		<ClientRouter />
 	</head>
 	<body class={cn(!overflow ? "h-dvh overflow-hidden" : "")}>
 		<slot />

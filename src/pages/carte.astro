@@ -1,7 +1,38 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import { VeganIcon } from "lucide-react";
+import PlanteImg from "@/assets/images/plante.webp";
+import { Image } from "astro:assets";
+import { TabsDemo } from "@/components/hey";
 ---
 
 <Layout>
-	<h1>Carte</h1>
+	<header class="grid place-items-center relative h-1/3">
+		<Image src={PlanteImg} alt="Plante" class="absolute top-0 left-0 w-full h-full object-cover z-0" />
+
+		<div class="relative z-10">
+			<h1 class="mb-2 text-primary">La carte</h1>
+			<div class="flex items-center justify-center gap-2">
+				<VeganIcon width={24} height={24} className="text-green-700" />
+				<span class="text-xl">Notre menu</span>
+			</div>
+		</div>
+	</header>
+
+	<main>
+			<TabsDemo client:load />
+	</main>
+
+	<a
+		href="/reservation"
+		title="Redirige vers la page de réservation"
+		class="fixed bottom-6 right-6
+         bg-primary text-white
+         px-6 py-3
+         shadow-lg
+         transition-colors
+         z-10
+         hover:bg-primary/90"
+		>Réserver une table</a
+	>
 </Layout>

@@ -41,7 +41,7 @@ const optimizedPlatImage = await getImage({
 		/>
 	</Fragment>
 
-	<div class="flex flex-col w-full h-full md:flex-row">
+	<main class="flex flex-col w-full h-full md:flex-row">
 		<h1 class="sr-only">Mauvaise herbe restaurant</h1>
 		<div class="relative flex-1 h-1/2 md:h-full">
 			<AnimatedText
@@ -66,7 +66,6 @@ const optimizedPlatImage = await getImage({
 				<h2 class="mb-3 p-1 pb-2 text-4xl text-white text-shadow backdrop-blur-xs uppercase md:text-5xl">
 					Notre carte
 				</h2>
-
 
 				<AnimatedLink
 					client:load
@@ -119,11 +118,11 @@ const optimizedPlatImage = await getImage({
 
 				<AnimatedLink
 					client:load
-					title="Redirection à la page de réservation"
+					title="Redirection à la page de réservation du restaurant"
 					href="/reservation"
 					className="bg-green-700/90"
 				>
-					Réserver
+					Réserver une table
 				</AnimatedLink>
 			</div>
 			<div
@@ -135,5 +134,5 @@ const optimizedPlatImage = await getImage({
 			>
 			</div>
 		</div>
-	</div>
+	</main>
 </Layout>

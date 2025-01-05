@@ -7,6 +7,7 @@ import AnimatedButton from "@/components/animated-button";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwaind";
 import { VeganIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 const optimizedPlanteImage = await getImage({
 	src: PlanteImg,
@@ -46,7 +47,23 @@ const optimizedPlatImage = await getImage({
 			<h1
 				class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 h-fit text-6xl text-primary text-shadow md:top-16 md:right-3 md:left-auto md:translate-x-0 md:text-8xl"
 			>
-				Mauvaise
+				<motion.div
+					client:load
+					initial={{ opacity: 0, y: -10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						y: {
+							type: "spring",
+							stiffness: 80,
+							damping: 6,
+						},
+						opacity: {
+							duration: 0.2,
+						},
+					}}
+				>
+					Mauvaise
+				</motion.div>
 			</h1>
 
 			<Image
@@ -55,7 +72,7 @@ const optimizedPlatImage = await getImage({
 				height={PlanteImg.height}
 				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${PlanteImg.width}px`}
 				alt="Un plat du restaurant"
-				class="w-full h-full object-cover image-fade"
+				class="w-full h-full object-cover"
 				loading="eager"
 				fetchpriority="high"
 			/>
@@ -86,11 +103,49 @@ const optimizedPlatImage = await getImage({
 
 		<div class="relative flex-1 h-1/2 group md:h-full">
 			<h1
-				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex items-end gap-2 h-fit text-6xl text-dark text-shadow md:text-8xl md:top-16 md:pt-8 md:left-3 md:translate-x-0"
+				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex items-end gap-2 h-fit text-6xl text-green-700 text-dark text-shadow md:text-8xl md:top-16 md:pt-8 md:left-3 md:translate-x-0"
 			>
-				Herbe <VeganIcon
-					className="mb-1 ml-1 w-6 h-6 min-h-6 min-w-6 text-green-700 md:w-9 md:h-9 md:mb-2 md:ml-2  md:stroke-[2.5]"
-				/>
+				<motion.div
+					client:load
+					initial={{ opacity: 0, y: -10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						y: {
+							type: "spring",
+							stiffness: 80,
+							damping: 6,
+							delay: 0.3,
+						},
+						opacity: {
+							duration: 0.2,
+							delay: 0.3,
+						},
+					}}
+				>
+					Herbe
+				</motion.div>
+
+				<motion.div
+					client:load
+					initial={{ opacity: 0, y: -10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						y: {
+							type: "spring",
+							stiffness: 80,
+							damping: 6,
+							delay: 0.6,
+						},
+						opacity: {
+							duration: 0.2,
+							delay: 0.6,
+						},
+					}}
+				>
+					<VeganIcon
+						className="mb-1 ml-1 w-6 h-6 min-h-6 min-w-6 text-green-700 md:w-7 md:h-7 md:mb-2 md:ml-2 md:stroke-[2.5]"
+					/>
+				</motion.div>
 			</h1>
 
 			<Image
@@ -99,7 +154,7 @@ const optimizedPlatImage = await getImage({
 				height={PlatImg.height}
 				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${PlatImg.width}px`}
 				alt="Un plat du restaurant"
-				class="w-full h-full object-cover image-fade"
+				class="w-full h-full object-cover"
 				loading="eager"
 				fetchpriority="high"
 			/>
@@ -113,7 +168,7 @@ const optimizedPlatImage = await getImage({
 					<AnimatedButton
 						client:load
 						text="Réserver"
-						className="h-fit px-6 py-2 bg-black/90 text-white uppercase md:py-3"
+						className="h-fit px-6 py-2 bg-green-700/90 text-white uppercase md:py-3"
 					/>
 				</a>
 			</div>
@@ -133,38 +188,4 @@ const optimizedPlatImage = await getImage({
 	.text-shadow {
 		text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	}
-
-	.image-fade {
-		opacity: 0;
-		transition: opacity 800ms ease-out;
-	}
-	.image-fade.loaded {
-		opacity: 1;
-	}
 </style>
-
-<script>
-	document.addEventListener("DOMContentLoaded", () => {
-		const images = document.querySelectorAll(".image-fade");
-		let allCompleted = false;
-		let loadedImages = 0;
-
-		const markAsLoaded = (img: HTMLImageElement) => {
-			loadedImages++;
-			if (loadedImages === images.length && !allCompleted) {
-				allCompleted = true;
-				images.forEach((image) => image.classList.add("loaded"));
-			}
-		};
-
-		images.forEach((img) => {
-			if (img instanceof HTMLImageElement) {
-				if (img.complete) {
-					markAsLoaded(img);
-				} else {
-					img.addEventListener("load", () => markAsLoaded(img));
-				}
-			}
-		});
-	});
-</script>

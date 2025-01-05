@@ -12,7 +12,7 @@ export default function AnimatedButton({ text, className }: AnimatedButtonProps)
     <motion.div
 		className="w-fit h-fit mx-auto"
       whileHover={{ scale: 1.05 }}
-      transition={{ stiffness: 400, damping: 10, duration: 0.15}}
+      transition={{ stiffness: 400, damping: 10, duration: 0.10}}
     >
       <Button variant="outline" className={className}>
         {text}

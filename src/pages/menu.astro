@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/layout.astro";
+import MenuCard from "@/components/menu-card.tsx";
+---
+
+<Layout overflow>
+	<main class="bg-stone-50 py-16 px-4 md:py-24">
+		<section class="container mx-auto max-w-6xl space-y-12">
+			<div class="text-center mb-12">
+				<h1 class="text-4xl font-serif text-stone-800 mb-4">Nos cartes</h1>
+				<div class="flex justify-center items-center gap-3 mb-6">
+					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+					<span class="text-sm font-medium uppercase tracking-wider text-primary">
+						Un menu différent chaque jour
+					</span>
+					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+				</div>
+				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+					Découvrez notre menu du jour, changeant au gré des saisons, accompagné de notre sélection de vins raffinés.
+				</p>
+			</div>
+		</section>
+
+		<article class="container mx-auto max-w-2xl mb-12">
+			<p class="my-4 text-sm">
+				<span class="font-medium text-red-700">*</span> Signifie une présence d'allergènes.
+			</p>
+			<MenuCard client:load />
+		</article>
+	</main>
+</Layout>

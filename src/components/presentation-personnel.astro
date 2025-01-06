@@ -1,0 +1,80 @@
+---
+import { Card, CardContent } from "@/components/ui/card";
+
+interface TeamMember {
+	name: string;
+	role: string;
+	imageUrl: string;
+}
+
+const teamMembers: TeamMember[] = [
+	{
+		name: "Marie Dubois",
+		role: "Chef Exécutif",
+		imageUrl: "/placeholder.svg?height=400&width=400",
+	},
+	{
+		name: "Thomas Lefèvre",
+		role: "Sous-Chef",
+		imageUrl: "/placeholder.svg?height=400&width=400",
+	},
+	{
+		name: "Sophie Martin",
+		role: "Pâtissière",
+		imageUrl: "/placeholder.svg?height=400&width=400",
+	},
+	{
+		name: "Lucas Bertrand",
+		role: "Sommelier",
+		imageUrl: "/placeholder.svg?height=400&width=400",
+	},
+	{
+		name: "Émilie Rousseau",
+		role: "Responsable Salle",
+		imageUrl: "/placeholder.svg?height=400&width=400",
+	},
+	{
+		name: "Antoine Moreau",
+		role: "Chef de Partie",
+		imageUrl: "/placeholder.svg?height=400&width=400",
+	},
+];
+---
+
+<section class="bg-stone-50 py-10 px-4 md:py-24">
+	<div class="container mx-auto max-w-6xl">
+		<div class="text-center mb-12">
+			<h2 class="text-4xl font-serif text-stone-800 leading-tight mb-4">
+				L'équipe derrière<br />nos créations culinaires
+			</h2>
+			<div class="flex justify-center items-center gap-3 mb-6">
+				<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+				<span class="text-sm font-medium uppercase tracking-wider text-primary"> Nos Talents </span>
+				<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+			</div>
+			<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+				Chaque membre de notre équipe apporte sa passion et son expertise pour créer une expérience
+				gastronomique exceptionnelle.
+			</p>
+		</div>
+		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+			{
+				teamMembers.map((member) => (
+					<Card className="bg-stone-50 border-none overflow-hidden rounded-none">
+						<div class="aspect-[4/3] overflow-hidden">
+							<img
+								src={member.imageUrl}
+								alt={member.name}
+								class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+							/>
+						</div>
+						<CardContent className="p-6 text-center">
+							<h3 class="text-xl font-serif text-stone-800 mb-1">{member.name}</h3>
+							<p class="text-sm font-medium text-primary">{member.role}</p>
+						</CardContent>
+					</Card>
+				))
+			}
+		</div>
+	</div>
+</section>

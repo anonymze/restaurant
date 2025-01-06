@@ -1,0 +1,158 @@
+---
+import Layout from "../layouts/layout.astro";
+import { CalendarDays, Clock, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { SelectPeople } from "@/components/select-people";
+import { Textarea } from "@/components/ui/textarea";
+---
+
+<Layout overflow>
+	<main class="bg-stone-50 py-16 px-4 md:py-24">
+		<div class="container mx-auto max-w-6xl">
+			<section class="text-center mb-12" aria-labelledby="page-title">
+				<h1 id="page-title" class="text-4xl font-serif text-stone-800 mb-4">Réservez votre table</h1>
+				<div class="flex justify-center items-center gap-3 mb-6">
+					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+					<span class="text-sm font-medium uppercase tracking-wider text-primary">
+						Une expérience culinaire unique vous attend
+					</span>
+					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+				</div>
+				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+					Réservez votre table en quelques clics et préparez-vous à vivre un moment gastronomique exceptionnel
+					dans notre restaurant.
+				</p>
+			</section>
+
+			<div class="grid md:grid-cols-2 gap-12">
+				<section class="space-y-8" aria-labelledby="info-title">
+					<article class="reservation-info">
+						<h2 id="info-title" class="text-2xl font-serif text-stone-800 mb-4">
+							Informations de réservation
+						</h2>
+						<ul class="space-y-4 text-stone-600">
+							<li class="flex items-start">
+								<CalendarDays className="w-6 h-6 text-primary mr-3 mt-1" />
+								<div>
+									<h3 class="font-medium">Horaires de réservation :</h3>
+									<p>Du lundi au vendredi : 12h00 - 14h00, 19h00 - 22h00</p>
+									<p>Samedi et dimanche : 12h00 - 15h00, 19h00 - 22h30</p>
+								</div>
+							</li>
+							<li class="flex items-start">
+								<Users className="w-6 h-6 text-primary mr-3 mt-1" />
+								<div>
+									<h3 class="font-medium">Taille des groupes :</h3>
+									<p>
+										Pour les groupes de plus de 7 personnes, veuillez nous contacter directement par
+										téléphone.
+									</p>
+								</div>
+							</li>
+							<li class="flex items-start">
+								<Clock className="w-6 h-6 text-primary mr-3 mt-1" />
+								<div>
+									<h3 class="font-medium">Politique d'annulation :</h3>
+									<p>
+										Les annulations sont gratuites jusqu'à 24 heures avant l'heure de réservation. Passé ce
+										délai, des frais peuvent s'appliquer.
+									</p>
+								</div>
+							</li>
+						</ul>
+					</article>
+
+					<article class="help-section bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+						<h2 class="text-xl font-serif text-stone-800 mb-4">Besoin d'aide ?</h2>
+						<p class="text-stone-600 mb-4">
+							Si vous avez des questions ou des demandes spéciales, n'hésitez pas à nous contacter
+							directement.
+						</p>
+						<a class="w-full text-center py-2 border" href="/contact"> Contactez-nous </a>
+					</article>
+				</section>
+				<section class="reservation-form" aria-labelledby="form-title">
+					<h2 id="form-title" class="sr-only">Formulaire de réservation</h2>
+					<form class="space-y-6">
+						<div class="grid grid-cols-2 gap-4">
+							<div class="space-y-2">
+								<label for="date" class="text-sm font-medium text-stone-700">Date</label>
+								<div class="relative">
+									<CalendarDays
+										className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400"
+									/>
+									<Input id="date" type="date" className="pl-12 rounded-none" required />
+								</div>
+							</div>
+							<div class="space-y-2">
+								<label for="time" class="text-sm font-medium text-stone-700">Heure</label>
+								<div class="relative">
+									<Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400" />
+									<Input id="time" type="time" className="pl-12 rounded-none" required />
+								</div>
+							</div>
+						</div>
+						<div class="space-y-2">
+							<label for="guests" class="text-sm font-medium text-stone-700">Nombre de personnes</label>
+							<div class="relative">
+								<Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400" />
+								<SelectPeople client:load />
+							</div>
+						</div>
+						<div class="space-y-2">
+							<label for="name" class="text-sm font-medium text-stone-700">Nom</label>
+							<Input id="name" className="rounded-none" placeholder="Votre nom" required />
+						</div>
+						<div class="space-y-2">
+							<label for="email" class="text-sm font-medium text-stone-700">Email</label>
+							<Input
+								id="email"
+								className="rounded-none"
+								type="email"
+								placeholder="votre@email.com"
+								required
+							/>
+						</div>
+						<div class="space-y-2">
+							<label for="phone" class="text-sm font-medium text-stone-700">Téléphone</label>
+							<Input
+								id="phone"
+								className="rounded-none"
+								type="tel"
+								placeholder="Votre numéro de téléphone"
+								required
+							/>
+						</div>
+						<div class="space-y-2">
+							<label for="special-requests" class="text-sm font-medium text-stone-700"
+								>Demandes spéciales (optionnel)</label
+							>
+							<Textarea
+								id="special-requests"
+								className="rounded-none"
+								placeholder="Allergies, occasions spéciales, etc."
+								rows={3}
+							/>
+						</div>
+						<Button
+							type="submit"
+							className="w-full py-5 bg-primary text-white rounded-none hover:bg-primary/90"
+						>
+							Réserver ma table
+						</Button>
+					</form>
+				</section>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	// Client-side form handling can be added here
+	const form = document.querySelector("form");
+	form?.addEventListener("submit", (e) => {
+		e.preventDefault();
+		// Add form submission logic here
+	});
+</script>

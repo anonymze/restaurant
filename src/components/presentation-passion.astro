@@ -8,22 +8,11 @@ import { motion } from "framer-motion";
 	<div class="container mx-auto max-w-6xl">
 		<div class="grid gap-16 md:grid-cols-12 items-center">
 			<!-- Large Feature Image -->
-			<motion.div
-				client:load
-				transition={{ duration: 0.5 }}
-				initial="hidden"
-				whileInView="visible"
-				viewport={{ once: true, amount: 0.1 }}
-				variants={{
-					visible: { opacity: 1, x: 0 },
-					hidden: { opacity: 0, x: -100 },
-				}}
-				className="md:col-span-7"
-			>
+			<div class="md:col-span-7">
 				<div class="aspect-[4/3] overflow-hidden">
 					<Image src={PlateImg} alt="Notre équipe en cuisine" class="w-full h-full object-cover" />
 				</div>
-			</motion.div>
+			</div>
 
 			<!-- Content -->
 			<div class="md:col-span-5 space-y-8">
@@ -68,4 +57,3 @@ import { motion } from "framer-motion";
 		</div>
 	</div>
 </section>
-

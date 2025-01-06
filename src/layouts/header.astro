@@ -1,11 +1,15 @@
 ---
+import { cn } from "@/utils/libs/tailwaind";
 import { VeganIcon } from "lucide-react";
+
 const navigation = [
 	{ name: "Présentation", href: "/presentation" },
 	{ name: "Menu", href: "/menu" },
 	{ name: "Événements", href: "/evenements" },
 	{ name: "Contact", href: "/contact" },
 ];
+
+const currentUrl = Astro.url.pathname;
 ---
 
 <header class="bg-white shadow-sm">
@@ -51,7 +55,10 @@ const navigation = [
 				navigation.map((item) => (
 					<a
 						href={item.href}
-						class="text-sm font-semibold leading-6 text-stone-900 hover:text-primary transition-colors"
+						class={cn(
+							"text-sm font-semibold leading-6 hover:text-primary transition-colors p-1",
+							currentUrl === item.href && " text-primary!",
+						)}
 					>
 						{item.name}
 					</a>

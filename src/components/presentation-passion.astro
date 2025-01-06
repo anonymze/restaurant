@@ -1,15 +1,17 @@
 ---
-// No props or logic needed in the frontmatter for now
+import { Image } from "astro:assets";
+import PlanteImg from "@/assets/images/plante.webp";
+import PlateImg from "@/assets/images/plat.webp";
 ---
 
-<section class="bg-white py-16 px-4 md:py-24">
+<section class="bg-white py-10 px-4 md:py-24">
   <div class="container mx-auto max-w-6xl">
     <div class="grid gap-16 md:grid-cols-12 items-center">
       <!-- Large Feature Image -->
       <div class="md:col-span-7 relative">
         <div class="aspect-[4/3] rounded-2xl overflow-hidden">
-          <img
-            src="/placeholder.svg?height=600&width=800"
+          <Image
+            src={PlateImg}
             alt="Notre équipe en cuisine"
             class="w-full h-full object-cover"
           />
@@ -25,7 +27,7 @@
           <div class="flex items-center gap-3">
             <div class="h-0.5 w-8 bg-primary"></div>
             <span class="text-sm font-medium uppercase tracking-wider text-primary">
-              Notre Histoire
+              Notre passion
             </span>
           </div>
           <h2 class="text-3xl font-serif text-stone-800 leading-tight">

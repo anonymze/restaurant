@@ -1,5 +1,6 @@
 ---
-import LinkedinSVG from "@/assets/icons/linkedin.svg?raw";
+import FacebookSVG from "@/assets/icons/facebook.svg?raw";
+import InstagramSVG from "@/assets/icons/instagram.svg?raw";
 import ArrowMailRightSVG from "@/assets/icons/arrow-right-mail.svg?raw";
 import MapSVG from "@/assets/icons/map.svg?raw";
 import PhoneSVG from "@/assets/icons/phone.svg?raw";
@@ -13,15 +14,15 @@ const id_current_year = "current-year";
 <footer class="grid grid-cols-6 grid-rows-4">
 	<p class="flex items-center gap-2 col-span-6">
 		<span set:html={MapSVG} class="w-5 h-5" />
-		bla bla bla, 31500 blablabla
+		3 le Fond du Barri, 81140 le Verdier
 	</p>
 	<p class="flex items-center gap-2 col-span-6">
 		<span set:html={PhoneSVG} class="w-5 h-5" />
-		06 01 02 03 04
+		05 67 72 00 86
 	</p>
 	<p class="flex items-center gap-2 col-span-6">
 		<span set:html={EmailSVG} class="w-5 h-5" />
-		test@gmail.com
+		mauvaise-herbe81@gmail.com
 	</p>
 	<p class="relative col-span-6 text-sm sm:col-span-3 pt-2">
 		Vous souhaitez nous trouver sur les différents réseaux sociaux ? Cliquez sur les icônes pour être
@@ -49,25 +50,18 @@ const id_current_year = "current-year";
 		id="social-links"
 	>
 		<a
-			title={`Open linkedin`}
+			title={`Ouvre Instagram dans un nouvel onglet`}
 			target="_blank"
-			href={"https://www.linkedin.com/company/ethienne-zurawsky-et-maria-gulstam/"}
-			set:html={LinkedinSVG}
-			class="min-w-12"
+			href={"https://www.instagram.com/ethienne.zurawsky.et.maria.gulstam"}
+			set:html={InstagramSVG}
+			class="w-16 h-18 min-w-16"
 		/>
 		<a
-			title={`Open linkedin`}
+			title={`Ouvre Instagram dans un nouvel onglet`}
 			target="_blank"
-			href={"https://www.linkedin.com/company/ethienne-zurawsky-et-maria-gulstam/"}
-			set:html={LinkedinSVG}
-			class="min-w-12"
-		/>
-		<a
-			title={`Open linkedin`}
-			target="_blank"
-			href={"https://www.linkedin.com/company/ethienne-zurawsky-et-maria-gulstam/"}
-			set:html={LinkedinSVG}
-			class="min-w-12"
+			href={"https://www.facebook.com/ethienne.zurawsky.et.maria.gulstam"}
+			set:html={FacebookSVG}
+			class="w-16 h-18 min-w-16"
 		/>
 	</div>
 </footer>
@@ -79,17 +73,17 @@ const id_current_year = "current-year";
 	function handleMediaChange(e) {
 		// Check if screen is mobile size (less than 640px - Tailwind's sm breakpoint)
 		const isMobile = window.innerWidth < 640;
-		
+
 		if (isMobile) {
 			// Move copyright after social links and add margin-top
 			socialLinks.after(copyright);
-			socialLinks.classList.add('mt-5');
+			socialLinks.classList.add("mt-5");
 		} else {
 			// Move copyright back to original position and remove margin-top
 			socialLinks.before(copyright);
-			socialLinks.classList.remove('mt-5');
+			socialLinks.classList.remove("mt-5");
 		}
-		
+
 		// Update year
 		copyright.firstElementChild.textContent = new Date().getFullYear();
 	}
@@ -98,7 +92,7 @@ const id_current_year = "current-year";
 	handleMediaChange();
 
 	// Listen for resize events
-	window.addEventListener('resize', handleMediaChange);
+	window.addEventListener("resize", handleMediaChange);
 
 	// Listen for media-change events
 	document.addEventListener("media-change", handleMediaChange);

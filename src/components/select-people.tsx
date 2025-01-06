@@ -14,7 +14,6 @@ export function SelectPeople() {
 				<SelectItem className="hover:bg-primary hover:text-white" value="4">4 personnes</SelectItem>
 				<SelectItem className="hover:bg-primary hover:text-white" value="5">5 personnes</SelectItem>
 				<SelectItem className="hover:bg-primary hover:text-white" value="6">6 personnes</SelectItem>
-				<SelectItem className="hover:bg-primary hover:text-white" value="7+">7 personnes ou plus</SelectItem>
 			</SelectContent>
 		</Select>
 	);

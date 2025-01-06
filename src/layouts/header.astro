@@ -67,16 +67,12 @@ console.log(currentUrl);
 			}
 		</div>
 		<div class="hidden md:flex md:flex-1 md:justify-end">
-			{
-				currentUrl !== "/reservation" && (
-					<a
-						href="/reservation"
-						class="bg-green-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-b"
-					>
-						Réserver une table
-					</a>
-				)
-			}
+			<a
+				href="/reservation"
+				class="bg-green-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-b"
+			>
+				Réserver une table
+			</a>
 		</div>
 	</nav>
 
@@ -126,18 +122,14 @@ console.log(currentUrl);
 							))
 						}
 					</div>
-					{
-						currentUrl !== "/reservation" && (
-							<div class="py-6">
-								<a
-									href="/reservation"
-									class="-mx-3 block px-3 py-2.5 text-base font-semibold leading-7 text-white bg-green-700 hover:bg-green-700/90"
-								>
-									Réserver une table
-								</a>
-							</div>
-						)
-					}
+					<div class="py-6">
+						<a
+							href="/reservation"
+							class="-mx-3 block px-3 py-2.5 text-base font-semibold leading-7 text-white bg-green-700 hover:bg-green-700/90"
+						>
+							Réserver une table
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

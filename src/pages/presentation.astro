@@ -3,18 +3,12 @@ import Layout from "@/layouts/layout.astro";
 import PresentationHistory from "@/components/presentation-history.astro";
 import PresentationPassion from "@/components/presentation-passion.astro";
 import PresentationPersonnel from "@/components/presentation-personnel.astro";
-import Footer from "@/layouts/footer.astro";
-import Header from "@/layouts/header.astro";
 ---
 
 <Layout overflow>
-	<Header />
-
 	<main>
 		<PresentationHistory />
 		<PresentationPassion />
 		<PresentationPersonnel />
 	</main>
-
-	<Footer />
 </Layout>

@@ -66,12 +66,16 @@ const currentUrl = Astro.url.pathname;
 			}
 		</div>
 		<div class="hidden md:flex md:flex-1 md:justify-end">
-			<a
-				href="/reservation"
-				class="bg-green-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-b"
-			>
-				Réserver une table
-			</a>
+			{
+				currentUrl !== "/reservation" && (
+					<a
+						href="/reservation"
+						class="bg-green-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-b"
+					>
+						Réserver une table
+					</a>
+				)
+			}
 		</div>
 	</nav>
 
@@ -84,7 +88,9 @@ const currentUrl = Astro.url.pathname;
 			<div class="flex items-center justify-between">
 				<a href="/" class="-m-1.5 p-1.5">
 					<span class="sr-only">Votre Restaurant</span>
-					<span class="flex items-center gap-2 text-xl font-serif whitespace-nowrap text-stone-800">Mauvaise herbe <VeganIcon width={20} height={20} className="text-green-700 min-w-6" /></span>
+					<span class="flex items-center gap-2 text-xl font-serif whitespace-nowrap text-stone-800"
+						>Mauvaise herbe <VeganIcon width={20} height={20} className="text-green-700 min-w-6" /></span
+					>
 				</a>
 				<button type="button" id="menu-close" class="-m-2.5 p-2.5 text-stone-700">
 					<span class="sr-only">Fermer le menu</span>
@@ -119,14 +125,18 @@ const currentUrl = Astro.url.pathname;
 							))
 						}
 					</div>
-					<div class="py-6">
-						<a
-							href="/reservation"
-							class="-mx-3 block px-3 py-2.5 text-base font-semibold leading-7 text-white bg-green-700 hover:bg-green-700/90"
-						>
-							Réserver une table
-						</a>
-					</div>
+					{
+						currentUrl !== "/reservation" && (
+							<div class="py-6">
+								<a
+									href="/reservation"
+									class="-mx-3 block px-3 py-2.5 text-base font-semibold leading-7 text-white bg-green-700 hover:bg-green-700/90"
+								>
+									Réserver une table
+								</a>
+							</div>
+						)
+					}
 				</div>
 			</div>
 		</div>
@@ -141,12 +151,10 @@ const currentUrl = Astro.url.pathname;
 	const mobileMenu = document.getElementById("mobile-menu");
 
 	menuOpenBtn?.addEventListener("click", () => {
-		console.log("open");
 		mobileMenu?.classList.remove("hidden");
 	});
 
 	menuCloseBtn?.addEventListener("click", () => {
-		console.log("close");
 		mobileMenu?.classList.add("hidden");
 	});
 </script>

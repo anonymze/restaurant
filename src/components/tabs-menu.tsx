@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 
 interface TabsMenuProps {
-	titles: string[];
+	titles: {label: string; name: string}[];
 	entries: Array<{
 		name: string;
 		content: Array<{
@@ -19,16 +19,16 @@ export function TabsMenu({ titles, entries }: TabsMenuProps) {
 	return (
 		<Tabs defaultValue="entries" className="mt-6 max-w-[800px] mx-auto px-4">
 			<p className="my-5 text-xs ">
-				<span className="text-red-700">*</span> Signifie une présence d'allergènes
+				<span className="text-red-700">*</span> Signifie une présence d'allergènes (gluten, lactose, etc.)
 			</p>
 			<TabsList className="grid w-full grid-cols-3 gap-4 h-11 p-0 mb-10 md:gap-5 ">
 				{titles.map((title) => (
 					<TabsTrigger
-						key={title}
+						key={title.name}
 						className="h-full text-primary border border-primary rounded-none font-bold data-[state=active]:bg-primary [&[data-state=active]>h2]:text-white"
-						value="entries"
+						value={title.name}
 					>
-						<h2 className="text-lg">{title}</h2>
+						<h2 className="text-lg">{title.label}</h2>
 					</TabsTrigger>
 				))}
 			</TabsList>

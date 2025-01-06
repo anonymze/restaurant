@@ -1,10 +1,9 @@
 ---
-import MailSVG from "@/assets/icons/mail.svg?raw";
 import LinkedinSVG from "@/assets/icons/linkedin.svg?raw";
 import ArrowMailRightSVG from "@/assets/icons/arrow-right-mail.svg?raw";
-import PopoverCard from "@/components/popover-card.astro";
 import MapSVG from "@/assets/icons/map.svg?raw";
 import PhoneSVG from "@/assets/icons/phone.svg?raw";
+import EmailSVG from "@/assets/icons/mail.svg?raw";
 
 const id_email_contact = "email-contact";
 const email = import.meta.env.PUBLIC_EMAIL;
@@ -16,45 +15,93 @@ const id_current_year = "current-year";
 		<span set:html={MapSVG} class="w-5 h-5" />
 		bla bla bla, 31500 blablabla
 	</p>
-	<p class="flex items-center gap-2 col-span-6 mb-5">
+	<p class="flex items-center gap-2 col-span-6">
 		<span set:html={PhoneSVG} class="w-5 h-5" />
 		06 01 02 03 04
 	</p>
-	<p class="relative col-span-6 text-sm sm:col-span-3">
-		Vous souhaitez nous contacter par e-mail ? Cliquez sur l'icône mail pour ajouter notre adresse email à
-		votre clipboard.
+	<p class="flex items-center gap-2 col-span-6">
+		<span set:html={EmailSVG} class="w-5 h-5" />
+		test@gmail.com
+	</p>
+	<p class="relative col-span-6 text-sm sm:col-span-3 pt-2">
+		Vous souhaitez nous trouver sur les différents réseaux sociaux ? Cliquez sur les icônes pour être
+		redirigés.
 		<span
 			class:list={[
 				"hidden absolute translate-full [&>svg]:max-w-[23rem]",
 				"sm:inline sm:[&>svg]:w-[calc(40vw-8.5rem)] sm:-right-1 sm:bottom-8 sm:rotate-22",
-				"md:[&>svg]:w-[calc(40vw-9rem)] md:bottom-[calc(1rem+2vw)] md:rotate-8",
-				"lg:inline lg:[&>svg]:w-[calc(20vw+6rem)] lg:-right-2 lg:bottom-12 lg:-rotate-2",
+				"md:[&>svg]:w-[calc(40vw-9rem)] md:bottom-[calc(1rem+2vw)] md:rotate-9",
+				"lg:inline lg:[&>svg]:w-[calc(20vw+7rem)] lg:-right-2 lg:bottom-18 lg:-rotate-2",
+				"xl:inline xl:[&>svg]:w-[calc(24vw+8rem)] xl:-right-2 xl:bottom-25 xl:-rotate-1",
+				"2xl:inline 2xl:[&>svg]:w-[calc(24vw+5rem)] 2xl:-right-2 2xl:bottom-[calc(7vw)] 2xl:-rotate-1",
 			]}
 			set:html={ArrowMailRightSVG}
 		/>
 	</p>
 
-	<p class="col-span-6 self-end">
+	<p class="block col-span-6 self-end mt-5" id="copyright-container">
 		© <span id={id_current_year}>2000</span>
-		Tous droits réservés Ethienne.
+		Tous droits réservés Ethienne Zurawsky & Maria Gulstam.
 	</p>
 
 	<div
-		class="col-start-1 col-span-2 flex justify-start items-start gap-x-8 my-3 fading-in sm:gap-x-4 sm:col-start-5 sm:justify-end sm:my-0"
+		class="col-start-1 col-span-2 flex justify-start items-start gap-x-10 my-3 fading-in sm:gap-x-4 sm:col-start-5 sm:justify-end sm:my-0"
+		id="social-links"
 	>
-		<PopoverCard toTop message={"Email copié"} set:html={MailSVG} />
 		<a
 			title={`Open linkedin`}
 			target="_blank"
-			href={import.meta.env.PUBLIC_LINKEDIN_URL}
+			href={"https://www.linkedin.com/company/ethienne-zurawsky-et-maria-gulstam/"}
 			set:html={LinkedinSVG}
+			class="min-w-12"
+		/>
+		<a
+			title={`Open linkedin`}
+			target="_blank"
+			href={"https://www.linkedin.com/company/ethienne-zurawsky-et-maria-gulstam/"}
+			set:html={LinkedinSVG}
+			class="min-w-12"
+		/>
+		<a
+			title={`Open linkedin`}
+			target="_blank"
+			href={"https://www.linkedin.com/company/ethienne-zurawsky-et-maria-gulstam/"}
+			set:html={LinkedinSVG}
+			class="min-w-12"
 		/>
 	</div>
 </footer>
 
 <script is:inline define:vars={{ id_email_contact, email, id_current_year }}>
-	// in case website is SSG we set the date in js for every refresh
-	document.getElementById(id_current_year).textContent = new Date().getFullYear();
+	const copyright = document.getElementById("copyright-container");
+	const socialLinks = document.getElementById("social-links");
+
+	function handleMediaChange(e) {
+		// Check if screen is mobile size (less than 640px - Tailwind's sm breakpoint)
+		const isMobile = window.innerWidth < 640;
+		
+		if (isMobile) {
+			// Move copyright after social links and add margin-top
+			socialLinks.after(copyright);
+			socialLinks.classList.add('mt-5');
+		} else {
+			// Move copyright back to original position and remove margin-top
+			socialLinks.before(copyright);
+			socialLinks.classList.remove('mt-5');
+		}
+		
+		// Update year
+		copyright.firstElementChild.textContent = new Date().getFullYear();
+	}
+
+	// Initial check
+	handleMediaChange();
+
+	// Listen for resize events
+	window.addEventListener('resize', handleMediaChange);
+
+	// Listen for media-change events
+	document.addEventListener("media-change", handleMediaChange);
 </script>
 
 <style>

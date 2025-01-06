@@ -21,6 +21,10 @@ export default defineConfig({
 				context: "client",
 				access: "public",
 			}),
+			EMAIL_CONTACT: envField.string({
+				context: "client",
+				access: "public",
+			}),
 		},
 	},
 });

@@ -124,7 +124,7 @@ const entries = [
 	</header>
 
 	<main class="relative">
-		<TabsMenu client:load titles={["Entrées", "Plats", "Desserts"]} entries={entries} />
+		<TabsMenu client:load titles={[{label: "Entrées", name: "entries"}, {label: "Plats", name: "plates"}, {label: "Desserts", name: "desserts"}]} entries={entries} />
 
 		<div class="sticky bottom-6 w-full flex justify-end p-6">
 			<AnimatedLink

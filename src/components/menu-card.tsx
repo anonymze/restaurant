@@ -1,74 +1,11 @@
 import { CalendarDays, Leaf, Soup, CakeSliceIcon, UtensilsCrossedIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { SanityDocument } from "@sanity/client";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
+import type { Menu } from "@/types/menu";
 
 
-interface MenuItem {
-	name: string;
-	description: string;
-	price: string;
-	dietary?: string[];
-	allergens?: boolean;
-}
-
-interface DailyMenu {
-	day: string;
-	date: string;
-	dishes: {
-		entrées: MenuItem[];
-		plats: MenuItem[];
-		desserts: MenuItem[];
-	};
-}
-
-const weeklyMenu: DailyMenu[] = [
-	{
-		day: "Lundi",
-		date: "2025-01-06",
-		dishes: {
-			entrées: [
-				{ name: "Tartare de saumon", description: "Aux agrumes et avocat", price: "14" },
-				{
-					name: "Velouté de potimarron",
-					description: "Aux éclats de châtaignes et huile de truffe",
-					price: "12",
-					dietary: ["végétarien"],
-					allergens: true,
-				},
-			],
-			plats: [
-				{
-					name: "Suprême de volaille fermière",
-					description: "Sauce aux morilles, purée de céleri",
-					price: "24",
-				},
-				{
-					name: "Risotto aux champignons",
-					description: "Copeaux de parmesan et huile de truffe",
-					price: "22",
-					dietary: ["végétarien"],
-				},
-			],
-			desserts: [
-				{
-					name: "Assiette de fromages affinés",
-					description: "Sélection de notre maître fromager",
-					price: "12",
-				},
-				{
-					name: "Tarte Tatin",
-					description: "Glace vanille de Madagascar",
-					price: "10",
-					dietary: ["végétarien"],
-				},
-			],
-		},
-	},
-];
-
-export default function MenuPage() {
-	const currentMenu = weeklyMenu[0];
+export default function MenuPage({menu}: {menu: SanityDocument<Menu>[]}) {
 
 	return (
 		<>
@@ -79,7 +16,7 @@ export default function MenuPage() {
 				</CardHeader>
 				<CardContent className="pt-6">
 					<div className="space-y-12">
-						{Object.entries(currentMenu.dishes).map(([category, items]) => (
+						{menu.map(([category, items]) => (
 							<div key={category}>
 								<h3 className="text-xl font-serif text-tertiary mb-4 capitalize flex items-center">
 									{category === "entrées" ? (
@@ -92,8 +29,8 @@ export default function MenuPage() {
 									{category}
 								</h3>
 								<ul className="space-y-4">
-									{items.map((item, index) => (
-										<li key={index} className="border-b border-tertiary/20 pb-4 last:border-b-0 last:pb-0">
+									{menu.menuItems.map((item) => (
+										<li key={item.} className="border-b border-tertiary/20 pb-4 last:border-b-0 last:pb-0">
 											<div className="flex justify-between items-start">
 												<div>
 													<h4 className="font-medium text-stone-800">{item.name}</h4>

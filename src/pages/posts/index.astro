@@ -2,22 +2,39 @@
 import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
 
-const POSTS_QUERY = `*[_type == "menu"]|order(publishedAt desc)[0...12]`;
+interface Menu {
+	date: string;
+  menuItems: {
+    title: string;
+    description: string;
+    price: number;
+  }[];
+}
 
-const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
-
-console.log(posts);
+// Get today's date in YYYY-MM-DD format
+const today = new Date().toISOString().split('T')[0];
+const POSTS_QUERY = `*[_type == "menu" && date == "${today}"]`;
+const posts = await sanityClient.fetch<SanityDocument<Menu>[]>(POSTS_QUERY);
 ---
 
 <main class="container mx-auto min-h-screen max-w-3xl p-8">
-  <h1 class="text-4xl font-bold mb-8">Menu</h1>
-  <ul class="flex flex-col gap-y-4">
-    {posts.map((post) => (
-        <li class="hover:underline">
-          <a href={`/posts/${post.title}`}>
-            <h2 class="text-xl font-semibold">{post.title}</h2>
-          </a>
-        </li>
-      ))}
-  </ul>
+	<h1 class="text-4xl font-bold mb-8">Posts</h1>
+	<ul class="flex flex-col gap-y-4">
+		{
+			posts.map((post) => (
+				<li class="hover:underline">
+          {post.menuItems.map((item) => (
+            <div>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+              <p>{item.price}</p>
+            </div>
+          ))}
+				</li>
+			))
+		}
+	</ul>
 </main>
+
+
+<main class="container mx-auto min-h-screen max-w-3xl p-8"></main>

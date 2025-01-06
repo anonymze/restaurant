@@ -1,6 +1,14 @@
 ---
 import Layout from "@/layouts/layout.astro";
 import MenuCard from "@/components/menu-card.tsx";
+import type { SanityDocument } from "@sanity/client";
+import { sanityClient } from "sanity:client";
+import type { Menu } from "@/types/menu";
+
+// Get today's date in YYYY-MM-DD format
+const today = new Date().toISOString().split('T')[0];
+const POSTS_QUERY = `*[_type == "menu" && date == "${today}"]`;
+const menu = await sanityClient.fetch<SanityDocument<Menu>[]>(POSTS_QUERY);
 ---
 
 <Layout overflow>
@@ -25,7 +33,7 @@ import MenuCard from "@/components/menu-card.tsx";
 			<p class="my-4 text-sm">
 				<span class="font-medium text-red-700">*</span> Signifie une présence d'allergènes.
 			</p>
-			<MenuCard client:load />
+			<MenuCard client:load menu={menu}  />
 		</article>
 	</main>
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import MenuCard from "@/components/menu-card.tsx";
 ---
 
 <Layout overflow>
@@ -20,6 +21,10 @@ import Layout from "@/layouts/layout.astro";
 					sur demande.
 				</p>
 			</div>
+		</section>
+
+		<section class="container mx-auto max-w-2xl">
+			<MenuCard client:load />
 		</section>
 	</main>
 </Layout>

@@ -8,6 +8,7 @@ interface MenuItem {
 	description: string;
 	price: string;
 	dietary?: string[];
+	allergens?: boolean;
 }
 
 interface DailyMenu {
@@ -32,6 +33,7 @@ const weeklyMenu: DailyMenu[] = [
 					description: "Aux éclats de châtaignes et huile de truffe",
 					price: "12",
 					dietary: ["végétarien"],
+					allergens: true,
 				},
 			],
 			plats: [
@@ -94,7 +96,7 @@ export default function MenuPage() {
 											<div className="flex justify-between items-start">
 												<div>
 													<h4 className="font-medium text-stone-800">{item.name}</h4>
-													<p className="text-sm text-stone-600">{item.description}</p>
+													<p className="text-sm text-stone-600">{item.description} {item.allergens && <span className="text-red-700">*</span>}</p>
 													{item.dietary && (
 														<div className="mt-1 space-x-1">
 															{item.dietary.map((diet) => (
@@ -125,25 +127,20 @@ export default function MenuPage() {
 					<Leaf className="h-5 w-5 mr-2" />
 					Informations sur le menu
 				</h3>
-				<ul className="space-y-2 text-stone-700">
-					<li className="flex items-start">
-						<Leaf className="h-4 w-4 mr-2 mt-1 text-tertiary" />
+				<ul className="space-y-2 text-stone-700 list-disc list-inside">
+					<li>
 						Le menu change quotidiennement en fonction des arrivages et de l'inspiration du chef.
 					</li>
-					<li className="flex items-start">
-						<Leaf className="h-4 w-4 mr-2 mt-1 text-tertiary" />
+					<li>
 						Tous nos plats sont préparés sur place à partir de produits frais et de saison.
 					</li>
-					<li className="flex items-start">
-						<Leaf className="h-4 w-4 mr-2 mt-1 text-tertiary" />
+					<li>
 						Pour toute allergie ou régime alimentaire spécifique, n'hésitez pas à nous consulter.
 					</li>
-					<li className="flex items-start">
-						<Leaf className="h-4 w-4 mr-2 mt-1 text-tertiary" />
+					<li>
 						Nous essayons au maximum de proposer des plats végétariens en alternative.
 					</li>
-					<li className="flex items-start">
-						<Leaf className="h-4 w-4 mr-2 mt-1 text-tertiary" />
+					<li>
 						Le vendredi le menu sera composé de poisson.
 					</li>
 				</ul>

@@ -1,6 +1,7 @@
 ---
 import { Mail, Phone, MapPin } from "lucide-react";
 import Layout from "../layouts/layout.astro";
+import PageScript from "@/components/page-script.astro";
 ---
 
 <Layout overflow>
@@ -32,11 +33,11 @@ import Layout from "../layouts/layout.astro";
 							</li>
 							<li class="flex items-center">
 								<Phone className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
-								<a href="tel:0567720086" class="hover:text-primary">05 67 72 00 86</a>
+								<a href="tel:0567720086" class="!text-primary hover:!text-primary/80">05 67 72 00 86</a>
 							</li>
 							<li class="flex items-center">
 								<Mail className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
-								<a href="mailto:mauvaise-herbe81@gmail.com" class="hover:text-primary">mauvaise-herbe81@gmail.com</a>
+								<a href="mailto:mauvaise-herbe81@gmail.com" class="!text-primary hover:!text-primary/80">mauvaise-herbe81@gmail.com</a>
 							</li>
 						</ul>
 					</address>
@@ -65,4 +66,17 @@ import Layout from "../layouts/layout.astro";
 			</section>
 		</div>
 	</main>
+	<PageScript id="contact-form" />
 </Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const form = document.querySelector('[data-form-type="contact"]');
+		if (form) {
+			form.addEventListener("submit", (e) => {
+				e.preventDefault();
+				// Contact form specific logic
+			});
+		}
+	});
+</script>

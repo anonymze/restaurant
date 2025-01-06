@@ -10,6 +10,7 @@ const navigation = [
 ];
 
 const currentUrl = Astro.url.pathname;
+console.log(currentUrl);
 ---
 
 <header class="bg-white shadow-sm">
@@ -145,7 +146,6 @@ const currentUrl = Astro.url.pathname;
 
 <!-- prevent processing -->
 <script type="module" define:vars={{ currentUrl }}>
-	console.log("DOMContentLoaded");
 	const menuOpenBtn = document.getElementById("menu-open");
 	const menuCloseBtn = document.getElementById("menu-close");
 	const mobileMenu = document.getElementById("mobile-menu");

@@ -67,14 +67,3 @@ import Layout from "../layouts/layout.astro";
 	</main>
 </Layout>
 
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const form = document.querySelector('[data-form-type="contact"]');
-		if (form) {
-			form.addEventListener("submit", (e) => {
-				e.preventDefault();
-				// Contact form specific logic
-			});
-		}
-	});
-</script>

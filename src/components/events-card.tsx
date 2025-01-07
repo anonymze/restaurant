@@ -33,8 +33,6 @@ export default function EventsCard({
 	const [filter, setFilter] = useState<Event["type"] | "all">("all");
 	const filteredEvents = filter === "all" ? events : events.filter((event) => event.type === filter);
 
-	console.log(filteredEvents[4].image);
-
 	return (
 		<>
 			<div className="flex justify-between items-center mb-4 md:mb-6">

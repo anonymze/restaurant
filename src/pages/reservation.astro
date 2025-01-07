@@ -82,14 +82,14 @@ import { Textarea } from "@/components/ui/textarea";
 									<CalendarDays
 										className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400"
 									/>
-									<Input id="date" type="date" className="pl-12 rounded-none" required />
+									<Input id="date" type="date" name="date" className="pl-12 rounded-none" required />
 								</div>
 							</div>
 							<div class="space-y-2">
 								<label for="time" class="text-sm font-medium text-stone-700">Heure</label>
 								<div class="relative">
 									<Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400" />
-									<Input id="time" type="time" className="pl-12 rounded-none" required />
+									<Input id="time" type="time" name="time" className="pl-12 rounded-none" required />
 								</div>
 							</div>
 						</div>
@@ -102,25 +102,16 @@ import { Textarea } from "@/components/ui/textarea";
 						</div>
 						<div class="space-y-2">
 							<label for="name" class="text-sm font-medium text-stone-700">Nom</label>
-							<Input id="name" className="rounded-none" placeholder="Votre nom" required />
+							<Input id="name" name="name" className="rounded-none" placeholder="Votre nom" required />
 						</div>
 						<div class="space-y-2">
 							<label for="email" class="text-sm font-medium text-stone-700">Email</label>
 							<Input
 								id="email"
+								name="email"
 								className="rounded-none"
 								type="email"
 								placeholder="votre@email.com"
-								required
-							/>
-						</div>
-						<div class="space-y-2">
-							<label for="phone" class="text-sm font-medium text-stone-700">Téléphone</label>
-							<Input
-								id="phone"
-								className="rounded-none"
-								type="tel"
-								placeholder="Votre numéro de téléphone"
 								required
 							/>
 						</div>
@@ -130,6 +121,7 @@ import { Textarea } from "@/components/ui/textarea";
 							>
 							<Textarea
 								id="special-requests"
+								name="specialRequests"
 								className="rounded-none"
 								placeholder="Allergies, occasions spéciales, etc."
 								rows={3}
@@ -149,10 +141,41 @@ import { Textarea } from "@/components/ui/textarea";
 </Layout>
 
 <script>
-	// Client-side form handling can be added here
+	import { z } from "astro/zod";
+	import { SENDGRID_API_KEY, SENDGRID_EMAIL_RESERVATION_NOTIFICATION, EMAIL_CONTACT } from "astro:env/client";
+	import { sendEmailTo } from "@/utils/mail";
+
+	const reservationSchema = z.object({
+		date: z.string().min(1, "La date est requise"),
+		time: z.string().min(1, "L'heure est requise"),
+		guests: z.string().min(1, "Le nombre de personnes est requis"),
+		name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
+		email: z.string().email("L'email n'est pas valide"),
+		specialRequests: z.string().optional(),
+	});
+
 	const form = document.querySelector("form");
 	form?.addEventListener("submit", (e) => {
 		e.preventDefault();
-		// Add form submission logic here
+
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData.entries());
+		const parsedData = reservationSchema.safeParse(data);
+
+		if (parsedData.error) return;
+
+		sendEmailTo({
+			apiKey: SENDGRID_API_KEY,
+			sendEmailTo: EMAIL_CONTACT,
+			templateId: SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
+			data: {
+				date: parsedData.data.date,
+				time: parsedData.data.time,
+				guests: parsedData.data.guests,
+				name: parsedData.data.name,
+				email: parsedData.data.email,
+				special_requests: parsedData.data.specialRequests || "",
+			},
+		});
 	});
 </script>

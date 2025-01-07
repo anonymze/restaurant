@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 
 export function SelectPeople() {
 	return (
-		<Select>
+		<Select name="guests" required>
 			<SelectTrigger className="w-full pl-12 rounded-none">
 				<SelectValue placeholder="Sélectionnez combien vous êtes" />
 			</SelectTrigger>

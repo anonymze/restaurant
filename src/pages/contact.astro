@@ -1,6 +1,7 @@
 ---
 import { Mail, Phone, MapPin } from "lucide-react";
 import Layout from "../layouts/layout.astro";
+import { EMAIL_CONTACT } from "astro:env/client";
 ---
 
 <Layout overflow>
@@ -36,7 +37,9 @@ import Layout from "../layouts/layout.astro";
 							</li>
 							<li class="flex items-center">
 								<Mail className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
-								<a href="mailto:mauvaise-herbe81@gmail.com" class="!text-primary hover:!text-primary/80">mauvaise-herbe81@gmail.com</a>
+								<a href={`mailto:${EMAIL_CONTACT}`} class="!text-primary hover:!text-primary/80">
+									{EMAIL_CONTACT}
+								</a>
 							</li>
 						</ul>
 					</address>

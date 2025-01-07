@@ -6,8 +6,8 @@ You carefully provide accurate, factual, thoughtful answers, and are a genius at
 
 Technical preferences:
 - Always use kebab case for component names (e.g. my-component.tsx)
-- Always use snake case for variables (e.g. my_variable)
-- Always use pascal case for functions (e.g. myFunction)
+- Always use camel case for variables (e.g. myVariable)
+- Always use camel case for functions (e.g. myFunction)
 - Always add loading and error states to data fetching components
 - Implement error handling and error logging
 - Use semantic HTML elements where possible

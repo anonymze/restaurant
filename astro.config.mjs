@@ -9,6 +9,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
 	site: "http://localhost:4321",
+	output: "static",
 	integrations: [
 		react(),
 		sitemap(),
@@ -19,7 +20,7 @@ export default defineConfig({
 		}),
 	],
 	vite: {
-        // @ts-ignore
+		// @ts-ignore
 		plugins: [tailwindcss()],
 	},
 
@@ -34,6 +35,14 @@ export default defineConfig({
 				access: "public",
 			}),
 			EMAIL_CONTACT: envField.string({
+				context: "client",
+				access: "public",
+			}),
+			SENDGRID_API_KEY: envField.string({
+				context: "client",
+				access: "public",
+			}),
+			SENDGRID_EMAIL_RESERVATION_NOTIFICATION: envField.string({
 				context: "client",
 				access: "public",
 			}),

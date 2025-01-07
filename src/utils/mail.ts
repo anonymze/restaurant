@@ -34,12 +34,10 @@ export const sendEmailTo = async ({
 
 	sgMail.setApiKey(SENDGRID_API_KEY);
 
-	return sgMail
-		.send(msg)
-		.then((response) => {
-			return {
-				statusCode: response[0].statusCode,
-				headers: response[0].headers,
-			};
-		})
+	return sgMail.send(msg).then((response) => {
+		return {
+			statusCode: response[0].statusCode,
+			headers: response[0].headers,
+		};
+	});
 };

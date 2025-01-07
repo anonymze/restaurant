@@ -8,9 +8,9 @@ import EmailSVG from "@/assets/icons/mail.svg?raw";
 import { motion } from "framer-motion";
 
 const id_email_contact = "email-contact";
-const email = import.meta.env.PUBLIC_EMAIL;
 const id_current_year = "current-year";
 ---
+
 
 <footer class="grid grid-cols-6 grid-rows-4">
 	<p class="flex items-center gap-2 col-span-6">
@@ -73,7 +73,7 @@ const id_current_year = "current-year";
 	</div>
 </footer>
 
-<script is:inline type="module" define:vars={{ id_email_contact, email, id_current_year }}>
+<script is:inline type="module" define:vars={{ id_email_contact, id_current_year }}>
 	const copyright = document.getElementById("copyright-container");
 	const socialLinks = document.getElementById("social-links");
 

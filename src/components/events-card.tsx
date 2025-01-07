@@ -2,11 +2,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Calendar, CalendarClockIcon, Calendar1Icon } from "lucide-react";
 import type { SanityDocument } from "@sanity/client";
+import imageUrlBuilder from '@sanity/image-url';
 import { Badge } from "@/components/ui/badge";
+import { sanityClient } from 'sanity:client';
 import type { GetImageResult } from "astro";
 import type { Event } from "@/types/event";
 import { useState } from "react";
 
+
+// Get a pre-configured url-builder from your sanity client
+const builder = imageUrlBuilder(sanityClient)
 
 interface Props {
 	events: SanityDocument<Event>[];
@@ -27,6 +32,8 @@ export default function EventsCard({
 }: Props) {
 	const [filter, setFilter] = useState<Event["type"] | "all">("all");
 	const filteredEvents = filter === "all" ? events : events.filter((event) => event.type === filter);
+
+	console.log(filteredEvents[4].image);
 
 	return (
 		<>
@@ -74,14 +81,12 @@ export default function EventsCard({
 								<img
 									src={
 										event.image
-											? event.image
+											? builder.image(event.image).url()
 											: event.type === "game"
 												? gamePlaceholder.src
 												: event.type === "concert"
 													? concertPlaceholder.src
-													: event.type === "degustation"
-														? degustationPlaceholder.src
-														: ""
+													: degustationPlaceholder.src
 									}
 									alt={event.title}
 									className="object-cover w-full h-full"

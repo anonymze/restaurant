@@ -5,15 +5,14 @@ import { sanityClient } from "sanity:client";
 import gamePlaceholderImage from "@/assets/images/game-placeholder.jpg";
 import concertPlaceholderImage from "@/assets/images/concert-placeholder.jpg";
 import degustationPlaceholderImage from "@/assets/images/degustation-placeholder.jpg";
-import { CalendarClockIcon, Calendar1Icon  } from "lucide-react";
+import { getImage } from "astro:assets";
 import type { SanityDocument } from "@sanity/client";
 import type { Event } from "@/types/event";
-import { getImage } from "astro:assets";
 
 const todayDate = new Date().toISOString().split("T")[0];
 const EVENT_QUERY = `*[_type == "event" && date >= "${todayDate}"] | order(date asc)`;
 const events = await sanityClient.fetch<SanityDocument<Event>[]>(EVENT_QUERY);
-	
+
 const weekEvents = events.filter((event) => event.date.split("T")[0] >= todayDate);
 const nextMonthEvents = events.filter((event) => event.date.split("T")[0] >= todayDate);
 
@@ -58,24 +57,26 @@ const degustationPlaceholder = await getImage({
 		</section>
 
 		<section class="container mx-auto max-w-6xl">
-			<h2 class="text-2xl text-stone-800 mb-4 flex items-center gap-3"><Calendar1Icon className="w-6 h-6 text-primary" /> Évenement de la semaine</h2>
 			<EventsCard
 				client:load
 				events={weekEvents}
 				gamePlaceholder={gamePlaceholder}
 				concertPlaceholder={concertPlaceholder}
 				degustationPlaceholder={degustationPlaceholder}
+				titleSection="Évenements de la semaine"
+				iconSection="week"
 			/>
 		</section>
 
 		<section class="container mx-auto max-w-6xl mt-12">
-			<h2 class="text-2xl text-stone-800 mb-4 flex items-center gap-3"><CalendarClockIcon className="w-6 h-6 text-primary" /> Évenements à venir</h2>
 			<EventsCard
 				client:load
 				events={nextMonthEvents}
 				gamePlaceholder={gamePlaceholder}
 				concertPlaceholder={concertPlaceholder}
 				degustationPlaceholder={degustationPlaceholder}
+				titleSection="Évenements à venir"
+				iconSection="next"
 			/>
 		</section>
 	</main>

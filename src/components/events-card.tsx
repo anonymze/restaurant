@@ -1,19 +1,20 @@
-"use client";
-
-import { useState } from "react";
-import { Calendar, Music, Gamepad, WineIcon as GlassWine } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import type { Event } from "@/types/event";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Calendar, CalendarClockIcon, Calendar1Icon } from "lucide-react";
 import type { SanityDocument } from "@sanity/client";
+import { Badge } from "@/components/ui/badge";
 import type { GetImageResult } from "astro";
+import type { Event } from "@/types/event";
+import { useState } from "react";
+
 
 interface Props {
 	events: SanityDocument<Event>[];
 	gamePlaceholder: GetImageResult;
 	concertPlaceholder: GetImageResult;
 	degustationPlaceholder: GetImageResult;
+	titleSection: string;
+	iconSection: "week" | "next";
 }
 
 export default function EventsCard({
@@ -21,14 +22,24 @@ export default function EventsCard({
 	gamePlaceholder,
 	concertPlaceholder,
 	degustationPlaceholder,
+	titleSection,
+	iconSection,
 }: Props) {
 	const [filter, setFilter] = useState<Event["type"] | "all">("all");
-
 	const filteredEvents = filter === "all" ? events : events.filter((event) => event.type === filter);
 
 	return (
 		<>
-			<div className="flex justify-end mb-8">
+			<div className="flex justify-between items-center mb-4 md:mb-6">
+				<h2 className="text-2xl text-stone-800 flex items-center gap-3">
+					{iconSection === "week" ? (
+						<Calendar1Icon className="min-w-6 w-6 h-6 text-primary" />
+					) : (
+						<CalendarClockIcon className="min-w-6 w-6 h-6 text-primary" />
+					)}{" "}
+					{titleSection}
+				</h2>
+
 				<Select onValueChange={(value) => setFilter(value as Event["type"] | "all")}>
 					<SelectTrigger className="w-[200px]">
 						<SelectValue placeholder="Filtrer par type" />
@@ -75,7 +86,7 @@ export default function EventsCard({
 									alt={event.title}
 									className="object-cover w-full h-full"
 								/>
-								<Badge className="absolute top-4 right-4 text-white bg-primary" variant="outline">
+								<Badge className="absolute top-4 right-4 px-3 py-1 text-white bg-primary" variant="outline">
 									{event.type === "concert"
 										? "Concert"
 										: event.type === "game"

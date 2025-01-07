@@ -42,7 +42,4 @@ export const sendEmailTo = async ({
 				headers: response[0].headers,
 			};
 		})
-		.catch((error) => {
-			return { error };
-		});
 };

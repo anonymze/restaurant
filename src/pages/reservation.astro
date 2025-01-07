@@ -188,16 +188,15 @@ const endReservation = work.ending_work
 
 <script define:vars={{ work }}>
 	const inputDate = document.querySelector('input[name="date"]');
+	
 	inputDate?.addEventListener("change", (e) => {
 		const selectedDate = new Date(e.target.value);
 		const dayName = selectedDate.toLocaleDateString("fr-FR", { weekday: "long" });
 
-		console.log(dayName);
-		console.log(work.days_of_work);
-
+		// capitalize the first letter of the day name
 		if (!work.days_of_work.includes(dayName.charAt(0).toUpperCase() + dayName.slice(1))) {
-			e.target.value = "";
 			alert("Désolé, nous sommes fermés ce jour-là ! Veuillez choisir un autre jour.");
+			e.target.value = "";
 			return;
 		}
 	});

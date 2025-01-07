@@ -52,12 +52,13 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</section>
 
 				<section aria-labelledby="hours-info">
-					<h2 id="hours-info" class="text-2xl font-serif text-stone-800 mb-4">Heures d'ouverture</h2>
+					<h2 id="hours-info" class="text-2xl font-serif text-stone-800 mb-4">Horaires d'ouverture</h2>
 					<ul class="space-y-2">
 						<li>
 							{
 								work.days_of_work.map((working_day, idx) => {
-									return idx > 0 ? " - " : "" + working_day;
+									console.log(working_day);
+									return (idx > 0 ? " - " : "") + working_day;
 								})
 							}
 

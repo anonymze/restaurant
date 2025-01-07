@@ -5,6 +5,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SelectPeople } from "@/components/select-people";
 import { Textarea } from "@/components/ui/textarea";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import type { Work } from "@/types/work";
+import { cn } from "@/utils/libs/tailwind";
+
+const WORK_QUERY = `*[_type == "work"][0]`;
+const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
+
+const endReservation = work.ending_work
+	.split(":")
+	.map((part, i) => {
+		if (i === 0) {
+			return part === "00" ? "23" : String(Number(part) - 1).padStart(2, "0");
+		}
+		return part;
+	})
+	.join(":");
 ---
 
 <Layout overflow>
@@ -36,8 +53,16 @@ import { Textarea } from "@/components/ui/textarea";
 								<CalendarDays className="w-6 h-6 text-primary mr-3 mt-1" />
 								<div>
 									<h3 class="font-medium">Horaires de réservation :</h3>
-									<p>Du lundi au vendredi : 12h00 - 14h00, 19h00 - 22h00</p>
-									<p>Samedi et dimanche : 12h00 - 15h00, 19h00 - 22h30</p>
+									<p>
+										{
+											work.days_of_work.map((working_day, idx) => {
+												return (idx > 0 ? " - " : "") + working_day;
+											})
+										}
+									</p>
+									<p>
+										{work.starting_work} - {endReservation}
+									</p>
 								</div>
 							</li>
 							<li class="flex items-start">
@@ -82,14 +107,34 @@ import { Textarea } from "@/components/ui/textarea";
 									<CalendarDays
 										className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400"
 									/>
-									<Input id="date" type="date" name="date" className="pl-12 rounded-none" required />
+									<input
+										required
+										id="date"
+										type="date"
+										name="date"
+										min={new Date().toISOString().split('T')[0]}
+										class={cn(
+											"flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+											"pl-12 rounded-none"
+										)}
+									/>
 								</div>
 							</div>
 							<div class="space-y-2">
 								<label for="time" class="text-sm font-medium text-stone-700">Heure</label>
 								<div class="relative">
 									<Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400" />
-									<Input id="time" type="time" name="time" className="pl-12 rounded-none" required />
+									<input
+										required
+										id="time"
+										type="time"
+										name="time"
+										step="300"
+										class={cn(
+											"flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+											"pl-12 rounded-none"
+										)}
+									/>
 								</div>
 							</div>
 						</div>

@@ -2,6 +2,12 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import Layout from "../layouts/layout.astro";
 import { EMAIL_CONTACT } from "astro:env/client";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import type { Work } from "@/types/work";
+
+const WORK_QUERY = `*[_type == "work"][0]`;
+const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 ---
 
 <Layout overflow>
@@ -22,7 +28,7 @@ import { EMAIL_CONTACT } from "astro:env/client";
 				</p>
 			</section>
 
-			<div class="flex justify-center gap-12">
+			<div class="flex flex-col items-center justify-center gap-12 md:flex-row md:items-start">
 				<section aria-labelledby="contact-info">
 					<h2 id="contact-info" class="text-2xl font-serif text-stone-800 mb-4">Informations de contact</h2>
 					<address class="not-italic">
@@ -48,9 +54,15 @@ import { EMAIL_CONTACT } from "astro:env/client";
 				<section aria-labelledby="hours-info">
 					<h2 id="hours-info" class="text-2xl font-serif text-stone-800 mb-4">Heures d'ouverture</h2>
 					<ul class="space-y-2">
-						<li><span class="font-medium">Lundi - Vendredi:</span> 12h00 - 14h30, 19h00 - 22h30</li>
-						<li><span class="font-medium">Samedi:</span> 12h00 - 15h00, 19h00 - 23h00</li>
-						<li><span class="font-medium">Dimanche:</span> 12h00 - 15h00</li>
+						<li>
+							{
+								work.days_of_work.map((working_day, idx) => {
+									return idx > 0 ? " - " : "" + working_day;
+								})
+							}
+
+							<li>{work.starting_work} - {work.ending_work}</li>
+						</li>
 					</ul>
 				</section>
 			</div>
@@ -63,10 +75,10 @@ import { EMAIL_CONTACT } from "astro:env/client";
 					style="border: 0;"
 					title="Carte Google Maps de notre restaurant"
 					allowfullscreen
-					loading="lazy">
+					loading="lazy"
+				>
 				</iframe>
 			</section>
 		</div>
 	</main>
 </Layout>
-

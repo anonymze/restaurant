@@ -1,4 +1,4 @@
-import { cn } from "@/utils/libs/tailwaind";
+import { cn } from "@/utils/libs/tailwind";
 import { motion } from "framer-motion";
 
 

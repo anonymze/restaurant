@@ -165,7 +165,6 @@ import { Textarea } from "@/components/ui/textarea";
 		if (parsedData.error) return;
 
 		sendEmailTo({
-			apiKey: SENDGRID_API_KEY,
 			sendEmailTo: EMAIL_CONTACT,
 			templateId: SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
 			data: {
@@ -176,6 +175,13 @@ import { Textarea } from "@/components/ui/textarea";
 				email: parsedData.data.email,
 				special_requests: parsedData.data.specialRequests || "",
 			},
+		})
+		.then((res) => {
+			console.log(res);
+			console.log("ici");
+		}).catch((error) => {
+			console.log(error);
 		});
+
 	});
 </script>

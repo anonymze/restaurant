@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/utils/libs/tailwaind";
+import { cn } from "@/utils/libs/tailwind";
 import * as React from "react";
 
 

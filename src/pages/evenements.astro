@@ -1,6 +1,13 @@
 ---
 import Layout from "@/layouts/layout.astro";
 import EvenementCard from "@/components/evenement-card.tsx";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import type { Evenement } from "@/types/evenement";
+
+const todayDate = new Date().toISOString().split('T')[0];
+const EVENT_QUERY = `*[_type == "evenement" && date >= "${todayDate}"] | order(date asc)[0]`;
+const evenement = await sanityClient.fetch<SanityDocument<Evenement>>(EVENT_QUERY);
 ---
 
 <Layout overflow>

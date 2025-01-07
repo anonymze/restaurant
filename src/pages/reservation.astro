@@ -226,8 +226,6 @@ const endReservation = work.ending_work
 
 		if (parsedData.error) return;
 
-		window.location.href = "/reservation-merci";
-
 		sendEmailTo({
 			sendEmailTo: EMAIL_CONTACT,
 			templateId: SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
@@ -244,7 +242,7 @@ const endReservation = work.ending_work
 				window.location.href = "/reservation-merci";
 			})
 			.catch((error) => {
-				console.log(error);
+				alert("Une erreur est survenue lors de la réservation. Veuillez réessayer ou nous contacter par téléphone au 05 67 72 00 86");
 			});
 	});
 </script>

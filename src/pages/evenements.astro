@@ -1,13 +1,41 @@
 ---
 import Layout from "@/layouts/layout.astro";
-import EvenementCard from "@/components/evenement-card.tsx";
+import EventsCard from "@/components/events-card";
 import { sanityClient } from "sanity:client";
+import gamePlaceholderImage from "@/assets/images/game-placeholder.jpg";
+import concertPlaceholderImage from "@/assets/images/concert-placeholder.jpg";
+import degustationPlaceholderImage from "@/assets/images/degustation-placeholder.jpg";
 import type { SanityDocument } from "@sanity/client";
-import type { Evenement } from "@/types/evenement";
+import type { Event } from "@/types/event";
+import { getImage } from "astro:assets";
 
-const todayDate = new Date().toISOString().split('T')[0];
-const EVENT_QUERY = `*[_type == "evenement" && date >= "${todayDate}"] | order(date asc)[0]`;
-const evenement = await sanityClient.fetch<SanityDocument<Evenement>>(EVENT_QUERY);
+const todayDate = new Date().toISOString().split("T")[0];
+const EVENT_QUERY = `*[_type == "event" && date >= "${todayDate}"] | order(date asc)`;
+const events = await sanityClient.fetch<SanityDocument<Event>[]>(EVENT_QUERY);
+
+const todayEvents = events.filter((event) => event.date.split("T")[0] === todayDate);
+const nextMonthEvents = events.filter((event) => event.date.split("T")[0] >= todayDate);
+
+const gamePlaceholder = await getImage({
+	src: gamePlaceholderImage,
+	format: "webp",
+	width: 450,
+	loading: "eager",
+});
+
+const concertPlaceholder = await getImage({
+	src: concertPlaceholderImage,
+	format: "webp",
+	width: 450,
+	loading: "eager",
+});
+
+const degustationPlaceholder = await getImage({
+	src: degustationPlaceholderImage,
+	format: "webp",
+	width: 450,
+	loading: "eager",
+});
 ---
 
 <Layout overflow>
@@ -29,7 +57,13 @@ const evenement = await sanityClient.fetch<SanityDocument<Evenement>>(EVENT_QUER
 		</section>
 
 		<article>
-			<EvenementCard client:load />
+			<EventsCard
+				client:load
+				events={nextMonthEvents}
+				gamePlaceholder={gamePlaceholder}
+				concertPlaceholder={concertPlaceholder}
+				degustationPlaceholder={degustationPlaceholder}
+			/>
 		</article>
 	</main>
 </Layout>

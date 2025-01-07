@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import EvenementCard from "@/components/evenement-card.tsx";
 ---
 
 <Layout overflow>
@@ -15,10 +16,13 @@ import Layout from "@/layouts/layout.astro";
 					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
 				</div>
 				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
-					De nos soirées à la terrasse, en passant par des soirées jeux de société ou encore des concerts, ou
-					une simple soirée entre amis, nous vous proposons des événements variés.
+					Découvrez nos événements spéciaux et vivez des moments inoubliables.
 				</p>
 			</div>
 		</section>
+
+		<article>
+			<EvenementCard client:load />
+		</article>
 	</main>
 </Layout>

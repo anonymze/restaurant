@@ -1,14 +1,20 @@
 ---
 import Layout from "@/layouts/layout.astro";
 import MenuCard from "@/components/menu-card.tsx";
-import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
+import { Leaf } from "lucide-react";
+import type { SanityDocument } from "@sanity/client";
 import type { Menu } from "@/types/menu";
 
 // Get today's date in YYYY-MM-DD format
-const today = new Date().toISOString().split('T')[0];
-const POSTS_QUERY = `*[_type == "menu" && date == "${today}"]`;
-const menu = await sanityClient.fetch<SanityDocument<Menu>[]>(POSTS_QUERY);
+const todayDate = new Date().toISOString().split('T')[0];
+const MENU_QUERY = `*[_type == "menu" && date <= "${todayDate}"] | order(date desc)[0]`;
+const menu = await sanityClient.fetch<SanityDocument<Menu>>(MENU_QUERY);
+
+const entries = menu.menuItems.filter((item) => item.category === "entry");
+const plates = menu.menuItems.filter((item) => item.category === "plate");
+const desserts = menu.menuItems.filter((item) => item.category === "dessert");
+const current_day = new Intl.DateTimeFormat('fr-FR', { weekday: 'long' }).format(new Date());
 ---
 
 <Layout overflow>
@@ -33,7 +39,21 @@ const menu = await sanityClient.fetch<SanityDocument<Menu>[]>(POSTS_QUERY);
 			<p class="my-4 text-sm">
 				<span class="font-medium text-red-700">*</span> Signifie une présence d'allergènes.
 			</p>
-			<MenuCard client:load menu={menu}  />
+			<MenuCard client:load currentDay={current_day} entries={entries} plates={plates} desserts={desserts} />
+
+			<div class="p-6 shadow-sm border border-tertiary">
+				<h3 class="text-xl font-serif text-tertiary mb-4 flex items-center">
+					<Leaf className="h-5 w-5 mr-2" />
+					Informations sur le menu
+				</h3>
+				<ul class="space-y-2 text-stone-700 list-disc list-inside">
+					<li>Le menu change quotidiennement en fonction des arrivages et de l'inspiration du chef.</li>
+					<li>Tous nos plats sont préparés sur place à partir de produits frais et de saison.</li>
+					<li>Pour toute allergie ou régime alimentaire spécifique, n'hésitez pas à nous consulter.</li>
+					<li>Nous essayons au maximum de proposer des plats végétariens en alternative.</li>
+					<li>Le menu du vendredi sera composé de poisson.</li>
+				</ul>
+			</div>
 		</article>
 	</main>
 </Layout>

@@ -71,7 +71,7 @@ const endReservation = work.ending_work
 									<h3 class="font-medium">Taille des groupes :</h3>
 									<p>
 										Pour les groupes de plus de 7 personnes, veuillez nous contacter directement par
-										téléphone.
+										téléphone au <a href="tel:0567720086" class="!text-primary hover:!text-primary/80">05 67 72 00 86</a>
 									</p>
 								</div>
 							</li>
@@ -112,7 +112,7 @@ const endReservation = work.ending_work
 										id="date"
 										type="date"
 										name="date"
-										min={new Date().toISOString().split('T')[0]}
+										min={new Date().toISOString().split("T")[0]}
 										class={cn(
 											"flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
 											"pl-12 rounded-none"
@@ -129,7 +129,8 @@ const endReservation = work.ending_work
 										id="time"
 										type="time"
 										name="time"
-										step="300"
+										min={work.starting_work}
+										max={endReservation}
 										class={cn(
 											"flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
 											"pl-12 rounded-none"
@@ -185,9 +186,26 @@ const endReservation = work.ending_work
 	</main>
 </Layout>
 
+<script define:vars={{ work }}>
+	const inputDate = document.querySelector('input[name="date"]');
+	inputDate?.addEventListener("change", (e) => {
+		const selectedDate = new Date(e.target.value);
+		const dayName = selectedDate.toLocaleDateString("fr-FR", { weekday: "long" });
+
+		console.log(dayName);
+		console.log(work.days_of_work);
+
+		if (!work.days_of_work.includes(dayName.charAt(0).toUpperCase() + dayName.slice(1))) {
+			e.target.value = "";
+			alert("Désolé, nous sommes fermés ce jour-là ! Veuillez choisir un autre jour.");
+			return;
+		}
+	});
+</script>
+
 <script>
 	import { z } from "astro/zod";
-	import { SENDGRID_API_KEY, SENDGRID_EMAIL_RESERVATION_NOTIFICATION, EMAIL_CONTACT } from "astro:env/client";
+	import { SENDGRID_EMAIL_RESERVATION_NOTIFICATION, EMAIL_CONTACT } from "astro:env/client";
 	import { sendEmailTo } from "@/utils/mail";
 
 	const reservationSchema = z.object({
@@ -222,8 +240,7 @@ const endReservation = work.ending_work
 			},
 		})
 			.then((res) => {
-				console.log(res);
-				console.log("ici");
+				alert("Merci pour votre réservation ! Nous vous attendons avec impatience.");
 			})
 			.catch((error) => {
 				console.log(error);

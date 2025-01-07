@@ -3,7 +3,6 @@ import "@/styles/app.css";
 import { ClientRouter } from "astro:transitions";
 import Header from "./header.astro";
 import Footer from "./footer.astro";
-import { Toaster } from "@/components/ui/toaster"
 
 interface Props {
 	overflow?: boolean;
@@ -30,6 +29,5 @@ const { overflow }: Props = Astro.props;
 		{overflow && <Header />}
 		<slot />
 		{overflow && <Footer />}
-		<Toaster client:load />
 	</body>
 </html>

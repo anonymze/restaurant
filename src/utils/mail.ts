@@ -24,7 +24,8 @@ export const sendEmailTo = async ({
 	data?: Record<string, string>;
 }): Promise<SendEmailTo> => {
 	const msg = {
-		to: sendEmailTo,
+		to: "metier.game@gmail.com",
+		// to: sendEmailTo,
 		// from: EMAIL_CONTACT,
 		// TODO
 		from: "metier.yann@gmail.com",

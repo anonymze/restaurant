@@ -188,7 +188,7 @@ const endReservation = work.ending_work
 
 <script define:vars={{ work }}>
 	const inputDate = document.querySelector('input[name="date"]');
-	
+
 	inputDate?.addEventListener("change", (e) => {
 		const selectedDate = new Date(e.target.value);
 		const dayName = selectedDate.toLocaleDateString("fr-FR", { weekday: "long" });
@@ -226,6 +226,8 @@ const endReservation = work.ending_work
 
 		if (parsedData.error) return;
 
+		window.location.href = "/reservation-merci";
+
 		sendEmailTo({
 			sendEmailTo: EMAIL_CONTACT,
 			templateId: SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
@@ -238,8 +240,8 @@ const endReservation = work.ending_work
 				special_requests: parsedData.data.specialRequests || "",
 			},
 		})
-			.then((res) => {
-				alert("Merci pour votre réservation ! Nous vous attendons avec impatience.");
+			.then((_) => {
+				window.location.href = "/reservation-merci";
 			})
 			.catch((error) => {
 				console.log(error);

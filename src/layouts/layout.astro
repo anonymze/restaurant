@@ -6,9 +6,11 @@ import Footer from "./footer.astro";
 
 interface Props {
 	overflow?: boolean;
+	header?: boolean;
+	footer?: boolean;
 }
 
-const { overflow }: Props = Astro.props;
+const { overflow, header = true, footer = true }: Props = Astro.props;
 ---
 
 <!doctype html>
@@ -26,8 +28,8 @@ const { overflow }: Props = Astro.props;
 		<ClientRouter />
 	</head>
 	<body class:list={["h-dvh", !overflow && "overflow-hidden"]}>
-		{overflow && <Header />}
+		{header && <Header />}
 		<slot />
-		{overflow && <Footer />}
+		{footer && <Footer />}
 	</body>
 </html>

@@ -12,8 +12,8 @@ import { getImage } from "astro:assets";
 const todayDate = new Date().toISOString().split("T")[0];
 const EVENT_QUERY = `*[_type == "event" && date >= "${todayDate}"] | order(date asc)`;
 const events = await sanityClient.fetch<SanityDocument<Event>[]>(EVENT_QUERY);
-
-const todayEvents = events.filter((event) => event.date.split("T")[0] === todayDate);
+	
+const weekEvents = events.filter((event) => event.date.split("T")[0] >= todayDate);
 const nextMonthEvents = events.filter((event) => event.date.split("T")[0] >= todayDate);
 
 const gamePlaceholder = await getImage({
@@ -56,7 +56,19 @@ const degustationPlaceholder = await getImage({
 			</div>
 		</section>
 
-		<article>
+		<section>
+			<h2 class="text-2xl text-stone-800 mb-4">Évenement de la semaine</h2>
+			<EventsCard
+				client:load
+				events={weekEvents}
+				gamePlaceholder={gamePlaceholder}
+				concertPlaceholder={concertPlaceholder}
+				degustationPlaceholder={degustationPlaceholder}
+			/>
+		</section>
+
+		<section class="mt-12">
+			<h2 class="text-2xl text-stone-800 mb-4">Évenements prochain</h2>
 			<EventsCard
 				client:load
 				events={nextMonthEvents}
@@ -64,6 +76,6 @@ const degustationPlaceholder = await getImage({
 				concertPlaceholder={concertPlaceholder}
 				degustationPlaceholder={degustationPlaceholder}
 			/>
-		</article>
+		</section>
 	</main>
 </Layout>

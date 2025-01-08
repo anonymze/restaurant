@@ -1,4 +1,25 @@
-export async function GET(request: Request) {
-	console.log('coucou!!!!!');
-	return new Response('coucou');
+export const GET = async (request: Request) => {
+	try {
+		// Log for debugging
+		console.log('Request received');
+		
+		// Return proper JSON response
+		return new Response(JSON.stringify({ message: 'Success' }), {
+			status: 200,
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	} catch (error) {
+		// Log error for debugging
+		console.error('Error in GET request:', error);
+		
+		// Return proper error response
+		return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+			status: 500,
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	}
 }

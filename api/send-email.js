@@ -4,7 +4,7 @@ import sgMail from "@sendgrid/mail";
 export const GET = async (request) => {
 	console.log(process.env.SENDGRID_API_KEY);
 	console.log(process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION);
-	sendEmailTo({
+	const ok = await sendEmailTo({
 		apiKey: process.env.SENDGRID_API_KEY,
 		sendEmailTo: "metier.game@gmail.com",
 		templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
@@ -12,11 +12,9 @@ export const GET = async (request) => {
 			name: "John Doe",
 			email: "john.doe@example.com",
 		},
-	}).then((response) => {
-		console.log(response);
-	}).catch((error) => {
-		console.log(error);
 	});
+
+	console.dir(ok, { depth: null });
 
 	return new Response("OK", { status: 200 });
 };
@@ -24,7 +22,8 @@ export const GET = async (request) => {
 export const POST = async (request) => {
 	console.log(process.env.SENDGRID_API_KEY);
 	console.log(process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION);
-	sendEmailTo({
+
+	const ok = await sendEmailTo({
 		apiKey: process.env.SENDGRID_API_KEY,
 		sendEmailTo: "metier.game@gmail.com",
 		templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
@@ -32,11 +31,9 @@ export const POST = async (request) => {
 			name: "John Doe",
 			email: "john.doe@example.com",
 		},
-	}).then((response) => {
-		console.log(response);
-	}).catch((error) => {
-		console.log(error);
 	});
+
+	console.dir(ok, { depth: null });
 
 	return new Response("OK", { status: 200 });
 };

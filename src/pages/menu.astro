@@ -1,20 +1,27 @@
 ---
 import Layout from "@/layouts/layout.astro";
 import MenuCard from "@/components/menu-card.tsx";
+import WineCard from "@/components/wine-card.tsx";
 import { sanityClient } from "sanity:client";
 import { Leaf } from "lucide-react";
 import type { SanityDocument } from "@sanity/client";
-import type { Menu } from "@/types/menu";
+import type { Menu } from "@/types/menu";	
+import type { Wine } from "@/types/wine";
 
 // Get today's date in YYYY-MM-DD format
-const todayDate = new Date().toISOString().split('T')[0];
+const todayDate = new Date().toISOString().split("T")[0];
 const MENU_QUERY = `*[_type == "menu" && date <= "${todayDate}"] | order(date desc)[0]`;
 const menu = await sanityClient.fetch<SanityDocument<Menu>>(MENU_QUERY);
 
 const entries = menu.menuItems.filter((item) => item.category === "entry");
 const plates = menu.menuItems.filter((item) => item.category === "plate");
 const desserts = menu.menuItems.filter((item) => item.category === "dessert");
-const current_day = new Intl.DateTimeFormat('fr-FR', { weekday: 'long' }).format(new Date());
+const current_day = new Intl.DateTimeFormat("fr-FR", { weekday: "long" }).format(new Date());
+
+const WINE_QUERY = `*[_type == "wine"][0]`;
+const wines = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
+
+console.log(wines)
 ---
 
 <Layout overflow>
@@ -30,7 +37,8 @@ const current_day = new Intl.DateTimeFormat('fr-FR', { weekday: 'long' }).format
 					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
 				</div>
 				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
-					Découvrez notre menu du jour, changeant au gré des saisons, accompagné de notre sélection de vins raffinés.
+					Découvrez notre menu du jour, changeant au gré des saisons, accompagné de notre sélection de vins
+					raffinés.
 				</p>
 			</div>
 		</section>
@@ -51,9 +59,13 @@ const current_day = new Intl.DateTimeFormat('fr-FR', { weekday: 'long' }).format
 					<li>Tous nos plats sont préparés sur place à partir de produits frais et de saison.</li>
 					<li>Pour toute allergie ou régime alimentaire spécifique, n'hésitez pas à nous consulter.</li>
 					<li>Nous essayons au maximum de proposer des plats végétariens en alternative.</li>
-					<li>Le menu du vendredi sera composé de poisson.</li>
+					<!-- <li>Le menu du vendredi sera composé de poisson.</li> -->
 				</ul>
 			</div>
+		</article>
+
+		<article class="container mx-auto max-w-2xl mb-12">
+			<WineCard client:load whiteWines={wines.blancs} redWines={wines.rouges} roseWines={wines.roses} />
 		</article>
 	</main>
 </Layout>

@@ -11,7 +11,7 @@ interface Props {
 	desserts: Menu["menuItems"];
 }
 
-export default function MenuPage({ currentDay, entries, plates, desserts }: Props) {
+export default function MenuCard({ currentDay, entries, plates, desserts }: Props) {
 	return (
 			<Card className="mb-8 bg-tertiary/20 border-tertiary shadow-md">
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 border-b border-tertiary">

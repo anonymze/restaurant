@@ -1,6 +1,8 @@
 
 
-export default async function handler() {
+export const GET = async (request) => {
+	console.log(request);
+	console.log(request.method);
 	try {
 		// Log for debugging
 		console.log('Request received');

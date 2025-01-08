@@ -10,6 +10,10 @@ export const POST = async (request) => {
 			name: "John Doe",
 			email: "john.doe@example.com",
 		},
+	}).then((response) => {
+		console.log(response);
+	}).catch((error) => {
+		console.log(error);
 	});
 
 	return new Response("OK", { status: 200 });

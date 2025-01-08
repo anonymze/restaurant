@@ -46,10 +46,10 @@ export default defineConfig({
 				context: "client",
 				access: "public",
 			}),
-			VERCEL_PROJECT_ID: envField.string({
-				context: "client",
-				access: "public",
-			}),
+			// VERCEL_PROJECT_ID: envField.string({
+			// 	context: "client",
+			// 	access: "public",
+			// }),
 		},
 	},
 });

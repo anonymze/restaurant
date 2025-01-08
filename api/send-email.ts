@@ -1,4 +1,7 @@
-export const GET = async (request: Request) => {
+import type { APIRoute } from 'astro';
+
+
+export const GET: APIRoute = async (request) => {
 	try {
 		// Log for debugging
 		console.log('Request received');

@@ -1,3 +1,4 @@
-export async function handler(request: Request) {
+export async function GET(request: Request) {
 	console.log('coucou!!!!!');
+	return new Response('coucou');
 }

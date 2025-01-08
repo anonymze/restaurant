@@ -70,8 +70,9 @@ const endReservation = work.ending_work
 								<div>
 									<h3 class="font-medium">Taille des groupes :</h3>
 									<p>
-										Pour les groupes de plus de 7 personnes, veuillez nous contacter directement par
-										téléphone au <a href="tel:0567720086" class="!text-primary hover:!text-primary/80">05 67 72 00 86</a>
+										Pour les groupes de plus de 7 personnes, veuillez nous contacter directement par téléphone
+										au <a href="tel:0567720086" class="!text-primary hover:!text-primary/80">05 67 72 00 86</a
+										>
 									</p>
 								</div>
 							</li>
@@ -217,32 +218,18 @@ const endReservation = work.ending_work
 	});
 
 	const form = document.querySelector("form");
-	form?.addEventListener("submit", (e) => {
+	form?.addEventListener("submit", async (e) => {
 		e.preventDefault();
 
 		const formData = new FormData(form);
 		const data = Object.fromEntries(formData.entries());
 		const parsedData = reservationSchema.safeParse(data);
 
-		if (parsedData.error) return;
+		if (!parsedData.success) {
+			alert("Veuillez vérifier les informations saisies.");
+			return;
+		}
 
-		sendEmailTo({
-			sendEmailTo: EMAIL_CONTACT,
-			templateId: SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
-			data: {
-				date: parsedData.data.date,
-				time: parsedData.data.time,
-				guests: parsedData.data.guests,
-				name: parsedData.data.name,
-				email: parsedData.data.email,
-				special_requests: parsedData.data.specialRequests || "",
-			},
-		})
-			.then((_) => {
-				window.location.href = "/reservation-merci";
-			})
-			.catch((error) => {
-				alert("Une erreur est survenue lors de la réservation. Veuillez réessayer ou nous contacter par téléphone au 05 67 72 00 86");
-			});
+		window.location.href = "/reservation-merci";
 	});
 </script>

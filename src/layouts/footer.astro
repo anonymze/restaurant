@@ -10,18 +10,41 @@ import { EMAIL_CONTACT } from "astro:env/client";
 const id_email_contact = "email-contact";
 const id_current_year = "current-year";
 
+const siteMap = [
+	{ name: "Accueil", href: "/" },
+	{ name: "Présentation", href: "/presentation" },
+	{ name: "Menu", href: "/menu" },
+	{ name: "Evenements", href: "/evenements" },
+	{ name: "Contact", href: "/contact" },
+	{ name: "Réservation", href: "/reservation" },
+];
 ---
 
-
 <footer class="grid grid-cols-6 grid-rows-4">
-	<p class="flex items-center gap-2 col-span-6">
+	<p class="flex items-center gap-2 col-span-6 md:col-span-2">
 		<span set:html={MapSVG} class="w-5 h-5" />
 		3 le Fond du Barri, 81140 le Verdier
 	</p>
-	<p class="flex items-center gap-2 col-span-6">
+	<p class="hidden font-bold col-span-4 justify-self-end content-center md:block">
+		Plan du site
+	</p>
+	<p class="flex items-center gap-2 col-span-6 md:col-span-2">
 		<span set:html={PhoneSVG} class="w-5 h-5" />
 		05 67 72 00 86
 	</p>
+	<nav class="hidden items-center justify-self-end md:flex md:col-span-4" aria-label="Plan du site">
+		<ul class="flex items-center gap-3">
+			{
+				siteMap.map(({ name, href }) => (
+					<li>
+						<a href={href} class="text-xs px-0 mx-0">
+							{name}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
 	<p class="flex items-center gap-2 col-span-6">
 		<span set:html={EmailSVG} class="w-5 h-5" />
 		{EMAIL_CONTACT}
@@ -128,6 +151,10 @@ const id_current_year = "current-year";
 		a:not(.page),
 		button {
 			padding-inline: 0.8rem;
+		}
+
+		ul li a {
+			padding-inline: 0 !important;
 		}
 	}
 </style>

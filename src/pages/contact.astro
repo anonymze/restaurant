@@ -57,7 +57,6 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 						<li>
 							{
 								work.days_of_work.map((working_day, idx) => {
-									console.log(working_day);
 									return (idx > 0 ? " - " : "") + working_day;
 								})
 							}

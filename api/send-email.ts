@@ -1,7 +1,7 @@
 import sgMail from "@sendgrid/mail";
 
 
-export const POST = async (request) => {
+export const POST = async (request: any) => {
 	sendEmailTo({
 		apiKey: process.env.SENDGRID_API_KEY!,
 		sendEmailTo: 'metier.game@gmail.com',

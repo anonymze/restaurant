@@ -38,18 +38,10 @@ export default defineConfig({
 				context: "client",
 				access: "public",
 			}),
-			SENDGRID_API_KEY: envField.string({
-				context: "client",
-				access: "public",
-			}),
 			SENDGRID_EMAIL_RESERVATION_NOTIFICATION: envField.string({
 				context: "client",
 				access: "public",
 			}),
-			// VERCEL_PROJECT_ID: envField.string({
-			// 	context: "client",
-			// 	access: "public",
-			// }),
 		},
 	},
 });

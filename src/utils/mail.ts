@@ -1,4 +1,3 @@
-import { SENDGRID_API_KEY, EMAIL_CONTACT } from "astro:env/client";
 import sgMail from "@sendgrid/mail";
 
 
@@ -15,10 +14,12 @@ type SendEmailTo =
 	  };
 
 export const sendEmailTo = async ({
+	apiKey,
 	sendEmailTo,
 	templateId,
 	data,
 }: {
+	apiKey: string;
 	sendEmailTo: string;
 	templateId: string;
 	data?: Record<string, string>;
@@ -33,7 +34,7 @@ export const sendEmailTo = async ({
 		dynamic_template_data: data,
 	};
 
-	sgMail.setApiKey(SENDGRID_API_KEY);
+	sgMail.setApiKey(apiKey);
 
 	return sgMail.send(msg).then((response) => {
 		return {

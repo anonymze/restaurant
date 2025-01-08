@@ -30,10 +30,6 @@ export default defineConfig({
 	},
 	env: {
 		schema: {
-			API_URL: envField.string({
-				context: "client",
-				access: "public",
-			}),
 			EMAIL_CONTACT: envField.string({
 				context: "client",
 				access: "public",

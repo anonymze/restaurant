@@ -1,0 +1,21 @@
+<script>
+  // Function to initialize menu handlers
+  function initializeMenu() {
+    const menuOpenBtn = document.getElementById("menu-open");
+    const menuCloseBtn = document.getElementById("menu-close");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuOpenBtn?.addEventListener("click", () => {
+      mobileMenu?.classList.remove("hidden");
+    });
+
+    menuCloseBtn?.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
+  }
+
+  // Re-run when navigation occurs with View Transitions
+  document.addEventListener('astro:page-load', () =>{
+    initializeMenu();
+  });
+</script>

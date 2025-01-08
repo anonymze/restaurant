@@ -20,8 +20,6 @@ const current_day = new Intl.DateTimeFormat("fr-FR", { weekday: "long" }).format
 
 const WINE_QUERY = `*[_type == "wine"][0]`;
 const wines = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
-
-console.log(wines)
 ---
 
 <Layout overflow>

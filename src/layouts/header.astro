@@ -134,18 +134,3 @@ const currentUrl = Astro.url.pathname;
 		</div>
 	</div>
 </header>
-
-<!-- prevent processing -->
-<script type="module" define:vars={{ currentUrl }}>
-	const menuOpenBtn = document.getElementById("menu-open");
-	const menuCloseBtn = document.getElementById("menu-close");
-	const mobileMenu = document.getElementById("mobile-menu");
-
-	menuOpenBtn?.addEventListener("click", () => {
-		mobileMenu?.classList.remove("hidden");
-	});
-
-	menuCloseBtn?.addEventListener("click", () => {
-		mobileMenu?.classList.add("hidden");
-	});
-</script>

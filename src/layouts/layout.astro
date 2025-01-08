@@ -3,6 +3,7 @@ import "@/styles/app.css";
 import { ClientRouter } from "astro:transitions";
 import Header from "./header.astro";
 import Footer from "./footer.astro";
+import MobileMenuScript from "@/components/mobile-menu-script.astro";
 
 interface Props {
 	overflow?: boolean;
@@ -31,5 +32,6 @@ const { overflow, header = true, footer = true }: Props = Astro.props;
 		{header && <Header />}
 		<slot />
 		{footer && <Footer />}
+		<MobileMenuScript />
 	</body>
 </html>

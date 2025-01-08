@@ -10,11 +10,13 @@ import type { SanityDocument } from "@sanity/client";
 import type { Event } from "@/types/event";
 
 const todayDate = new Date().toISOString().split("T")[0];
+const nextWeekDate = new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split("T")[0];
+
 const EVENT_QUERY = `*[_type == "event" && date >= "${todayDate}"] | order(date asc)`;
 const events = await sanityClient.fetch<SanityDocument<Event>[]>(EVENT_QUERY);
 
-const weekEvents = events.filter((event) => event.date.split("T")[0] >= todayDate);
-const nextMonthEvents = events.filter((event) => event.date.split("T")[0] >= todayDate);
+const weekEvents = events.filter((event) => event.date.split("T")[0] >= todayDate && event.date.split("T")[0] <= nextWeekDate);
+const nextMonthEvents = events.filter((event) => event.date.split("T")[0] >= nextWeekDate);
 
 const gamePlaceholder = await getImage({
 	src: gamePlaceholderImage,

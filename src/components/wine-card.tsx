@@ -14,10 +14,8 @@ export default function WineCard({ whiteWines, redWines, roseWines }: Props) {
 	return (
 		<Card className="mb-8 shadow-md border-green-700 rounded-none">
 			<CardHeader className="flex flex-row items-center justify-between space-y-0 bg-gradient-to-b from-green-600 to-green-900">
-			<CardTitle>
-					<h2 className="text-2xl font-serif text-white">
-						Carte de nos vins
-					</h2>
+				<CardTitle>
+					<h2 className="text-2xl font-serif text-white">Carte de nos vins</h2>
 				</CardTitle>
 				<WineIcon className="h-6 w-6 text-white" />
 			</CardHeader>
@@ -35,7 +33,7 @@ export default function WineCard({ whiteWines, redWines, roseWines }: Props) {
 const contentMenu = (content: WineItem[], type: string, Icon: React.ReactNode) => {
 	return (
 		<div>
-			<h3 className="text-xl font-serif  mb-4 capitalize flex items-center text-green-700">
+			<h3 className="text-xl font-serif  mb-4 capitalize flex items-center">
 				{Icon}
 				{type}
 			</h3>

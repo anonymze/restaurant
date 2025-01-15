@@ -89,7 +89,7 @@ export default function EventsCard({
 									alt={event.title}
 									className="object-cover w-full h-full"
 								/>
-								<Badge className="absolute top-4 right-4 px-3 py-1 text-white text-sm bg-primary" variant="outline">
+								<Badge className="absolute top-4 right-4 px-3 py-1 text-white bg-primary" variant="outline">
 									{event.type === "concert"
 										? "Concert"
 										: event.type === "game"

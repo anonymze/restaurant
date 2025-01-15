@@ -4,6 +4,8 @@ import sgMail from "@sendgrid/mail";
 export const POST = async (req) => {
 	const data = await req.json();
 
+	console.log(data);
+
 	const parsedData = reservationSchema.safeParse(data);
 
 	if (!parsedData.success) {

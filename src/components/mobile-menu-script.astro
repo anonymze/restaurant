@@ -1,21 +1,52 @@
 <script>
-  // Function to initialize menu handlers
-  function initializeMenu() {
-    const menuOpenBtn = document.getElementById("menu-open");
-    const menuCloseBtn = document.getElementById("menu-close");
-    const mobileMenu = document.getElementById("mobile-menu");
+	// Function to initialize menu handlers
+	function initializeMenu() {
+		const menuOpenBtn = document.getElementById("menu-open");
+		const menuCloseBtn = document.getElementById("menu-close");
+		const mobileMenu = document.getElementById("mobile-menu");
 
-    menuOpenBtn?.addEventListener("click", () => {
-      mobileMenu?.classList.remove("hidden");
-    });
+		menuOpenBtn?.addEventListener("click", () => {
+			mobileMenu?.classList.remove("hidden");
+		});
 
-    menuCloseBtn?.addEventListener("click", () => {
-      mobileMenu?.classList.add("hidden");
-    });
-  }
+		menuCloseBtn?.addEventListener("click", () => {
+			mobileMenu?.classList.add("hidden");
+		});
 
-  // Re-run when navigation occurs with View Transitions
-  document.addEventListener('astro:page-load', () =>{
-    initializeMenu();
-  });
+		const copyright = document.getElementById("copyright-container");
+		const socialLinks = document.getElementById("social-links");
+
+		function handleMediaChange() {
+			if (!copyright || !socialLinks || !copyright.firstElementChild) return;
+			// Check if screen is mobile size (less than 640px - Tailwind's sm breakpoint)
+			const isMobile = window.innerWidth < 640;
+
+			if (isMobile) {
+				// Move copyright after social links and add margin-top
+				socialLinks.after(copyright);
+				socialLinks.classList.add("mt-5");
+			} else {
+				// Move copyright back to original position and remove margin-top
+				socialLinks.before(copyright);
+				socialLinks.classList.remove("mt-5");
+			}
+
+			// Update year
+			copyright.firstElementChild.textContent = new Date().getFullYear().toString();
+		}
+
+		// Initial check
+		handleMediaChange();
+
+		// Listen for resize events
+		window.addEventListener("resize", handleMediaChange);
+
+		// Listen for media-change events
+		document.addEventListener("media-change", handleMediaChange);
+	}
+
+	// Re-run when navigation occurs with View Transitions
+	document.addEventListener("astro:page-load", () => {
+		initializeMenu();
+	});
 </script>

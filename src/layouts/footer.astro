@@ -80,54 +80,27 @@ const siteMap = [
 			whileHover={{ scale: 1.1 }}
 			transition={{ stiffness: 400, damping: 10, duration: 0.1 }}
 			target="_blank"
-			href={"https://www.instagram.com/restaurant_mauvaiseherbe/?hl=fr"}
-			set:html={InstagramSVG}
+			href="https://www.instagram.com/restaurant_mauvaiseherbe/?hl=fr"
+			title="Ouvre le comtpe Instagram dans un nouvel onglet"
 			className="w-15 h-15 min-w-15"
-		/>
+		>
+			<Fragment set:html={InstagramSVG} />
+		</motion.a>
 		<motion.a
 			client:visible
 			whileHover={{ scale: 1.1 }}
 			transition={{ stiffness: 400, damping: 10, duration: 0.1 }}
-			title={`Ouvre Instagram dans un nouvel onglet`}
+			title="Ouvrele compte Facebook dans un nouvel onglet"
 			target="_blank"
-			href={"https://www.facebook.com/people/Restaurant-Mauvaise-Herbe/61559086842872/"}
-			set:html={FacebookSVG}
+			href="https://www.facebook.com/people/Restaurant-Mauvaise-Herbe/61559086842872/"
 			className="w-15 h-15 min-w-16"
-		/>
+		>
+			<Fragment set:html={FacebookSVG} />
+		</motion.a>
 	</div>
 </footer>
 
-<script is:inline type="module" define:vars={{ id_email_contact, id_current_year }}>
-	const copyright = document.getElementById("copyright-container");
-	const socialLinks = document.getElementById("social-links");
 
-	function handleMediaChange(e) {
-		// Check if screen is mobile size (less than 640px - Tailwind's sm breakpoint)
-		const isMobile = window.innerWidth < 640;
-
-		if (isMobile) {
-			// Move copyright after social links and add margin-top
-			socialLinks.after(copyright);
-			socialLinks.classList.add("mt-5");
-		} else {
-			// Move copyright back to original position and remove margin-top
-			socialLinks.before(copyright);
-			socialLinks.classList.remove("mt-5");
-		}
-
-		// Update year
-		copyright.firstElementChild.textContent = new Date().getFullYear();
-	}
-
-	// Initial check
-	handleMediaChange();
-
-	// Listen for resize events
-	window.addEventListener("resize", handleMediaChange);
-
-	// Listen for media-change events
-	document.addEventListener("media-change", handleMediaChange);
-</script>
 
 <style>
 	footer {

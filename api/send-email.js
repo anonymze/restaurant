@@ -33,6 +33,7 @@ export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => 
 	sgMail.setApiKey(apiKey);
 
 	return sgMail.send(msg).then((response) => {
+		console.log(response);
 		return {
 			statusCode: response[0].statusCode,
 			headers: response[0].headers,

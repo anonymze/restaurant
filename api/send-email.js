@@ -21,7 +21,7 @@ export const POST = async () => {
 
 export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => {
 	const msg = {
-		to: "metier.yann@gmail.com",
+		to: "metier.game@gmail.com",
 		// to: sendEmailTo,
 		// from: EMAIL_CONTACT,
 		// TODO
@@ -29,6 +29,8 @@ export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => 
 		templateId: templateId,
 		dynamic_template_data: data,
 	};
+
+	sgMail.setApiKey(apiKey);
 
 	return sgMail.send(msg).then((response) => {
 		return {

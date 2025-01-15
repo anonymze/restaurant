@@ -13,7 +13,7 @@ interface Props {
 export default function WineCard({ whiteWines, redWines, roseWines }: Props) {
 	return (
 		<Card className="mb-8 shadow-md border-green-700 rounded-none">
-			<CardHeader className="flex flex-row items-center justify-between space-y-0 bg-gradient-to-b from-green-700 to-green-900">
+			<CardHeader className="flex flex-row items-center justify-between space-y-0 bg-gradient-to-b from-green-600 to-green-900">
 			<CardTitle>
 					<h2 className="text-2xl font-serif text-white">
 						Carte de nos vins

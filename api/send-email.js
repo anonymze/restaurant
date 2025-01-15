@@ -2,6 +2,8 @@ import sgMail from "@sendgrid/mail";
 
 
 export const POST = async () => {
+	console.log("send email");
+	console.log(sgMail)
 	try {
 		await sendEmailTo({
 			apiKey: process.env.SENDGRID_API_KEY,
@@ -30,6 +32,7 @@ export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => 
 		dynamic_template_data: data,
 	};
 
+	console.log(apiKey)
 	sgMail.setApiKey(apiKey);
 
 	return sgMail.send(msg).then((response) => {

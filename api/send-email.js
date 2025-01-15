@@ -22,10 +22,8 @@ export const POST = async () => {
 export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => {
 	const msg = {
 		to: sendEmailTo,
-		// to: sendEmailTo,
-		// from: EMAIL_CONTACT,
-		// TODO
-		from: "support@replaymusic.co",
+		// TODO "email domain name"
+		from: "ici",
 		templateId: templateId,
 		dynamic_template_data: data,
 	};

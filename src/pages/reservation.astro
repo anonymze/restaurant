@@ -205,8 +205,6 @@ const endReservation = work.ending_work
 
 <script>
 	import { z } from "astro/zod";
-	import { SENDGRID_EMAIL_RESERVATION_NOTIFICATION, EMAIL_CONTACT } from "astro:env/client";
-	import { sendEmailTo } from "@/utils/mail";
 
 	const reservationSchema = z.object({
 		date: z.string().min(1, "La date est requise"),

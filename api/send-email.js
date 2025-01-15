@@ -5,7 +5,7 @@ export const POST = async () => {
 	try {
 		await sendEmailTo({
 			apiKey: process.env.SENDGRID_API_KEY,
-			sendEmailTo: "metier.game@gmail.com",
+			sendEmailTo: "metier.yann@gmail.com",
 			templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
 			data: {
 				name: "John Doe",
@@ -21,7 +21,7 @@ export const POST = async () => {
 
 export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => {
 	const msg = {
-		to: "metier.game@gmail.com",
+		to: sendEmailTo,
 		// to: sendEmailTo,
 		// from: EMAIL_CONTACT,
 		// TODO

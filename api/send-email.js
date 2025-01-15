@@ -2,6 +2,16 @@ import sgMail from "@sendgrid/mail";
 
 
 export const POST = async () => {
+	const data = await request.json();
+
+	const parsedData = reservationSchema.safeParse(data);
+
+	if (!parsedData.success) {
+		return new Response("KO", { status: 400 });
+	}
+
+	console.log(parsedData.data);
+
 	try {
 		await sendEmailTo({
 			apiKey: process.env.SENDGRID_API_KEY,

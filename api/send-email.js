@@ -22,7 +22,7 @@ export const POST = async () => {
 export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => {
 	const msg = {
 		// TODO "email restaurateur"
-		to: sendEmailTo,
+		to: "metier.yann@gmail.com",
 		// TODO "email domain name"
 		from: "ici",
 		templateId,

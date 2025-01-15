@@ -36,7 +36,7 @@ export default function MenuCard({ currentDay, entries, plates, desserts }: Prop
 const contentMenu = (content: Menu["menuItems"], type: string, Icon: React.ReactNode) => {
 	return (
 		<div>
-			<h3 className="text-xl font-serif  mb-4 capitalize flex items-center text-">
+			<h3 className="text-xl font-serif  mb-4 capitalize flex items-center">
 				{Icon}
 				{type}
 			</h3>

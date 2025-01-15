@@ -12,10 +12,14 @@ interface Props {
 
 export default function WineCard({ whiteWines, redWines, roseWines }: Props) {
 	return (
-		<Card className="mb-8 bg-tertiary/20 border-tertiary shadow-md">
-			<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 border-b border-tertiary">
-				<CardTitle className="text-2xl text-tertiary">Carte de nos vins</CardTitle>
-				<WineIcon className="h-6 w-6 text-tertiary" />
+		<Card className="mb-8 shadow-md border-green-700 rounded-none">
+			<CardHeader className="flex flex-row items-center justify-between space-y-0 bg-gradient-to-b from-green-700 to-green-900">
+			<CardTitle>
+					<h2 className="text-2xl font-serif text-white">
+						Carte de nos vins
+					</h2>
+				</CardTitle>
+				<WineIcon className="h-6 w-6 text-white" />
 			</CardHeader>
 			<CardContent className="pt-6">
 				<div className="space-y-10">
@@ -31,7 +35,7 @@ export default function WineCard({ whiteWines, redWines, roseWines }: Props) {
 const contentMenu = (content: WineItem[], type: string, Icon: React.ReactNode) => {
 	return (
 		<div>
-			<h3 className="text-xl font-serif text-tertiary mb-4 capitalize flex items-center">
+			<h3 className="text-xl font-serif  mb-4 capitalize flex items-center text-green-700">
 				{Icon}
 				{type}
 			</h3>
@@ -40,7 +44,7 @@ const contentMenu = (content: WineItem[], type: string, Icon: React.ReactNode) =
 					<li key={item.name} className="border-b border-tertiary/20 pb-4 last:border-b-0 last:pb-0">
 						<div className="flex justify-between items-start">
 							<div>
-								<h4 className="font-medium text-stone-800">{item.name}</h4>
+								<h4 className="font-medium text-primary">{item.name}</h4>
 								<p className="text-sm text-stone-600">{item.description}</p>
 								{item.bio && (
 									<div className="mt-1 space-x-1">
@@ -50,7 +54,7 @@ const contentMenu = (content: WineItem[], type: string, Icon: React.ReactNode) =
 									</div>
 								)}
 							</div>
-							<span className="font-medium text-tertiary">{item.price} €</span>
+							<span className="font-medium text-primary">{item.price} €</span>
 						</div>
 					</li>
 				))}

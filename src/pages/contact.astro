@@ -117,13 +117,21 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 
 		button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
 		button.disabled = true;
+
+		const message = document.createElement("p");
+		message.textContent = "Votre email a été envoyé avec succès !";
+		message.style.color = "green";
+		
+		form.appendChild(message);
 		form.reset();
 	};
+
+	window.sessionStorage.setItem("newsletter-sent", "true");
 
 	form?.addEventListener("submit", (e) => {
 		e.preventDefault();
 
-		if (window.sessionStorage.getItem("email-sent")) {
+		if (window.sessionStorage.getItem("newsletter-sent")) {
 			validForm();
 			return;
 		}
@@ -131,7 +139,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 		const email = form.querySelector("input[name='email']") as HTMLInputElement;
 		const emailValue = email.value;
 
-		if (!emailValue || !button) return;
+		if (!emailValue) return;
 
 		try {
 			fetch("/api/send-email", {
@@ -142,7 +150,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 			})
 				.then((response) => {
 					if (response.ok) {
-						window.sessionStorage.setItem("email-sent", "true");
+						window.sessionStorage.setItem("newsletter-sent", "true");
 						validForm();
 					} else {
 						alert(

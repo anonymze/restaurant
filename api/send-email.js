@@ -7,13 +7,11 @@ export const POST = async (req) => {
 
 	console.log(data);
 
-	const parsedData = reservationSchema.safeParse(data);
-
-	if (!parsedData.success) {
+	if (!data.email) {
 		return new Response("KO", { status: 400 });
 	}
 
-	console.log(parsedData.data);
+	console.log(data.email);
 
 	try {
 		await sendEmailTo({

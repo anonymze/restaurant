@@ -9,7 +9,7 @@ import type { Event } from "@/types/event";
 const EVENT_QUERY = `*[_type == "event"][0]`;
 const event = await sanityClient.fetch<SanityDocument<Event>>(EVENT_QUERY);
 
-	// Get a pre-configured url-builder from your sanity client
+// Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(sanityClient)
 const imageCaviste = builder.image(event.image).url()
 ---

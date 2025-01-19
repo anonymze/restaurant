@@ -1,6 +1,7 @@
 ---
 import { cn } from "@/utils/libs/tailwind";
 import { VeganIcon } from "lucide-react";
+import FlagEN from '@/assets/icons/flag-en.svg';
 
 const navigation = [
 	{ name: "Concept", href: "/concept" },
@@ -75,7 +76,7 @@ const currentUrl = Astro.url.pathname;
 				href="/reservation"
 				class="bg-green-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-b"
 			>
-				Réserver une table
+				<FlagEN width={20} height={20} />
 			</a>
 		</div>
 	</nav>

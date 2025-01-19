@@ -76,11 +76,11 @@ const navigation = [
 			{
 				currentUrl.startsWith("/en") ? (
 					<a href={currentUrl.replace("/en", "")}>
-						<FlagEN class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+						<FlagFR class="w-9 h-9 hover:scale-110 transition-all duration-200" />
 					</a>
 				) : (
 					<a href={"/en" + currentUrl}>
-						<FlagFR class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+						<FlagEN class="w-9 h-9 hover:scale-110 transition-all duration-200" />
 					</a>
 				)
 			}
@@ -137,11 +137,11 @@ const navigation = [
 						{
 							currentUrl.startsWith("/en") ? (
 								<a href={currentUrl.replace("/en", "")}>
-									<FlagEN class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+									<FlagFR class="w-9 h-9 hover:scale-110 transition-all duration-200" />
 								</a>
 							) : (
 								<a href={"/en" + currentUrl}>
-									<FlagFR class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+									<FlagEN class="w-9 h-9 hover:scale-110 transition-all duration-200" />
 								</a>
 							)
 						}

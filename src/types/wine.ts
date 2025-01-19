@@ -1,6 +1,6 @@
 export interface Wine {
 	_updatedAt: string;
-	image: {
+	file: {
 		_type: string;
 		asset: {
 			_ref: string;

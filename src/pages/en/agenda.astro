@@ -9,7 +9,6 @@ const EVENT_QUERY = `*[_type == "agenda"][0]{
 	"file": file.asset->url
 }`;
 const event = await sanityClient.fetch<SanityDocument<Event>>(EVENT_QUERY);
-console.log(event)
 ---
 
 <Layout overflow>
@@ -41,7 +40,17 @@ console.log(event)
 		</section>
 
 		<article class="container mx-auto max-w-6xl">
-			<Image src={event.file} alt="Carte des vins" width={1200} height={800} class="w-full h-auto" />
+			<iframe
+				src={event.file}
+				class="w-full h-[1200px] border-0"
+				title="Calendrier des événements"
+				loading="lazy"></iframe>
+			<noscript>
+				<p class="text-center">
+					Le PDF ne peut pas être affiché. {" "}
+					<a href={event.file} class="text-primary underline underline-offset-4"> Télécharger le PDF </a>
+				</p>
+			</noscript>
 		</article>
 	</main>
 </Layout>

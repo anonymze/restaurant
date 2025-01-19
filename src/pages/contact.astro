@@ -110,6 +110,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 <script>
 	const form = document.querySelector("form");
 	const button = form?.querySelector("button");
+	const errorMessage = "Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
 
 	const validForm = () => {
 		if (!button) return;
@@ -153,20 +154,14 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 						window.sessionStorage.setItem("newsletter-sent", "true");
 						validForm();
 					} else {
-						alert(
-							"Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît."
-						);
+						alert(errorMessage);
 					}
 				})
 				.catch((_) => {
-					alert(
-						"Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît."
-					);
+					alert(errorMessage);
 				});
 		} catch (error) {
-			alert(
-				"Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît."
-			);
+			alert(errorMessage);
 		}
 	});
 </script>

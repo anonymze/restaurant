@@ -1,69 +1,56 @@
 ---
 import Layout from "@/layouts/layout.astro";
-import MenuCard from "@/components/menu-card.tsx";
-import WineCard from "@/components/wine-card.tsx";
-import { sanityClient } from "sanity:client";
-import { Leaf } from "lucide-react";
 import type { SanityDocument } from "@sanity/client";
-import type { Menu } from "@/types/menu";	
+import { sanityClient } from 'sanity:client';
+import imageUrlBuilder from '@sanity/image-url';
 import type { Wine } from "@/types/wine";
-
-// Get today's date in YYYY-MM-DD format
-const todayDate = new Date().toISOString().split("T")[0];
-const MENU_QUERY = `*[_type == "menu" && date <= "${todayDate}"] | order(date desc)[0]`;
-const menu = await sanityClient.fetch<SanityDocument<Menu>>(MENU_QUERY);
-
-const entries = menu.menuItems.filter((item) => item.category === "entry");
-const plates = menu.menuItems.filter((item) => item.category === "plate");
-const desserts = menu.menuItems.filter((item) => item.category === "dessert");
-const current_day = new Intl.DateTimeFormat("fr-FR", { weekday: "long" }).format(new Date());
+import { Image } from "astro:assets";
 
 const WINE_QUERY = `*[_type == "wine"][0]`;
-const wines = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
+const wine = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
+
+	// Get a pre-configured url-builder from your sanity client
+const builder = imageUrlBuilder(sanityClient)
+const imageCaviste = builder.image(wine.image).url()
 ---
 
 <Layout overflow>
 	<main class="bg-stone-50 py-16 px-4 md:py-24">
 		<section class="container mx-auto max-w-6xl space-y-12">
 			<div class="text-center mb-12">
-				<h1 class="text-4xl font-serif text-stone-800 mb-4">Nos cartes</h1>
+				<h1 class="text-4xl font-serif text-stone-800 mb-4">Notre carte des vins</h1>
 				<div class="flex justify-center items-center gap-3 mb-6">
 					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
 					<span class="text-sm font-medium uppercase tracking-wider text-primary">
-						Un menu différent chaque jour
+						Une cave nature et bio
 					</span>
 					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
 				</div>
-				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
-					Découvrez notre menu du jour, changeant au gré des saisons, accompagné de notre sélection de vins
-					raffinés.
+				<p class="text-lg text-left text-stone-600 max-w-2xl mx-auto leading-relaxed my-8">
+					Notre sommelier a rempli notre cave à vin avec plus de 100 références, venant du gaillacois, des
+					quatre coins de la France mais aussi avec une sélection de vins étrangers. Tous nos vins sont
+					certifiés bios, biodynamiques ou naturels. Nous privilégions évidement les domaines à taille
+					humaine, avec plusieurs petites exploitations, et aussi avec une philosophie tournée autour du
+					respect de son terroir et de son environnement.
+
+					<br />
+					<br />
+					La gamme quant à elle est sans cesse renouvelée afin de vous proposer toujours de nouvelles découvertes.
+					Vous trouverez ci-dessous notre dernière liste de boissons. <span class="font-bold">Tous nos vins, ainsi que boissons sans alcool
+					et spiritueux sont disponibles à l'achat caviste, avec une remise de 20% par rapport au prix sur table</span>.
+					Alors tchin !
 				</p>
 			</div>
 		</section>
 
-		<article class="container mx-auto max-w-2xl mb-12">
-			<p class="my-4 text-sm">
-				<span class="font-medium text-red-700">*</span> Signifie une présence d'allergènes.
-			</p>
-			<MenuCard client:load currentDay={current_day} entries={entries} plates={plates} desserts={desserts} />
-
-			<div class="p-6 shadow-sm border border-tertiary">
-				<h3 class="text-xl font-serif text-tertiary mb-4 flex items-center">
-					<Leaf className="h-5 w-5 mr-2" />
-					Informations sur le menu
-				</h3>
-				<ul class="space-y-2 text-stone-700 list-disc list-inside">
-					<li>Le menu change quotidiennement en fonction des arrivages et de l'inspiration du chef.</li>
-					<li>Tous nos plats sont préparés sur place à partir de produits frais et de saison.</li>
-					<li>Pour toute allergie ou régime alimentaire spécifique, n'hésitez pas à nous consulter.</li>
-					<li>Nous essayons au maximum de proposer des plats végétariens en alternative.</li>
-					<!-- <li>Le menu du vendredi sera composé de poisson.</li> -->
-				</ul>
-			</div>
-		</article>
-
-		<article class="container mx-auto max-w-2xl mb-12">
-			<WineCard client:load whiteWines={wines.blancs} redWines={wines.rouges} roseWines={wines.roses} />
+		<article class="container mx-auto max-w-6xl">
+			<Image 
+				src={imageCaviste} 
+				alt="Carte des vins" 
+				width={1200} 
+				height={800} 
+				class="w-full h-auto"
+			/>
 		</article>
 	</main>
 </Layout>

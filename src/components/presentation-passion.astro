@@ -8,32 +8,6 @@ import { motion } from "framer-motion";
 <section class="bg-stone-50 py-10 px-4 md:py-16">
 	<div class="container mx-auto max-w-6xl">
 		<div class="grid gap-10 md:grid-cols-2 items-center">
-			<!-- Text Content -->
-			<div class="space-y-6">
-				<div class="space-y-4">
-					<div class="flex items-center gap-3">
-						<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
-						<span class="text-sm font-medium uppercase tracking-wider text-primary"> Notre cuisine </span>
-					</div>
-					<h2 class="text-3xl font-serif text-stone-800 leading-tight">
-						Une cuisine créative et authentique
-					</h2>
-				</div>
-				<p class="text-lg text-stone-600 leading-relaxed">
-					La créativité est au cœur de notre cuisine. Il doit être amusant de manger et de cuisiner chez
-					nous. C'est pourquoi nous avons choisi de servir <span class="font-bold">un menu du jour unique chaque midi et le samedi soir</span>.
-					Les cuisiniers explorent ainsi en permanence de nouvelles saveurs et de nouvelles recettes. En
-					outre, cela nous permet de nous adapter à la fois aux offres saisonnières et à la récolte de plantes
-					sauvages du jour, ce qui fait que nous n'avons pratiquement pas de gaspillage.
-				</p>
-				<div class="flex flex-col gap-4 text-stone-700">
-					<div class="flex items-center gap-3">
-						<div class="h-1 w-12 bg-primary" aria-hidden="true"></div>
-						<span>Produits 100% locaux et de saison</span>
-					</div>
-				</div>
-			</div>
-
 			<!-- Image Grid -->
 			<div class="grid grid-cols-2 gap-8 md:pb-14">
 				<motion.div
@@ -55,6 +29,32 @@ import { motion } from "framer-motion";
 				>
 					<Image src={PlateImg} alt="Plat signature du chef" class="w-full h-full object-cover" />
 				</motion.div>
+			</div>
+			<!-- Text Content -->
+			<div class="space-y-6">
+				<div class="space-y-4">
+					<div class="flex items-center gap-3">
+						<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+						<span class="text-sm font-medium uppercase tracking-wider text-primary"> Notre cuisine </span>
+					</div>
+					<h2 class="text-3xl font-serif text-stone-800 leading-tight">
+						Une cuisine créative et authentique
+					</h2>
+				</div>
+				<p class="text-lg text-stone-600 leading-relaxed">
+					La créativité est au cœur de notre cuisine. Il doit être amusant de manger et de cuisiner chez nous.
+					C'est pourquoi nous avons choisi de servir <span class="font-bold"
+						>un menu du jour unique chaque midi et le samedi soir</span
+					>. Les cuisiniers explorent ainsi en permanence de nouvelles saveurs et de nouvelles recettes. En
+					outre, cela nous permet de nous adapter à la fois aux offres saisonnières et à la récolte de plantes
+					sauvages du jour, ce qui fait que nous n'avons pratiquement pas de gaspillage.
+				</p>
+				<div class="flex flex-col gap-4 text-stone-700">
+					<div class="flex items-center gap-3">
+						<div class="h-1 w-12 bg-primary" aria-hidden="true"></div>
+						<span>Produits 100% locaux et de saison</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

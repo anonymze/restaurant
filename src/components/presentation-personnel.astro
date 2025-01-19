@@ -8,28 +8,7 @@ import { motion } from "framer-motion";
 <section class="bg-stone-50 py-10 px-4 md:pt-14 md:pb-28">
 	<div class="container mx-auto max-w-6xl">
 		<div class="grid gap-12 md:grid-cols-2 items-center">
-			<!-- Image Grid -->
-			<div class="grid grid-cols-2 gap-8">
-				<motion.div
-					client:load
-					initial={{ opacity: 0, y: 50 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5 }}
-					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
-				>
-					<Image src={PlanteImg} alt="Légumes frais de saison" class="w-full h-full object-cover" />
-				</motion.div>
-				<motion.div
-					client:load
-					initial={{ opacity: 0, y: -50 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
-					client:load
-					className="aspect-square md:aspect-[8/10] overflow-hidden"
-				>
-					<Image src={PlateImg} alt="Plat signature du chef" class="w-full h-full object-cover" />
-				</motion.div>
-			</div>
+
 			<!-- Text Content -->
 			<div class="space-y-6">
 				<div class="space-y-4">
@@ -73,6 +52,29 @@ import { motion } from "framer-motion";
 					</div>
 				</div>
 			</div>
+
+						<!-- Image Grid -->
+						<div class="grid grid-cols-2 gap-8">
+							<motion.div
+								client:load
+								initial={{ opacity: 0, y: 50 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.5 }}
+								className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
+							>
+								<Image src={PlanteImg} alt="Légumes frais de saison" class="w-full h-full object-cover" />
+							</motion.div>
+							<motion.div
+								client:load
+								initial={{ opacity: 0, y: -50 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.5, delay: 0.2 }}
+								client:load
+								className="aspect-square md:aspect-[8/10] overflow-hidden"
+							>
+								<Image src={PlateImg} alt="Plat signature du chef" class="w-full h-full object-cover" />
+							</motion.div>
+						</div>
 		</div>
 	</div>
 </section>

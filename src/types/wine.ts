@@ -1,12 +1,14 @@
 export interface Wine {
-	rouges: WineItem[];
-	blancs: WineItem[];
-	roses: WineItem[];
-}
-
-export interface WineItem {
-	name: string;
-	description: string;
-	price: number;
-	bio?: boolean;
+	_updatedAt: string;
+	image: {
+		_type: string;
+		asset: {
+			_ref: string;
+			_type: string;
+		};
+	};
+	_createdAt: string;
+	_rev: string;
+	_type: string;
+	_id: string;
 }

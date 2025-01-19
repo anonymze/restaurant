@@ -3,15 +3,13 @@ import Layout from "@/layouts/layout.astro";
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 import { Image } from "astro:assets";
-import imageUrlBuilder from "@sanity/image-url";
 import type { Event } from "@/types/event";
 
-const EVENT_QUERY = `*[_type == "event"][0]`;
+const EVENT_QUERY = `*[_type == "event"][0]{
+	"file": file.asset->url
+}`;
 const event = await sanityClient.fetch<SanityDocument<Event>>(EVENT_QUERY);
-
-// Get a pre-configured url-builder from your sanity client
-const builder = imageUrlBuilder(sanityClient);
-const imageCaviste = builder.image(event.file).url();
+console.log(event)
 ---
 
 <Layout overflow>
@@ -43,7 +41,7 @@ const imageCaviste = builder.image(event.file).url();
 		</section>
 
 		<article class="container mx-auto max-w-6xl">
-			<Image src={imageCaviste} alt="Carte des vins" width={1200} height={800} class="w-full h-auto" />
+			<Image src={event.file} alt="Carte des vins" width={1200} height={800} class="w-full h-auto" />
 		</article>
 	</main>
 </Layout>

@@ -3,9 +3,11 @@ import { cn } from "@/utils/libs/tailwind";
 import { VeganIcon } from "lucide-react";
 
 const navigation = [
-	{ name: "Présentation", href: "/presentation" },
-	{ name: "Menu", href: "/menu" },
-	{ name: "Événements", href: "/evenements" },
+	{ name: "Concept", href: "/concept" },
+	{ name: "Cuisine", href: "/cuisine" },
+	{ name: "Equipe", href: "/equipe" },
+	{ name: "Caviste", href: "/caviste" },
+	{ name: "Agenda", href: "/agenda" },
 	{ name: "Contact", href: "/contact" },
 ];
 
@@ -53,7 +55,7 @@ const currentUrl = Astro.url.pathname;
 				</svg>
 			</button>
 		</div>
-		<div class="hidden lg:flex md:gap-x-8 lg:gap-x-12">
+		<div class="hidden lg:flex md:gap-x-8 lg:gap-x-10">
 			{
 				navigation.map((item) => (
 					<a

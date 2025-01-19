@@ -1,80 +1,78 @@
 ---
-import { Card, CardContent } from "@/components/ui/card";
-
-interface TeamMember {
-	name: string;
-	role: string;
-	imageUrl: string;
-}
-
-const teamMembers: TeamMember[] = [
-	{
-		name: "Marie Dubois",
-		role: "Chef Exécutif",
-		imageUrl: "/placeholder.svg?height=400&width=400",
-	},
-	{
-		name: "Thomas Lefèvre",
-		role: "Sous-Chef",
-		imageUrl: "/placeholder.svg?height=400&width=400",
-	},
-	{
-		name: "Sophie Martin",
-		role: "Pâtissière",
-		imageUrl: "/placeholder.svg?height=400&width=400",
-	},
-	{
-		name: "Lucas Bertrand",
-		role: "Sommelier",
-		imageUrl: "/placeholder.svg?height=400&width=400",
-	},
-	{
-		name: "Émilie Rousseau",
-		role: "Responsable Salle",
-		imageUrl: "/placeholder.svg?height=400&width=400",
-	},
-	{
-		name: "Antoine Moreau",
-		role: "Chef de Partie",
-		imageUrl: "/placeholder.svg?height=400&width=400",
-	},
-];
+import { Image } from "astro:assets";
+import PlanteImg from "@/assets/images/plante.webp";
+import PlateImg from "@/assets/images/plat.webp";
+import { motion } from "framer-motion";
 ---
 
-<section class="bg-stone-50 py-10 px-4 md:py-24">
+<section class="bg-stone-50 py-10 px-4 md:pt-10 md:pb-28">
 	<div class="container mx-auto max-w-6xl">
-		<div class="text-center mb-12">
-			<h2 class="text-4xl font-serif text-stone-800 leading-tight mb-4">
-				L'équipe derrière<br />nos créations culinaires
-			</h2>
-			<div class="flex justify-center items-center gap-3 mb-6">
-				<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
-				<span class="text-sm font-medium uppercase tracking-wider text-primary"> Nos Talents </span>
-				<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+		<div class="grid gap-12 md:grid-cols-2 items-center">
+			<!-- Image Grid -->
+			<div class="grid grid-cols-2 gap-8">
+				<motion.div
+					client:load
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5 }}
+					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
+				>
+					<Image src={PlanteImg} alt="Légumes frais de saison" class="w-full h-full object-cover" />
+				</motion.div>
+				<motion.div
+					client:load
+					initial={{ opacity: 0, y: -50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.2 }}
+					client:load
+					className="aspect-square md:aspect-[8/10] overflow-hidden"
+				>
+					<Image src={PlateImg} alt="Plat signature du chef" class="w-full h-full object-cover" />
+				</motion.div>
 			</div>
-			<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
-				Chaque membre de notre équipe apporte sa passion et son expertise pour créer une expérience
-				gastronomique exceptionnelle.
-			</p>
-		</div>
-		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{
-				teamMembers.map((member) => (
-					<Card className="bg-stone-50 border-none overflow-hidden rounded-none">
-						<div class="aspect-[4/3] overflow-hidden">
-							<img
-								src={member.imageUrl}
-								alt={member.name}
-								class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-							/>
-						</div>
-						<CardContent className="p-6 text-center">
-							<h3 class="text-xl font-serif text-stone-800 mb-1">{member.name}</h3>
-							<p class="text-sm font-medium text-primary">{member.role}</p>
-						</CardContent>
-					</Card>
-				))
-			}
+			<!-- Text Content -->
+			<div class="space-y-6">
+				<div class="space-y-4">
+					<div class="flex items-center gap-3">
+						<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+						<span class="text-sm font-medium uppercase tracking-wider text-primary"> Notre Service </span>
+					</div>
+					<h2 class="text-3xl font-serif text-stone-800 leading-tight">
+						Des menus variés et mémorables <br />
+						dans votre assiette
+					</h2>
+				</div>
+				<p class="text-lg text-stone-600 leading-relaxed">
+					Les vendredis soirs, nous servons du street food fait maison selon un planning tournant :
+				</p>
+
+				<ul class="list-disc list-inside">
+					<li class="text-md text-stone-600 leading-relaxed">1er vendredi du mois : Fish n' Chips</li>
+					<li class="text-md text-stone-600 leading-relaxed">2ème vendredi du mois : Burger</li>
+					<li class="text-md text-stone-600 leading-relaxed">3ème vendredi du mois : Moules/frites (août-janvier)</li>
+					<li class="text-md text-stone-600 leading-relaxed">4ème vendredi du mois : Paella (février-juillet)</li>
+					<li class="text-md text-stone-600 leading-relaxed">5ème vendredi du mois : Curry (nous varions entre les différentes cuisines asiatiques)</li>
+				</ul>
+
+				<p class="text-lg text-stone-600 leading-relaxed">
+					Environ une fois par mois, nous organisons les <span class="font-bold">« Samedis sauvages »</span>,
+					au cours desquels nous servons un menu dégustation mettant l'accent sur les produits sauvages. Les
+					Samedi sauvages sont annoncés ici (lien « AGENDA »).
+
+					<br />
+					<br />
+					<span class="font-bold"
+						>Afin de répondre au mieux aux demandes particulières et aux allergies, nous vous serions très
+						reconnaissants de nous appeler à l'avance pour nous en informer.</span
+					>
+				</p>
+				<div class="flex flex-col gap-4 text-stone-700">
+					<div class="flex items-center gap-3">
+						<div class="h-1 w-12 bg-primary" aria-hidden="true"></div>
+						<span>Menu végétarien possible sur demande</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>

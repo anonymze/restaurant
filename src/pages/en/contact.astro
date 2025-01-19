@@ -1,0 +1,86 @@
+---
+import { Mail, Phone, MapPin } from "lucide-react";
+import Layout from "../layouts/layout.astro";
+import { EMAIL_CONTACT } from "astro:env/client";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import type { Work } from "@/types/work";
+
+const WORK_QUERY = `*[_type == "work"][0]`;
+const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
+---
+
+<Layout overflow>
+	<main class="bg-stone-50 py-16 px-4 md:py-24">
+		<div class="container mx-auto max-w-6xl space-y-12">
+			<section class="text-center mb-12" aria-labelledby="contact-title">
+				<h1 id="contact-title" class="text-4xl font-serif text-stone-800 mb-4">Contactez-nous</h1>
+				<div class="flex justify-center items-center gap-3 mb-6" role="presentation">
+					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+					<span class="text-sm font-medium uppercase tracking-wider text-primary">
+						Nous sommes à votre écoute
+					</span>
+					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+				</div>
+				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+					N'hésitez pas à nous contacter pour toute question, réservation ou demande spéciale. Notre équipe se
+					fera un plaisir de vous répondre dans les plus brefs délais.
+				</p>
+			</section>
+
+			<div class="flex flex-col items-center justify-center gap-12 md:flex-row md:items-start">
+				<section aria-labelledby="contact-info">
+					<h2 id="contact-info" class="text-2xl font-serif text-stone-800 mb-4">Informations de contact</h2>
+					<address class="not-italic">
+						<ul class="space-y-4">
+							<li class="flex items-start">
+								<MapPin className="w-6 h-6 text-primary mr-3 mt-1" aria-hidden="true" />
+								<span>3 le Fond du Barri, 81140 le Verdier</span>
+							</li>
+							<li class="flex items-center">
+								<Phone className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
+								<a href="tel:0567720086" class="!text-primary hover:!text-primary/80">05 67 72 00 86</a>
+							</li>
+							<li class="flex items-center">
+								<Mail className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
+								<a href={`mailto:${EMAIL_CONTACT}`} class="!text-primary hover:!text-primary/80">
+									{EMAIL_CONTACT}
+								</a>
+							</li>
+						</ul>
+					</address>
+				</section>
+
+				<section aria-labelledby="hours-info">
+					<h2 id="hours-info" class="text-2xl font-serif text-stone-800 mb-4">Horaires d'ouverture</h2>
+					<ul class="space-y-2">
+						<li>
+							{
+								work.days_of_work.map((working_day, idx) => {
+									return (idx > 0 ? " - " : "") + working_day;
+								})
+							}
+
+							<li>{work.starting_work} - {work.ending_work}</li>
+						</li>
+					</ul>
+				</section>
+			</div>
+
+			<p class="text-center font-bold text-xl">Pensez à réserver par téléphone !</p>
+
+			<article aria-label="Localisation" class="aspect-video overflow-hidden">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.6975934936427!2d1.839593276335543!3d43.98630303082283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12adccb806197ca9%3A0x56a155854c6fdae1!2s3%20Le%20Fond%20du%20Barri%2C%2081140%20Le%20Verdier!5e0!3m2!1sfr!2sfr!4v1736184143353!5m2!1sfr!2sfr"
+					width="100%"
+					height="100%"
+					style="border: 0;"
+					title="Carte Google Maps de notre restaurant"
+					allowfullscreen
+					loading="lazy"
+				>
+				</iframe>
+			</article>
+		</div>
+	</main>
+</Layout>

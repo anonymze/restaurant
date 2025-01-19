@@ -8,6 +8,10 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+	i18n: {
+    locales: ["fr", "en"],
+    defaultLocale: "fr",
+  },
 	site: "http://localhost:4321",
 	output: "static",
 	integrations: [

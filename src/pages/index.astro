@@ -8,6 +8,9 @@ import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
 import { VeganIcon } from "lucide-react";
 import AnimatedText from "@/components/animated-text";
+import FlagEN from "@/assets/icons/flag-en.svg";
+import FlagFR from "@/assets/icons/flag-fr.svg";
+
 const optimizedPlanteImage = await getImage({
 	src: PlanteImg,
 	format: "webp",
@@ -63,7 +66,9 @@ const optimizedPlatImage = await getImage({
 			/>
 
 			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit">
-				<h2 class="mb-3 p-1 pb-2 text-4xl text-white text-shadow backdrop-blur-xs uppercase font-serif lg:text-5xl">
+				<h2
+					class="mb-3 p-1 pb-2 text-4xl text-white text-shadow backdrop-blur-xs uppercase font-serif lg:text-5xl"
+				>
 					Notre restaurant
 				</h2>
 
@@ -112,18 +117,15 @@ const optimizedPlatImage = await getImage({
 			/>
 
 			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit">
-				<h2 class="mb-3 p-1 pb-2 text-4xl text-white text-shadow backdrop-blur-xs uppercase font-serif lg:text-5xl">
+				<h2
+					class="mb-3 p-1 pb-2 text-4xl text-white text-shadow backdrop-blur-xs uppercase font-serif lg:text-5xl"
+				>
 					Réservation
 				</h2>
 
-				<AnimatedLink
-					client:load
-					title="Redirection à la page de réservation du restaurant"
-					href="/reservation"
-					className="bg-green-700/90"
-				>
-					Réserver une table
-				</AnimatedLink>
+				<a href="/reservation">
+					<FlagEN class="w-9 h-9" />
+				</a>
 			</div>
 			<div
 				class={cn(

@@ -1,18 +1,19 @@
 ---
 import { cn } from "@/utils/libs/tailwind";
 import { VeganIcon } from "lucide-react";
-import FlagEN from '@/assets/icons/flag-en.svg';
-
-const navigation = [
-	{ name: "Concept", href: "/concept" },
-	{ name: "Cuisine", href: "/cuisine" },
-	{ name: "Equipe", href: "/equipe" },
-	{ name: "Caviste", href: "/caviste" },
-	{ name: "Agenda", href: "/agenda" },
-	{ name: "Contact", href: "/contact" },
-];
+import FlagEN from "@/assets/icons/flag-en.svg";
+import FlagFR from "@/assets/icons/flag-fr.svg";
 
 const currentUrl = Astro.url.pathname;
+
+const navigation = [
+	{ name: "Concept", href: currentUrl.startsWith("/en") ? "/en/concept" : "/concept" },
+	{ name: "Cuisine", href: currentUrl.startsWith("/en") ? "/en/cuisine" : "/cuisine" },
+	{ name: "Equipe", href: currentUrl.startsWith("/en") ? "/en/equipe" : "/equipe" },
+	{ name: "Caviste", href: currentUrl.startsWith("/en") ? "/en/caviste" : "/caviste" },
+	{ name: "Agenda", href: currentUrl.startsWith("/en") ? "/en/agenda" : "/agenda" },
+	{ name: "Contact", href: currentUrl.startsWith("/en") ? "/en/contact" : "/contact" },
+];
 ---
 
 <header class="bg-white shadow-sm">
@@ -72,12 +73,17 @@ const currentUrl = Astro.url.pathname;
 			}
 		</div>
 		<div class="hidden lg:flex md:flex-1 md:justify-end">
-			<a
-				href="/reservation"
-				class="bg-green-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-b"
-			>
-				<FlagEN width={20} height={20} />
-			</a>
+			{
+				currentUrl.startsWith("/en") ? (
+					<a href={currentUrl.replace("/en", "")}>
+						<FlagEN class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+					</a>
+				) : (
+					<a href={"/en" + currentUrl}>
+						<FlagFR class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+					</a>
+				)
+			}
 		</div>
 	</nav>
 
@@ -128,16 +134,20 @@ const currentUrl = Astro.url.pathname;
 						}
 					</div>
 					<div class="py-6">
-						<a
-							href="/reservation"
-							class="-mx-3 block px-3 py-2.5 text-base font-semibold leading-7 text-white bg-green-700 hover:bg-green-700/90"
-						>
-							Réserver une table
-						</a>
+						{
+							currentUrl.startsWith("/en") ? (
+								<a href={currentUrl.replace("/en", "")}>
+									<FlagEN class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+								</a>
+							) : (
+								<a href={"/en" + currentUrl}>
+									<FlagFR class="w-9 h-9 hover:scale-110 transition-all duration-100" />
+								</a>
+							)
+						}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </header>
-

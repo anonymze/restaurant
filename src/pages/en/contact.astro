@@ -28,9 +28,13 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</p>
 			</section>
 
-			<div class="flex flex-col items-center justify-center gap-12 md:flex-row md:items-start">
+			<div
+				class="flex flex-col items-center justify-center gap-12 max-w-2xl mx-auto md:flex-row md:items-start"
+			>
 				<section aria-labelledby="contact-info">
-					<h2 id="contact-info" class="text-2xl font-serif text-stone-800 mb-4">Informations de contact</h2>
+					<h2 id="contact-info" class="text-2xl text-center font-serif text-stone-800 mb-4">
+						Informations de contact
+					</h2>
 					<address class="not-italic">
 						<ul class="space-y-4">
 							<li class="flex items-start">
@@ -52,7 +56,9 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</section>
 
 				<section aria-labelledby="hours-info">
-					<h2 id="hours-info" class="text-2xl font-serif text-stone-800 mb-4">Horaires d'ouverture</h2>
+					<h2 id="hours-info" class="text-2xl text-center font-serif text-stone-800 mb-4">
+						Horaires d'ouverture
+					</h2>
 					<ul class="space-y-2">
 						<li>
 							{
@@ -67,7 +73,23 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</section>
 			</div>
 
-			<p class="text-center font-bold text-xl">Pensez à réserver par téléphone !</p>
+			<form class="flex flex-col items-center gap-4 max-w-2xl mx-auto">
+				<label for="email" class="font-bold text-xl">Vous souhaitez recevoir nos actualités ?</label>
+				<div class="flex gap-4 w-full">
+					<input
+						id="email"
+						name="email"
+						type="email"
+						required
+						placeholder="votre@email.com"
+						class="flex-1 border-2 border-primary py-1 px-3 rounded-xs"
+					/>
+					<button
+						class="bg-primary text-white p-2 rounded-xs disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary hover:bg-primary/90"
+						>Envoyer</button
+					>
+				</div>
+			</form>
 
 			<article aria-label="Localisation" class="aspect-video overflow-hidden">
 				<iframe
@@ -84,3 +106,62 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 		</div>
 	</main>
 </Layout>
+
+<script>
+	const form = document.querySelector("form");
+	const button = form?.querySelector("button");
+	const errorMessage = "Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
+
+	const validForm = () => {
+		if (!button) return;
+		if (!form) return;
+
+		button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+		button.disabled = true;
+
+		const message = document.createElement("p");
+		message.textContent = "Votre email a été envoyé avec succès !";
+		message.style.color = "green";
+		
+		form.appendChild(message);
+		form.reset();
+	};
+
+	window.sessionStorage.setItem("newsletter-sent", "true");
+
+	form?.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		if (window.sessionStorage.getItem("newsletter-sent")) {
+			validForm();
+			return;
+		}
+
+		const email = form.querySelector("input[name='email']") as HTMLInputElement;
+		const emailValue = email.value;
+
+		if (!emailValue) return;
+
+		try {
+			fetch("/api/send-email", {
+				method: "POST",
+				body: JSON.stringify({
+					email: emailValue,
+				}),
+			})
+				.then((response) => {
+					if (response.ok) {
+						window.sessionStorage.setItem("newsletter-sent", "true");
+						validForm();
+					} else {
+						alert(errorMessage);
+					}
+				})
+				.catch((_) => {
+					alert(errorMessage);
+				});
+		} catch (error) {
+			alert(errorMessage);
+		}
+	});
+</script>

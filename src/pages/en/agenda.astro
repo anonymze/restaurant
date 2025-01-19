@@ -11,7 +11,7 @@ const event = await sanityClient.fetch<SanityDocument<Event>>(EVENT_QUERY);
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(sanityClient);
-const imageCaviste = builder.image(event.image).url();
+const imageCaviste = builder.image(event.file).url();
 ---
 
 <Layout overflow>

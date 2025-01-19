@@ -11,7 +11,7 @@ const wine = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
 
 	// Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(sanityClient)
-const imageCaviste = builder.image(wine.image).url()
+const imageCaviste = builder.image(wine.file).url()
 ---
 
 <Layout overflow>

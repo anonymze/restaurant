@@ -4,9 +4,13 @@ import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 import type { Team } from "@/types/team";
 import { Card, CardContent } from "@/components/ui/card";
+import imageUrlBuilder from '@sanity/image-url';
 
 const TEAM_QUERY = `*[_type == "team"]`;
 const team = await sanityClient.fetch<SanityDocument<Team[]>>(TEAM_QUERY);
+
+// Get a pre-configured url-builder from your sanity client
+const builder = imageUrlBuilder(sanityClient)
 ---
 
 <Layout overflow>
@@ -35,7 +39,7 @@ const team = await sanityClient.fetch<SanityDocument<Team[]>>(TEAM_QUERY);
 							<Card className="bg-stone-50 border-none overflow-hidden rounded-none">
 								<div class="aspect-[4/3] overflow-hidden">
 									<img
-										src={member.image}
+										src={builder.image(member.image).url()}
 										alt={member.lastname + " " + member.firstname}
 										class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
 									/>

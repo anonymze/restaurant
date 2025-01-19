@@ -5,7 +5,7 @@ import type { SanityDocument } from "@sanity/client";
 import { Image } from "astro:assets";
 import type { Event } from "@/types/event";
 
-const EVENT_QUERY = `*[_type == "event"][0]{
+const EVENT_QUERY = `*[_type == "agenda"][0]{
 	"file": file.asset->url
 }`;
 const event = await sanityClient.fetch<SanityDocument<Event>>(EVENT_QUERY);

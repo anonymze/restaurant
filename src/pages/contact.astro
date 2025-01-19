@@ -28,7 +28,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</p>
 			</section>
 
-			<div class="flex flex-col items-center justify-center gap-12 md:flex-row md:items-start">
+			<div class="flex flex-col items-center justify-center gap-12 max-w-2xl mx-auto md:flex-row md:items-start">
 				<section aria-labelledby="contact-info">
 					<h2 id="contact-info" class="text-2xl font-serif text-stone-800 mb-4">Informations de contact</h2>
 					<address class="not-italic">
@@ -67,7 +67,18 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</section>
 			</div>
 
-			<p class="text-center font-bold text-xl">Pensez à réserver par téléphone !</p>
+			<div class="flex flex-col items-center gap-4 max-w-2xl mx-auto">
+				<label for="email" class="font-bold text-xl">Vous souhaitez recevoir nos actualités ?</label>
+				<div class="flex gap-4 w-full">
+					<input
+						id="email"
+						name="email"
+						placeholder="votre@email.com"
+						class="flex-1 border-2 border-primary p-2 rounded-md"
+					/>
+					<button class="bg-primary text-white p-3 rounded-md">Envoyer</button>
+				</div>
+			</div>
 
 			<article aria-label="Localisation" class="aspect-video overflow-hidden">
 				<iframe
@@ -84,3 +95,5 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 		</div>
 	</main>
 </Layout>
+
+<script></script>

@@ -6,8 +6,8 @@ import PlatImg from "@/assets/images/plat.webp";
 import AnimatedLink from "@/components/animated-link";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
-import { VeganIcon } from "lucide-react";
 import AnimatedText from "@/components/animated-text";
+import LogoSmall from "@/assets/images/logo_small.webp";
 import FlagEN from "@/assets/icons/flag-en.svg";
 import FlagFR from "@/assets/icons/flag-fr.svg";
 
@@ -99,9 +99,7 @@ const optimizedPlatImage = await getImage({
 				<AnimatedText client:load delay={0.3}>Herbe</AnimatedText>
 
 				<AnimatedText client:load delay={0.6}>
-					<VeganIcon
-						className="mb-1 ml-1 w-6 h-6 min-h-6 min-w-6 text-green-700 lg:w-7 lg:h-7 lg:mb-2 lg:ml-2 lg:stroke-[2.5]"
-					/>
+					<Image src={LogoSmall} alt="Logo du restaurant" class="w-auto h-12 ml-2 mb-1 lg:h-18 lg:mb-2"  />
 				</AnimatedText>
 			</div>
 

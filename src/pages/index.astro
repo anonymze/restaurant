@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
-import PlanteImg from "@/assets/images/plante.webp";
+import EspaceImg from "@/assets/images/espace.webp";
 import PlatImg from "@/assets/images/plat.webp";
 import AnimatedLink from "@/components/animated-link";
 import { getImage } from "astro:assets";
@@ -12,9 +12,9 @@ import FlagEN from "@/assets/icons/flag-en.svg";
 import FlagFR from "@/assets/icons/flag-fr.svg";
 
 const optimizedPlanteImage = await getImage({
-	src: PlanteImg,
+	src: EspaceImg,
 	format: "webp",
-	widths: [240, 540, 720, 980, PlanteImg.width],
+	widths: [240, 540, 720, 980, EspaceImg.width],
 	loading: "eager",
 });
 
@@ -33,7 +33,7 @@ const optimizedPlatImage = await getImage({
 			href={optimizedPlanteImage.src}
 			as="image"
 			imagesrcset={optimizedPlanteImage.srcSet.attribute}
-			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${PlanteImg.width}px`}
+			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${EspaceImg.width}px`}
 		/>
 		<link
 			rel="preload"
@@ -56,9 +56,9 @@ const optimizedPlatImage = await getImage({
 
 			<Image
 				src={optimizedPlanteImage.src}
-				width={PlanteImg.width}
-				height={PlanteImg.height}
-				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${PlanteImg.width}px`}
+				width={EspaceImg.width}
+				height={EspaceImg.height}
+				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${EspaceImg.width}px`}
 				alt="Un plat du restaurant"
 				class="w-full h-full object-cover"
 				loading="eager"

@@ -8,6 +8,8 @@ import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
 import LogoSmall from "@/assets/images/logo_small.webp";
 import AnimatedText from "@/components/animated-text";
+import FlagEN from "@/assets/icons/flag-en.svg";
+import FlagFR from "@/assets/icons/flag-fr.svg";
 
 const optimizedPlanteImage = await getImage({
 	src: EspaceImg,
@@ -42,8 +44,14 @@ const optimizedPlatImage = await getImage({
 		/>
 	</Fragment>
 
-	<main class="flex flex-col w-full h-full lg:flex-row">
+	<main class="relative flex flex-col w-full h-full lg:flex-row">
 		<h1 class="sr-only">Mauvaise herbe restaurant</h1>
+
+		<a class="absolute top-4 right-6 z-10" href="/">
+			<FlagFR class="w-12 h-12  hover:scale-110 transition-all duration-200" />
+		</a>
+
+
 		<div class="relative flex-1 h-1/2 lg:h-full">
 			<AnimatedText
 				client:load
@@ -73,7 +81,7 @@ const optimizedPlatImage = await getImage({
 				<AnimatedLink
 					client:load
 					title="Redirection à la page de la carte du restaurant"
-					href="/concept"
+					href="/en/concept"
 					className="bg-primary/90"
 				>
 					Voir la présentation de notre restaurant

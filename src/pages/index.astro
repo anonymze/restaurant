@@ -2,14 +2,12 @@
 import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import EspaceImg from "@/assets/images/espace.webp";
-import PlatImg from "@/assets/images/plat.webp";
+import Cave2Img from "@/assets/images/plat.webp";
 import AnimatedLink from "@/components/animated-link";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
 import AnimatedText from "@/components/animated-text";
 import LogoSmall from "@/assets/images/logo_small.webp";
-import FlagEN from "@/assets/icons/flag-en.svg";
-import FlagFR from "@/assets/icons/flag-fr.svg";
 
 const optimizedPlanteImage = await getImage({
 	src: EspaceImg,
@@ -19,9 +17,9 @@ const optimizedPlanteImage = await getImage({
 });
 
 const optimizedPlatImage = await getImage({
-	src: PlatImg,
+	src: Cave2Img,
 	format: "webp",
-	widths: [240, 540, 720, 980, PlatImg.width],
+	widths: [240, 540, 720, 980, Cave2Img.width],
 	loading: "eager",
 });
 ---
@@ -40,7 +38,7 @@ const optimizedPlatImage = await getImage({
 			href={optimizedPlatImage.src}
 			as="image"
 			imagesrcset={optimizedPlatImage.srcSet.attribute}
-			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${PlatImg.width}px`}
+			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${Cave2Img.width}px`}
 		/>
 	</Fragment>
 
@@ -105,9 +103,9 @@ const optimizedPlatImage = await getImage({
 
 			<Image
 				src={optimizedPlatImage.src}
-				width={PlatImg.width}
-				height={PlatImg.height}
-				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${PlatImg.width}px`}
+				width={Cave2Img.width}
+				height={Cave2Img.height}
+				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${Cave2Img.width}px`}
 				alt="Un plat du restaurant"
 				class="w-full h-full object-cover"
 				loading="eager"
@@ -121,9 +119,14 @@ const optimizedPlatImage = await getImage({
 					Réservation
 				</h2>
 
-				<a href="/reservation">
-					<FlagEN class="w-9 h-9" />
-				</a>
+				<AnimatedLink
+					client:load
+					title="Redirection à la page de la carte du restaurant"
+					href="/contact"
+					className="bg-green-700/90"
+				>
+					Contactez-nous
+				</AnimatedLink>
 			</div>
 			<div
 				class={cn(

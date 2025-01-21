@@ -20,7 +20,7 @@
 			"dest": "_render"
 		},
 		{
-			"src": "^\\/api\\/email\\/([^/]+?)\\.json\\/?$",
+			"src": "^\\/api\\/email\\/([^/]+?)\\/?$",
 			"dest": "_render"
 		}
 	]

@@ -23,7 +23,7 @@ export default defineConfig({
 		sanity({
 			projectId: "ld33nh8g",
 			dataset: "production",
-			useCdn: false, // for static builds
+			useCdn: false, // for static builds, better for development when content changes frequently
 		}),
 	],
 	vite: {

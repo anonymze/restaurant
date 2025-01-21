@@ -24,7 +24,7 @@ export default function GET() {
 
 	return Response.json({
 		message: "Deploy triggered successfully",
-		projectId: process.env.VERCEL_PROJECT_ID,
-		deployHookToken: process.env.VERCEL_DEPLOY_HOOK_TOKEN,
+		// projectId: process.env.VERCEL_PROJECT_ID,
+		// deployHookToken: process.env.VERCEL_DEPLOY_HOOK_TOKEN,
 	});
 }

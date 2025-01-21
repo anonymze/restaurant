@@ -2,10 +2,10 @@ import type { APIContext } from "astro";
 
 
 // the function can't be asynchrone 
-export function GET({ request }: APIContext) {
+export function GET({params, request}: any) {
 
-	console.log(request, { depth: null })
-	console.log(request.url)
+	console.log(params);
+	console.log(request)
 	// try {
 	//   const response = await fetch(
 	//     `https://api.vercel.com/v1/projects/${process.env.VERCEL_PROJECT_ID}/deployments`, 

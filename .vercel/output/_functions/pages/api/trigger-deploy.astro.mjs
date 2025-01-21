@@ -1,1 +1,20 @@
-// Contents removed by Astro as it's used for prerendering only
+export { renderers } from '../../renderers.mjs';
+
+const prerender = false;
+const GET = ({ params, request }) => {
+  return new Response(
+    JSON.stringify({
+      message: "This was a GET!"
+    })
+  );
+};
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  GET,
+  prerender
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

@@ -6,48 +6,44 @@ import sgMail from "@sendgrid/mail";
  * @returns {Response}
  */
 export async function POST(req) {
-	console.log(req.method);
-	console.log(await req.json());
-	console.log(sgMail)
+	const { email } = await req.json();
+	console.log(email);
 
-	// console.log(data);
+	if (!email) {
+		return new Response("KO", { status: 400 });
+	}
 
-	// if (!data.email) {
-	// 	return new Response("KO", { status: 400 });
-	// }
-	// console.log(data.email);
-
-	// try {
-	// 	await sendEmailTo({
-	// 		apiKey: process.env.SENDGRID_API_KEY,
-	// 		sendEmailTo: data.email,
-	// 		templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
-	// 		data: {},
-	// 	});
-	// } catch (error) { 
-	// 	return new Response("KO", { status: 500 });
-	// }
+	try {
+		await sendEmailTo({
+			apiKey: process.env.SENDGRID_API_KEY,
+			sendEmailTo: data.email,
+			templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
+			data: {},
+		});
+	} catch (error) { 
+		return new Response("KO", { status: 500 });
+	}
 
 	return new Response("OK", { status: 200 });
 };
 
-// export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => {
-// 	const msg = {
-// 		// TODO "email restaurateur"
-// 		to: "metier.yann@gmail.com",
-// 		// TODO "email domain name"
-// 		from: sendEmailTo,
-// 		templateId,
-// 		dynamic_template_data: data,
-// 	};
+export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => {
+	const msg = {
+		// TODO "email restaurateur"
+		to: "metier.yann@gmail.com",
+		// TODO "email domain name"
+		from: sendEmailTo,
+		templateId,
+		dynamic_template_data: data,
+	};
 
-// 	sgMail.setApiKey(apiKey);
+	sgMail.setApiKey(apiKey);
 
-// 	return sgMail.send(msg).then((response) => {
-// 		console.log(response);
-// 		return {
-// 			statusCode: response[0].statusCode,
-// 			headers: response[0].headers,
-// 		};
-// 	});
-// };
+	return sgMail.send(msg).then((response) => {
+		console.log(response);
+		return {
+			statusCode: response[0].statusCode,
+			headers: response[0].headers,
+		};
+	});
+};

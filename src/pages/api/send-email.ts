@@ -5,7 +5,7 @@
  * @param {Request} req
  * @returns {Response}
  */
-export async function GET(req) {
+export default async function handler(req: Request) {
 	// const { email } = await req.json();
 	// console.log(email);
 
@@ -29,33 +29,7 @@ export async function GET(req) {
 	return new Response("OK", { status: 200 });
 };
 
-/**
- * @param {Request} req
- * @returns {Response}
- */
-export async function POST(req) {
-	// const { email } = await req.json();
-	// console.log(email);
 
-	// if (!email) {
-	// 	return new Response("KO", { status: 400 });
-	// }
-
-	// try {
-	// 	await sendEmailTo({
-	// 		apiKey: process.env.SENDGRID_API_KEY,
-	// 		templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
-	// 		data: {
-	// 			email,
-	// 		},
-	// 	});
-	// } catch (error) { 
-	// 	console.log(error);
-	// 	return new Response("KO", { status: 500 });
-	// }
-
-	return new Response("OK", { status: 200 });
-};
 // export const sendEmailTo = async ({ apiKey, templateId, data }) => {
 // 	const msg = {
 // 		// TODO "email restaurateur"

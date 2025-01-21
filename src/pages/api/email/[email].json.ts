@@ -1,9 +1,8 @@
 export const prerender = false;
 
 export async function GET({ params, request }: any) {
-  return Response.json({
+  return new Response(JSON.stringify({
 		message: "OK",
-		params,
 		url: request.url,
-	});
+	}))
 }

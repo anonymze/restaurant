@@ -2,11 +2,11 @@ export { renderers } from '../../../renderers.mjs';
 
 const prerender = false;
 async function GET({ params, request }) {
-  return Response.json({
+  return new Response(JSON.stringify({
     message: "OK",
     params,
     url: request.url
-  });
+  }));
 }
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

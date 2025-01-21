@@ -157,9 +157,6 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 						alert(errorMessage);
 					}
 				})
-				.catch((_) => {
-					alert(errorMessage);
-				});
 		} catch (error) {
 			alert(errorMessage);
 		}

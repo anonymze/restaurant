@@ -1,5 +1,4 @@
 export default async function handler() {
-	console.log('coucou???');
 	console.log(process.env.VERCEL_PROJECT_ID);
   try {
     const response = await fetch(

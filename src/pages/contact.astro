@@ -110,7 +110,8 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 <script>
 	const form = document.querySelector("form");
 	const button = form?.querySelector("button");
-	const errorMessage = "Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
+	const errorMessage =
+		"Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
 
 	const validForm = () => {
 		if (!button) return;
@@ -122,7 +123,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 		const message = document.createElement("p");
 		message.textContent = "Votre email a été envoyé avec succès !";
 		message.style.color = "green";
-		
+
 		form.appendChild(message);
 		form.reset();
 	};
@@ -148,18 +149,14 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				body: JSON.stringify({
 					email: emailValue,
 				}),
-			})
-				.then((response) => {
-					if (response.ok) {
-						window.sessionStorage.setItem("newsletter-sent", "true");
-						validForm();
-					} else {
-						alert(errorMessage);
-					}
-				})
-				.catch((_) => {
+			}).then((response) => {
+				if (response.ok) {
+					window.sessionStorage.setItem("newsletter-sent", "true");
+					validForm();
+				} else {
 					alert(errorMessage);
-				});
+				}
+			});
 		} catch (error) {
 			alert(errorMessage);
 		}

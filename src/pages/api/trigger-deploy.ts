@@ -1,7 +1,4 @@
-import type { APIContext } from "astro";
-
-
-// the function can't be asynchrone
+// the function can't be asynchrone on "static" mode i guess
 export function GET() {
 	fetch("https://api.vercel.com/v1/integrations/deploy/prj_5IzJAWAbUpd7AJpRAWqRLDPkP91T/gUWxx2NKgE");
 

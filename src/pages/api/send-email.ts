@@ -1,8 +1,7 @@
 // import sgMail from "@sendgrid/mail";
-import type { APIRoute } from "astro";
 
 
-export default async function handler(req: APIRoute) {
+export default async function handler(req: Request) {
 
 	// const { email } = await req.json();
 	// console.log(email);

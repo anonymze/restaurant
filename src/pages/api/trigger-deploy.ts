@@ -1,9 +1,4 @@
-
-/**
- * @param {Request} req
- * @returns {Response}
- */
-export async function GET(req) {
+export default async function handler(req: Request) {
 
 
   // try {

@@ -1,6 +1,6 @@
 export async function GET() {
-	console.log(process.env.VERCEL_PROJECT_ID);
-  console.log(process.env.VERCEL_DEPLOY_HOOK_TOKEN)
+
+  
   // try {
   //   const response = await fetch(
   //     `https://api.vercel.com/v1/projects/${process.env.VERCEL_PROJECT_ID}/deployments`, 
@@ -24,7 +24,5 @@ export async function GET() {
 
 	return Response.json({
 		message: "Deploy triggered successfully",
-		projectId: process.env.VERCEL_PROJECT_ID,
-		deployHookToken: process.env.VERCEL_DEPLOY_HOOK_TOKEN,
 	});
 }

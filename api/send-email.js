@@ -16,12 +16,9 @@ export const POST = async (req) => {
 	try {
 		await sendEmailTo({
 			apiKey: process.env.SENDGRID_API_KEY,
-			sendEmailTo: "metier.yann@gmail.com",
+			sendEmailTo: data.email,
 			templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
-			data: {
-				name: "John Doe",
-				email: "john.doe@example.com",
-			},
+			data: {},
 		});
 	} catch (error) {
 		return new Response("KO", { status: 500 });
@@ -35,7 +32,7 @@ export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => 
 		// TODO "email restaurateur"
 		to: "metier.yann@gmail.com",
 		// TODO "email domain name"
-		from: "ici",
+		from: sendEmailTo,
 		templateId,
 		dynamic_template_data: data,
 	};

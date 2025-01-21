@@ -13,18 +13,18 @@ export async function POST(req) {
 		return new Response("KO", { status: 400 });
 	}
 
-	try {
-		await sendEmailTo({
-			apiKey: process.env.SENDGRID_API_KEY,
-			templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
-			data: {
-				email,
-			},
-		});
-	} catch (error) { 
-		console.log(error);
-		return new Response("KO", { status: 500 });
-	}
+	// try {
+	// 	await sendEmailTo({
+	// 		apiKey: process.env.SENDGRID_API_KEY,
+	// 		templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
+	// 		data: {
+	// 			email,
+	// 		},
+	// 	});
+	// } catch (error) { 
+	// 	console.log(error);
+	// 	return new Response("KO", { status: 500 });
+	// }
 
 	return new Response("OK", { status: 200 });
 };

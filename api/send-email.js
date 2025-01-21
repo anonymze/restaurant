@@ -1,9 +1,13 @@
 import sgMail from "@sendgrid/mail";
 
 
+/**
+ * @param {Request} req
+ * @returns {Response}
+ */
 export const POST = async (req) => {
 	console.dir(req, { depth: null });
-	// const data = await req.json();
+	const data = req.body();
 
 	// console.log(data);
 

@@ -3,7 +3,7 @@
  * @param {Request} req
  * @returns {Response}
  */
-export async function GET(req) {
+export async function GET(req: any) {
 
   // try {
   //   const response = await fetch(

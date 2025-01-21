@@ -15,7 +15,11 @@ export default defineConfig({
   },
 	// TODO
 	site: "http://localhost:4321",
-	adapter: vercelStatic({}),
+	adapter: vercelStatic({
+		webAnalytics: {
+			enabled: true,
+		},
+	}),
 	output: "static",
 	integrations: [
 		react(),

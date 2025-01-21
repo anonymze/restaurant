@@ -1,0 +1,1 @@
+import{j as a,m as o}from"./proxy.CT_E1ibJ.js";import"./index.Dy6lLLXr.js";function r({children:i,className:n,delay:t=0}){return a.jsx(o.span,{initial:{opacity:0,y:-10},animate:{opacity:1,y:0},transition:{y:{type:"spring",stiffness:80,damping:6,delay:t},opacity:{duration:.2,delay:t}},className:n,children:i})}export{r as default};

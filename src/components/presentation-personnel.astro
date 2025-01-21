@@ -62,17 +62,16 @@ import { motion } from "framer-motion";
 								transition={{ duration: 0.5 }}
 								className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
 							>
-								<Image src={CuissonImg} alt="Légumes frais de saison" class="w-full h-full object-cover" />
+								<Image src={CuissonImg} loading="eager" fetchpriority="high" alt="Cuisson d'un aliment" class="w-full h-full object-cover" />
 							</motion.div>
 							<motion.div
-								client:load
+							client:load
 								initial={{ opacity: 0, y: -50 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: 0.2 }}
-								client:load
 								className="aspect-square md:aspect-[8/10] overflow-hidden"
 							>
-								<Image src={Dessert2Img} alt="Plat signature du chef" class="w-full h-full object-cover" />
+								<Image src={Dessert2Img} loading="eager" fetchpriority="high" alt="Dessert avec chantilly" class="w-full h-full object-cover" />
 							</motion.div>
 						</div>
 		</div>

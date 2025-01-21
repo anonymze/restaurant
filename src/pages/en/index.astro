@@ -6,9 +6,8 @@ import Cave2Img from "@/assets/images/plat.webp";
 import AnimatedLink from "@/components/animated-link";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
-import LogoSmall from "@/assets/images/logo_small.webp";
 import AnimatedText from "@/components/animated-text";
-import FlagEN from "@/assets/icons/flag-en.svg";
+import LogoSmall from "@/assets/images/logo_small.webp";
 import FlagFR from "@/assets/icons/flag-fr.svg";
 
 const optimizedPlanteImage = await getImage({
@@ -47,10 +46,9 @@ const optimizedPlatImage = await getImage({
 	<main class="relative flex flex-col w-full h-full lg:flex-row">
 		<h1 class="sr-only">Mauvaise herbe restaurant</h1>
 
-		<a class="absolute top-4 right-6 z-10" href="/">
+		<a class="absolute top-4 right-6 z-10" href="/en">
 			<FlagFR class="w-12 h-12  hover:scale-110 transition-all duration-200" />
 		</a>
-
 
 		<div class="relative flex-1 h-1/2 lg:h-full">
 			<AnimatedText
@@ -62,13 +60,13 @@ const optimizedPlatImage = await getImage({
 
 			<Image
 				src={optimizedPlanteImage.src}
-				width={EspaceImg.width}
-				height={EspaceImg.height}
+				width={980}
+				height={1200}
 				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${EspaceImg.width}px`}
 				alt="Un plat du restaurant"
-				class="w-full h-full object-cover"
-				loading="eager"
+				class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
 				fetchpriority="high"
+				onload="this.classList.remove('opacity-0')"
 			/>
 
 			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit">
@@ -105,19 +103,21 @@ const optimizedPlatImage = await getImage({
 				<AnimatedText client:load delay={0.3}>Herbe</AnimatedText>
 
 				<AnimatedText client:load delay={0.6}>
-					<Image src={LogoSmall} alt="Logo du restaurant" width={40} class="ml-3 mb-2" />
+					<Image src={LogoSmall} alt="Logo du restaurant" class="w-auto h-12 ml-2 mb-1 lg:h-18 lg:mb-2" style={{
+						filter: "drop-shadow(3px 6px 6px #000)"
+					}}  />
 				</AnimatedText>
 			</div>
 
 			<Image
 				src={optimizedPlatImage.src}
-				width={Cave2Img.width}
-				height={Cave2Img.height}
+				width={980}
+				height={1200}
 				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${Cave2Img.width}px`}
 				alt="Un plat du restaurant"
-				class="w-full h-full object-cover"
-				loading="eager"
+				class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
 				fetchpriority="high"
+				onload="this.classList.remove('opacity-0')"
 			/>
 
 			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit">

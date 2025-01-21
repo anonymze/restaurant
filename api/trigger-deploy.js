@@ -1,6 +1,11 @@
-export async function GET() {
 
-  
+/**
+ * @param {Request} req
+ * @returns {Response}
+ */
+export async function GET(req) {
+
+
   // try {
   //   const response = await fetch(
   //     `https://api.vercel.com/v1/projects/${process.env.VERCEL_PROJECT_ID}/deployments`, 

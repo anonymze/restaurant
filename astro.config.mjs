@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
-import vercelStatic from "@astrojs/vercel/static";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
@@ -15,7 +15,7 @@ export default defineConfig({
   },
 	// TODO
 	site: "http://localhost:4321",
-	adapter: vercelStatic({
+	adapter: vercel({
 		webAnalytics: {
 			enabled: true,
 		},

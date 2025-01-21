@@ -1,13 +1,13 @@
 import { renderers } from './renderers.mjs';
 import { c as createExports } from './chunks/entrypoint_W4ajzhnU.mjs';
-import { manifest } from './manifest_Bs4b3eA0.mjs';
+import { manifest } from './manifest_C0XSFZtb.mjs';
 
 const serverIslandMap = new Map([
 ]);;
 
 const _page0 = () => import('./pages/_image.astro.mjs');
 const _page1 = () => import('./pages/agenda.astro.mjs');
-const _page2 = () => import('./pages/api/email/_email_.astro.mjs');
+const _page2 = () => import('./pages/api/email/_email_.json.astro.mjs');
 const _page3 = () => import('./pages/api/trigger-deploy.astro.mjs');
 const _page4 = () => import('./pages/caviste.astro.mjs');
 const _page5 = () => import('./pages/concept.astro.mjs');
@@ -25,7 +25,7 @@ const _page16 = () => import('./pages/index.astro.mjs');
 const pageMap = new Map([
     ["node_modules/.pnpm/astro@5.1.2_jiti@2.4.2_lightningcss@1.28.2_rollup@4.30.0_terser@5.37.0_typescript@5.7.2_yaml@2.7.0/node_modules/astro/dist/assets/endpoint/generic.js", _page0],
     ["src/pages/agenda.astro", _page1],
-    ["src/pages/api/email/[email].ts", _page2],
+    ["src/pages/api/email/[email].json.ts", _page2],
     ["src/pages/api/trigger-deploy.ts", _page3],
     ["src/pages/caviste.astro", _page4],
     ["src/pages/concept.astro", _page5],
@@ -49,7 +49,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "25d6336d-2a05-4fe2-85c3-383f214023a7",
+    "middlewareSecret": "70fd40fa-6816-4aad-a79e-8c98237177b7",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);

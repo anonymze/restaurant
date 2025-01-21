@@ -3,8 +3,7 @@ export { renderers } from '../../../renderers.mjs';
 const prerender = false;
 async function GET({ params, request }) {
   return new Response(JSON.stringify({
-    message: "OK",
-    url: request.url
+    message: "OK"
   }));
 }
 

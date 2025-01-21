@@ -27,12 +27,12 @@ export async function POST(req) {
 	return new Response("OK", { status: 200 });
 };
 
-export const sendEmailTo = async ({ apiKey, sendEmailTo, templateId, data }) => {
+export const sendEmailTo = async ({ apiKey, templateId, data }) => {
 	const msg = {
 		// TODO "email restaurateur"
 		to: "metier.yann@gmail.com",
 		// TODO "email domain name"
-		from: sendEmailTo,
+		from: "metier.game@gmail.com",
 		templateId,
 		dynamic_template_data: data,
 	};

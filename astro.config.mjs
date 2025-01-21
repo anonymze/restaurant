@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
+import vercelStatic from "@astrojs/vercel/static";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import sanity from "@sanity/astro";
@@ -12,7 +13,9 @@ export default defineConfig({
     locales: ["fr", "en"],
     defaultLocale: "fr",
   },
+	// TODO
 	site: "http://localhost:4321",
+	adapter: vercelStatic({}),
 	output: "static",
 	integrations: [
 		react(),

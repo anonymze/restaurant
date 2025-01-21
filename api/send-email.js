@@ -5,7 +5,7 @@ import sgMail from "@sendgrid/mail";
  * @param {Request} req
  * @returns {Response}
  */
-export const POST = async (req) => {
+export async function POST(req) {
 	console.log(req.method);
 	console.log(await req.json());
 	console.log(sgMail)

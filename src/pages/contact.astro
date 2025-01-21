@@ -136,7 +136,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 			return;
 		}
 
-		const email = form.querySelector("input[name='email']") as HTMLInputElement;
+		const email = form.querySelector("input[name='email']");
 		const emailValue = email.value;
 
 		if (!emailValue) return;

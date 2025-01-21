@@ -1,7 +1,7 @@
-import type { APIContext } from "astro";
+import type { APIContext, APIRoute, } from "astro";
 
 
-export async function GET({ request }: APIContext) {
+export function GET({ request }: APIContext): APIRoute {
 	console.log(request);
 
 	// try {

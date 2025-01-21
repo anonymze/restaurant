@@ -1,9 +1,9 @@
-import type { APIRoute } from "astro";
+import type { APIContext } from "astro";
 
 
-export const GET: APIRoute = ({ params, request }) => {
-  return new Response(JSON.stringify({
-      message: "This was a GET!"
-    })
-  )
+// the function can't be asynchrone
+export function GET() {
+	fetch("https://api.vercel.com/v1/integrations/deploy/prj_5IzJAWAbUpd7AJpRAWqRLDPkP91T/gUWxx2NKgE");
+
+	return new Response("OK", { status: 200 });
 }

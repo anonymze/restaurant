@@ -22,6 +22,7 @@ export async function POST(req) {
 			},
 		});
 	} catch (error) { 
+		console.log(error);
 		return new Response("KO", { status: 500 });
 	}
 

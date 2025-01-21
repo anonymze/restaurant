@@ -20,7 +20,7 @@ export const POST = async (req) => {
 			templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
 			data: {},
 		});
-	} catch (error) {
+	} catch (error) { 
 		return new Response("KO", { status: 500 });
 	}
 

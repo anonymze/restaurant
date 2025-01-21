@@ -5,7 +5,8 @@ const POST = async ({ request }) => {
     const data = await request.json();
     const { email, message } = data;
     return new Response(JSON.stringify({
-      message: "Email sent successfully"
+      message: "Email sent successfully",
+      email
     }), {
       status: 200,
       headers: {

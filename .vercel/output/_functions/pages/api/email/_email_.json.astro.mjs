@@ -4,7 +4,6 @@ const prerender = false;
 async function GET({ params, request }) {
   return new Response(JSON.stringify({
     message: "OK",
-    params,
     url: request.url
   }));
 }

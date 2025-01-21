@@ -5,7 +5,7 @@
  * @param {Request} req
  * @returns {Response}
  */
-export async function POST(req) {
+export async function GET(req) {
 	// const { email } = await req.json();
 	// console.log(email);
 

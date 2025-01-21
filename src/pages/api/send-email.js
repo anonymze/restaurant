@@ -1,4 +1,4 @@
-import sgMail from "@sendgrid/mail";
+// import sgMail from "@sendgrid/mail";
 
 
 /**
@@ -6,12 +6,12 @@ import sgMail from "@sendgrid/mail";
  * @returns {Response}
  */
 export async function POST(req) {
-	const { email } = await req.json();
-	console.log(email);
+	// const { email } = await req.json();
+	// console.log(email);
 
-	if (!email) {
-		return new Response("KO", { status: 400 });
-	}
+	// if (!email) {
+	// 	return new Response("KO", { status: 400 });
+	// }
 
 	// try {
 	// 	await sendEmailTo({

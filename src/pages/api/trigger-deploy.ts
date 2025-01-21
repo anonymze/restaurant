@@ -1,8 +1,10 @@
-import type { APIContext, APIRoute, } from "astro";
+import type { APIContext } from "astro";
 
 
-export function GET({ request }: APIContext): APIRoute {
+export async function GET({ request }: APIContext) {
 	console.log(request.url);
+
+	await new Promise((resolve) => setTimeout(resolve, 5000));
 
 	// try {
 	//   const response = await fetch(
@@ -27,7 +29,6 @@ export function GET({ request }: APIContext): APIRoute {
 
 	return Response.json({
 		message: "Deploy triggered successfully",
-		url: request.url,
 	});
 }
 

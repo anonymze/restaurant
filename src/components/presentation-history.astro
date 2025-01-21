@@ -12,18 +12,18 @@ import { motion } from "framer-motion";
 			<div class="grid grid-cols-2 gap-8">
 				<motion.div
 					client:load
-					initial={{ y: 50 }}
-					animate={{ y: 0 }}
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
 					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
 				>
 					<Image src={TablesImg} loading="eager" fetchpriority="high" alt="Tables du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 				<motion.div
-					initial={{ y: -50 }}
-					animate={{ y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
 					client:load
+					initial={{ opacity: 0, y: -50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.2 }}
 					className="aspect-square md:aspect-[8/10] overflow-hidden"
 				>
 					<Image src={EclairageImg} loading="eager" fetchpriority="high" alt="Comptoir du restaurant" class="w-full h-full object-cover" />

@@ -7,14 +7,13 @@ import sgMail from "@sendgrid/mail";
  */
 export const POST = async (req) => {
 	console.dir(req, { depth: null });
-	const data = req.body();
+	console.log(req.method);
 
 	// console.log(data);
 
 	// if (!data.email) {
 	// 	return new Response("KO", { status: 400 });
 	// }
-
 	// console.log(data.email);
 
 	// try {

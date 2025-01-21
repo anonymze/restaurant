@@ -107,7 +107,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 	</main>
 </Layout>
 
-<script>
+<script is:inline>
 		console.log("icicicicici")
 	const form = document.querySelector("form");
 	const button = form?.querySelector("button");

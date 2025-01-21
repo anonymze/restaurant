@@ -20,7 +20,7 @@ export default defineConfig({
 			enabled: true,
 		},
 	}),
-	output: "server",
+	output: "static",
 	integrations: [
 		react(),
 		sitemap(),

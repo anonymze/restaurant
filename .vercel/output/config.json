@@ -10,6 +10,18 @@
 		},
 		{
 			"handle": "filesystem"
+		},
+		{
+			"src": "^\\/_server-islands\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/_image\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/api\\/email\\/([^/]+?)\\/?$",
+			"dest": "_render"
 		}
 	]
 }

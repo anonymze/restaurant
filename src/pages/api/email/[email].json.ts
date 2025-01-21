@@ -9,3 +9,4 @@ export const GET: APIRoute = ({ params, request }) => {
     })
   )
 }
+

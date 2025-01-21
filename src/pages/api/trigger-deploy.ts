@@ -29,6 +29,7 @@ export async function GET({ request }: APIContext) {
 
 	return Response.json({
 		message: "Deploy triggered successfully",
+		url: request.url,
 	});
 }
 

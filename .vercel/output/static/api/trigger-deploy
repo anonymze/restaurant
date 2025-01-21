@@ -1,1 +1,1 @@
-{"message":"Deploy triggered successfully"}
+{"message":"Deploy triggered successfully","url":"http://localhost:4321/api/trigger-deploy"}

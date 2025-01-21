@@ -1,7 +1,11 @@
+import type { APIRoute } from "astro";
+
+
 export const prerender = false;
 
-export async function GET({ params, request }: any) {
+export const GET: APIRoute = ({ params, request }) => {
   return new Response(JSON.stringify({
-		message: "OK",
-	}))
+      message: "This was a GET!"
+    })
+  )
 }

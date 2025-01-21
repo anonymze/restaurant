@@ -2,7 +2,7 @@ import type { APIContext, APIRoute, } from "astro";
 
 
 export function GET({ request }: APIContext): APIRoute {
-	console.log(request);
+	console.log(request.url);
 
 	// try {
 	//   const response = await fetch(
@@ -27,6 +27,7 @@ export function GET({ request }: APIContext): APIRoute {
 
 	return Response.json({
 		message: "Deploy triggered successfully",
+		url: request.url,
 	});
 }
 

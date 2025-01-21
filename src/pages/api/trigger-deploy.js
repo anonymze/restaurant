@@ -5,7 +5,6 @@
  */
 export default async function handler(req) {
 
-
   // try {
   //   const response = await fetch(
   //     `https://api.vercel.com/v1/projects/${process.env.VERCEL_PROJECT_ID}/deployments`, 

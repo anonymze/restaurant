@@ -1,4 +1,5 @@
 import type { APIContext } from "astro";
+import sgMail from "@sendgrid/mail";
 
 
 // the function can't be asynchrone
@@ -19,7 +20,7 @@ export function GET({ request }: APIContext) {
 	});
 }
 
-export const sendEmailTo = async ({ apiKey, templateId, data }: { apiKey: string, templateId: string, data: any }) => {
+export const sendEmailTo = ({ apiKey, templateId, data }: { apiKey: string, templateId: string, data: any }) => {
 	const msg = {
 		// TODO "email restaurateur"
 		to: "metier.yann@gmail.com",
@@ -31,11 +32,5 @@ export const sendEmailTo = async ({ apiKey, templateId, data }: { apiKey: string
 
 	sgMail.setApiKey(apiKey);
 
-	return sgMail.send(msg).then((response) => {
-		console.log(response);
-		return {
-			statusCode: response[0].statusCode,
-			headers: response[0].headers,
-		};
-	});
+	return sgMail.send(msg);
 };

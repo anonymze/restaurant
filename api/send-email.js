@@ -16,9 +16,10 @@ export async function POST(req) {
 	try {
 		await sendEmailTo({
 			apiKey: process.env.SENDGRID_API_KEY,
-			sendEmailTo: data.email,
 			templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
-			data: {},
+			data: {
+				email,
+			},
 		});
 	} catch (error) { 
 		return new Response("KO", { status: 500 });

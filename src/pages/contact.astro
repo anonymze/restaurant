@@ -128,8 +128,6 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 		form.reset();
 	};
 
-	window.sessionStorage.setItem("newsletter-sent", "true");
-
 	form?.addEventListener("submit", (e) => {
 		e.preventDefault();
 

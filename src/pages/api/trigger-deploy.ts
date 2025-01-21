@@ -3,7 +3,6 @@ import type { APIContext } from "astro";
 
 // the function can't be asynchrone 
 export function GET({ request }: APIContext) {
-	console.log(request.url);
 
 	// try {
 	//   const response = await fetch(

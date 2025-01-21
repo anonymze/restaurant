@@ -1,10 +1,9 @@
 import type { APIContext } from "astro";
 
 
-export async function GET({ request }: APIContext) {
+// the function can't be asynchrone 
+export function GET({ request }: APIContext) {
 	console.log(request.url);
-
-	await new Promise((resolve) => setTimeout(resolve, 5000));
 
 	// try {
 	//   const response = await fetch(

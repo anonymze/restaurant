@@ -108,56 +108,5 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 </Layout>
 
 <script is:inline>
-		console.log("icicicicici")
-	const form = document.querySelector("form");
-	const button = form?.querySelector("button");
-	const errorMessage = "Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
 
-	const validForm = () => {
-		if (!button) return;
-		if (!form) return;
-
-		button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-		button.disabled = true;
-
-		const message = document.createElement("p");
-		message.textContent = "Votre email a été envoyé avec succès !";
-		message.style.color = "green";
-		
-		form.appendChild(message);
-		form.reset();
-	};
-
-	form?.addEventListener("submit", (e) => {
-		e.preventDefault();
-
-		if (window.sessionStorage.getItem("newsletter-sent")) {
-			validForm();
-			return;
-		}
-
-		const email = form.querySelector("input[name='email']") as HTMLInputElement;
-		const emailValue = email.value;
-
-		if (!emailValue) return;
-
-		try {
-			fetch("/api/send-email", {
-				method: "POST",
-				body: JSON.stringify({
-					email: emailValue,
-				}),
-			})
-				.then((response) => {
-					if (response.ok) {
-						window.sessionStorage.setItem("newsletter-sent", "true");
-						validForm();
-					} else {
-						alert(errorMessage);
-					}
-				})
-		} catch (error) {
-			alert(errorMessage);
-		}
-	});
 </script>

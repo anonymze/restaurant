@@ -1,5 +1,5 @@
 // the function can't be asynchrone on "static" mode i guess
 export function GET() {
 	fetch("https://api.vercel.com/v1/integrations/deploy/prj_5IzJAWAbUpd7AJpRAWqRLDPkP91T/gUWxx2NKgE");
-	return new Response(JSON.stringify({ message: "OK" }), { status: 200 });
+	return new Response("OK", { status: 200 });
 }

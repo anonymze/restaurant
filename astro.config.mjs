@@ -14,7 +14,7 @@ export default defineConfig({
     defaultLocale: "fr",
   },
 	// TODO
-	site: "http://localhost:4321",
+	// site: "http://localhost:4321",
 	adapter: vercel({
 		webAnalytics: {
 			enabled: true,

@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
-import vercel from "@astrojs/vercel/serverless";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
@@ -20,7 +20,7 @@ export default defineConfig({
 			enabled: true,
 		},
 	}),
-	output: "static",
+	output: "server",
 	integrations: [
 		react(),
 		sitemap(),

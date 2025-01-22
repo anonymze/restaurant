@@ -1,10 +1,9 @@
 ---
+export const prerender = true;
 import Layout from "@/layouts/layout.astro";
 import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from 'sanity:client';
-import imageUrlBuilder from '@sanity/image-url';
 import type { Wine } from "@/types/wine";
-import { Image } from "astro:assets";
 
 const WINE_QUERY = `*[_type == "wine"][0]{
 	"file": file.asset->url

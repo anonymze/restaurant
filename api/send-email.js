@@ -8,9 +8,6 @@ export const POST = async (req) => {
 		return new Response("KO", { status: 400 });
 	}
 
-	console.log(process.env.SENDGRID_API_KEY);
-	console.log(process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION);
-
 	try {
 		await sendEmailTo({
 			apiKey: process.env.SENDGRID_API_KEY,

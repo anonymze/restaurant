@@ -41,14 +41,14 @@ const wine = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
 
 		<article class="container mx-auto max-w-6xl">
 			<iframe
-				src={wine.file}
+				src={wine?.file}
 				class="w-full h-[1200px] border-0"
 				title="Calendrier des événements"
 				loading="lazy"></iframe>
 			<noscript>
 				<p class="text-center">
 					Le PDF ne peut pas être affiché. {" "}
-					<a href={wine.file} class="text-primary underline underline-offset-4"> Télécharger le PDF </a>
+					<a href={wine?.file} class="text-primary underline underline-offset-4"> Télécharger le PDF </a>
 				</p>
 			</noscript>
 		</article>

@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/layout.astro";
 import type { SanityDocument } from "@sanity/client";
-import { sanityClient } from 'sanity:client';
+import { sanityClient } from "sanity:client";
 import type { Wine } from "@/types/wine";
 
 const WINE_QUERY = `*[_type == "wine"][0]{
@@ -32,23 +32,24 @@ const wine = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
 					<br />
 					<br />
 					La gamme quant à elle est sans cesse renouvelée afin de vous proposer toujours de nouvelles découvertes.
-					Vous trouverez ci-dessous notre dernière liste de boissons. <span class="font-bold">Tous nos vins, ainsi que boissons sans alcool
-					et spiritueux sont disponibles à l'achat caviste, avec une remise de 20% par rapport au prix sur table</span>.
-					Alors tchin !
+					Vous trouverez ci-dessous notre dernière liste de boissons. <span class="font-bold"
+						>Tous nos vins, ainsi que boissons sans alcool et spiritueux sont disponibles à l'achat caviste,
+						avec une remise de 20% par rapport au prix sur table</span
+					>. Alors tchin !
 				</p>
 			</div>
 		</section>
 
 		<article class="container mx-auto max-w-6xl">
 			<iframe
-				src={wine.file}
+				src={wine?.file}
 				class="w-full h-[1200px] border-0"
 				title="Calendrier des événements"
 				loading="lazy"></iframe>
 			<noscript>
 				<p class="text-center">
 					Le PDF ne peut pas être affiché. {" "}
-					<a href={wine.file} class="text-primary underline underline-offset-4"> Télécharger le PDF </a>
+					<a href={wine?.file} class="text-primary underline underline-offset-4"> Télécharger le PDF </a>
 				</p>
 			</noscript>
 		</article>

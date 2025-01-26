@@ -1,3 +1,4 @@
 export interface Event {
-	file: string;
+	image: string;
+	position: number;
 }

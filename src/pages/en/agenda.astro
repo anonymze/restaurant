@@ -3,11 +3,12 @@ import Layout from "@/layouts/layout.astro";
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 import type { Event } from "@/types/event";
+import { Image } from "astro:assets";
 
-const EVENT_QUERY = `*[_type == "agenda"][0]{
-	"file": file.asset->url
+const EVENT_QUERY = `*[_type == "agenda"]{
+	"image": image.asset->url
 }`;
-const event = await sanityClient.fetch<SanityDocument<Event>>(EVENT_QUERY);
+const events = await sanityClient.fetch<SanityDocument<Event[]>>(EVENT_QUERY);
 ---
 
 <Layout overflow>
@@ -38,18 +39,17 @@ const event = await sanityClient.fetch<SanityDocument<Event>>(EVENT_QUERY);
 			</div>
 		</section>
 
-		<article class="container mx-auto max-w-6xl">
-			<iframe
-				src={event.file}
-				class="w-full h-[1200px] border-0"
-				title="Calendrier des événements"
-				loading="lazy"></iframe>
-			<noscript>
-				<p class="text-center">
-					Le PDF ne peut pas être affiché. {" "}
-					<a href={event.file} class="text-primary underline underline-offset-4"> Télécharger le PDF </a>
-				</p>
-			</noscript>
+		<article class="container mx-auto max-w-6xl space-y-4">
+			{events.map((event) => (
+				<div class="flex flex-col items-center justify-center">
+					<Image
+						width={1000}
+						height={1200}
+						src={event.image}
+						alt={"Photo de l'évènement"}
+					/>
+				</div>
+			))}
 		</article>
 	</main>
 </Layout>

@@ -24,28 +24,28 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</div>
 				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
 					N'hésitez pas à nous contacter pour toute question, réservation ou demande spéciale. Notre équipe se
-					fera un plaisir de vous répondre dans les plus brefs délais.
+					fera un plaisir de vous répondre.
 				</p>
 			</section>
 
 			<div
 				class="flex flex-col items-center justify-center gap-12 max-w-2xl mx-auto md:flex-row md:items-start"
 			>
-				<section aria-labelledby="contact-info">
-					<h2 id="contact-info" class="text-2xl text-center font-serif text-stone-800 mb-4">
+				<section class="min-w-72" aria-labelledby="contact-info">
+					<h2 id="contact-info" class="text-2xl text-center font-serif text-stone-800 mb-4 whitespace-nowrap md:text-left">
 						Informations de contact
 					</h2>
 					<address class="not-italic">
 						<ul class="space-y-4">
-							<li class="flex items-start">
+							<li class="flex items-start justify-center md:justify-start">
 								<MapPin className="w-6 h-6 text-primary mr-3 mt-1" aria-hidden="true" />
-								<span>3 le Fond du Barri, 81140 le Verdier</span>
+								<span>3 Le Fond du Barri <br> 81140 Le Verdier</span>
 							</li>
-							<li class="flex items-center">
+							<li class="flex items-center justify-center md:justify-start">
 								<Phone className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
 								<a href="tel:0567720086" class="!text-primary hover:!text-primary/80">05 67 72 00 86</a>
 							</li>
-							<li class="flex items-center">
+							<li class="flex items-center justify-center md:justify-start">
 								<Mail className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
 								<a href={`mailto:${EMAIL_CONTACT}`} class="!text-primary hover:!text-primary/80">
 									{EMAIL_CONTACT}
@@ -56,18 +56,18 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</section>
 
 				<section aria-labelledby="hours-info">
-					<h2 id="hours-info" class="text-2xl text-center font-serif text-stone-800 mb-4">
+					<h2 id="hours-info" class="text-2xl text-center font-serif text-stone-800 mb-4 md:text-left">
 						Horaires d'ouverture
 					</h2>
 					<ul class="space-y-2">
-						<li>
+						<li class="text-center md:text-left">
 							{
 								work.days_of_work.map((working_day, idx) => {
 									return (idx > 0 ? " - " : "") + working_day;
 								})
 							}
 
-							<li>{work.starting_work} - {work.ending_work}</li>
+							<li class="text-center md:text-left">{work.starting_work} - {work.ending_work}</li>
 						</li>
 					</ul>
 				</section>
@@ -75,6 +75,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 
 			<form class="flex flex-col items-center gap-4 max-w-2xl mx-auto">
 				<label for="email" class="font-bold text-xl">Vous souhaitez recevoir nos actualités ?</label>
+				<p class="text-stone-600">Entrez votre adresse-email pour vous inscrire à la newsletter :</p>
 				<div class="flex gap-4 w-full">
 					<input
 						id="email"

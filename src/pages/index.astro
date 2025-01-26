@@ -2,12 +2,11 @@
 import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import EspaceImg from "@/assets/images/espace.webp";
-import Cave2Img from "@/assets/images/plat.webp";
-import AnimatedLink from "@/components/animated-link";
+// import Cave2Img from "@/assets/images/plat.webp";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
 import AnimatedText from "@/components/animated-text";
-import LogoSmall from "@/assets/images/logo_small.webp";
+import LogoComplete from "@/assets/images/logo_complete.webp";
 import FlagEN from "@/assets/icons/flag-en.svg";
 
 const optimizedPlanteImage = await getImage({
@@ -17,12 +16,12 @@ const optimizedPlanteImage = await getImage({
 	loading: "eager",
 });
 
-const optimizedPlatImage = await getImage({
-	src: Cave2Img,
-	format: "webp",
-	widths: [240, 540, 720, 980, Cave2Img.width],
-	loading: "eager",
-});
+// const optimizedPlatImage = await getImage({
+// 	src: Cave2Img,
+// 	format: "webp",
+// 	widths: [240, 540, 720, 980, Cave2Img.width],
+// 	loading: "eager",
+// });
 ---
 
 <Layout overflow={false} header={false} footer={false}>
@@ -34,29 +33,49 @@ const optimizedPlatImage = await getImage({
 			imagesrcset={optimizedPlanteImage.srcSet.attribute}
 			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${EspaceImg.width}px`}
 		/>
-		<link
+		<!-- <link
 			rel="preload"
 			href={optimizedPlatImage.src}
 			as="image"
 			imagesrcset={optimizedPlatImage.srcSet.attribute}
 			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${Cave2Img.width}px`}
-		/>
+		/> -->
 	</Fragment>
 
 	<main class="relative flex flex-col w-full h-full lg:flex-row">
 		<h1 class="sr-only">Mauvaise herbe restaurant</h1>
 
 		<a class="absolute top-4 right-6 z-10" href="/en">
-			<FlagEN class="w-12 h-12  hover:scale-110 transition-all duration-200" />
+			<FlagEN class="w-12 h-12 hover:scale-110 transition-all duration-200" />
 		</a>
 
 		<div class="relative flex-1 h-1/2 lg:h-full">
-			<AnimatedText
-				client:load
-				className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 h-fit text-6xl text-primary uppercase font-bold text-shadow lg:top-16 lg:right-3 lg:left-auto lg:translate-x-0 lg:text-8xl"
+			<div
+				class="absolute bottom-0 -translate-x-1/2 left-1/2 z-10 h-fit text-3xl text-primary uppercase font-bold text-shadow lg:top-24 lg:right-3 lg:left-auto lg:translate-x-0 lg:text-7xl"
 			>
-				Mauvaise
-			</AnimatedText>
+				<nav aria-label="Navigation principale">
+					<ul class="flex flex-col gap-6 lg:gap-4">
+						<AnimatedText client:load delay={0.2} className="text-center lg:text-right"
+							><a href="/about">Concept</a></AnimatedText
+						>
+						<AnimatedText client:load delay={0.4} className="text-center lg:text-right"
+							><a href="/contact">Cuisine</a></AnimatedText
+						>
+						<AnimatedText client:load delay={0.6} className="text-center lg:text-right"
+							><a href="/contact">Caviste</a></AnimatedText
+						>
+						<AnimatedText client:load delay={0.8} className="text-center lg:text-right"
+							><a href="/contact">Agenda</a></AnimatedText
+						>
+						<AnimatedText client:load delay={1} className="text-center lg:text-right"
+							><a href="/contact">Equipe</a></AnimatedText
+						>
+						<AnimatedText client:load delay={1.2} className="text-center lg:text-right"
+							><a href="/contact">Contact</a></AnimatedText
+						>
+					</ul>
+				</nav>
+			</div>
 
 			<Image
 				src={optimizedPlanteImage.src}
@@ -69,22 +88,7 @@ const optimizedPlatImage = await getImage({
 				onload="this.classList.remove('opacity-0')"
 			/>
 
-			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit">
-				<h2
-					class="mb-3 p-2 text-4xl text-white text-shadow backdrop-blur-xs uppercase font-serif lg:text-5xl"
-				>
-					Notre restaurant
-				</h2>
-
-				<AnimatedLink
-					client:load
-					title="Redirection à la page de la carte du restaurant"
-					href="/concept"
-					className="bg-primary/90"
-				>
-					Voir la présentation de notre restaurant
-				</AnimatedLink>
-			</div>
+			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit"></div>
 
 			<div
 				class={cn(
@@ -96,19 +100,31 @@ const optimizedPlatImage = await getImage({
 			</div>
 		</div>
 
-		<div class="relative flex-1 h-1/2 group lg:h-full">
+		<div class="relative flex-1 h-1/2 lg:h-full">
 			<div
-				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex items-end gap-2 h-fit text-6xl text-green-700 text-dark text-shadow font-bold uppercase lg:text-8xl lg:top-16 lg:pt-8 lg:left-3 lg:translate-x-0"
+				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex flex-col w-full text-dark drop-shadow font-bold uppercase lg:top-12 lg:left-1/2 lg:-translate-x-1/2"
 			>
-				<AnimatedText client:load delay={0.3}>Herbe</AnimatedText>
-
-				<AnimatedText client:load delay={0.6}>
-					<Image src={LogoSmall} alt="Logo du restaurant" class="w-auto h-12 ml-2 mb-1 lg:h-18 lg:mb-2" style={{
-						filter: "drop-shadow(3px 6px 66px #000)"
-					}}  />
+				<AnimatedText client:load delay={0.2} className="w-full">
+					<Image src={LogoComplete} alt="Logo du restaurant" class="w-60 mx-auto" />
 				</AnimatedText>
-			</div>
 
+				<div class="p-4 space-y-6">
+					<h2 class="text-green-700 text-3xl text-center mt-5">Restaurant – Bar – Caviste</h2>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci error voluptates ut. Odio autem
+						eum dicta? Cum minima qui vitae, reprehenderit laborum ab, doloremque quaerat sequi illum voluptas
+						voluptatem quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci error
+						voluptates ut. Odio autem eum dicta? Cum minima qui vitae, reprehenderit laborum ab, doloremque
+						quaerat sequi illum voluptas voluptatem quos.
+					</p>
+
+					<div class="border-2 rounded-md h-40">
+						<h3 class="text-center text-2xl font-bold ">Actualités du moment</h3>
+						<Image src={LogoComplete} alt="Logo du restaurant" class="w-60 mx-auto" />
+					</div>
+				</div>
+			</div>
+			<!-- 
 			<Image
 				src={optimizedPlatImage.src}
 				width={980}
@@ -118,24 +134,10 @@ const optimizedPlatImage = await getImage({
 				class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
 				fetchpriority="high"
 				onload="this.classList.remove('opacity-0')"
-			/>
+			/> -->
 
-			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit">
-				<h2
-					class="mb-3 p-2 text-4xl text-white text-shadow backdrop-blur-xs uppercase font-serif lg:text-5xl"
-				>
-					Réservation
-				</h2>
+			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit"></div>
 
-				<AnimatedLink
-					client:load
-					title="Redirection à la page de la carte du restaurant"
-					href="/contact"
-					className="bg-green-700/90"
-				>
-					Contactez-nous
-				</AnimatedLink>
-			</div>
 			<div
 				class={cn(
 					"absolute inset-0",

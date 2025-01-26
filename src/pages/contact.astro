@@ -24,7 +24,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</div>
 				<p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
 					N'hésitez pas à nous contacter pour toute question, réservation ou demande spéciale. Notre équipe se
-					fera un plaisir de vous répondre dans les plus brefs délais.
+					fera un plaisir de vous répondre.
 				</p>
 			</section>
 
@@ -39,7 +39,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 						<ul class="space-y-4">
 							<li class="flex items-start">
 								<MapPin className="w-6 h-6 text-primary mr-3 mt-1" aria-hidden="true" />
-								<span>3 le Fond du Barri, 81140 le Verdier</span>
+								<span>3 Le Fond du Barri <br> 81140 Le Verdier</span>
 							</li>
 							<li class="flex items-center">
 								<Phone className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
@@ -75,6 +75,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 
 			<form class="flex flex-col items-center gap-4 max-w-2xl mx-auto">
 				<label for="email" class="font-bold text-xl">Vous souhaitez recevoir nos actualités ?</label>
+				<p class="text-tone-500">Entrez votre adresse-email pour vous inscrire à la newsletter :</p>
 				<div class="flex gap-4 w-full">
 					<input
 						id="email"

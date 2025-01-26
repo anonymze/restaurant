@@ -55,23 +55,23 @@ const optimizedPlanteImage = await getImage({
 			>
 				<nav aria-label="Navigation principale">
 					<ul class="flex flex-col gap-6 lg:gap-4">
-						<AnimatedText client:load delay={0.2} className="text-center lg:text-right"
-							><a href="/about">Concept</a></AnimatedText
+						<AnimatedText href="/concept" title="Concept" client:load delay={0.2} className="text-center lg:text-right"
+							>Concept</AnimatedText
 						>
-						<AnimatedText client:load delay={0.4} className="text-center lg:text-right"
-							><a href="/contact">Cuisine</a></AnimatedText
+						<AnimatedText href="/cuisine" title="Cuisine" client:load delay={0.4} className="text-center lg:text-right"
+							>Cuisine</AnimatedText
 						>
-						<AnimatedText client:load delay={0.6} className="text-center lg:text-right"
-							><a href="/contact">Caviste</a></AnimatedText
+						<AnimatedText href="/caviste" title="Caviste" client:load delay={0.6} className="text-center lg:text-right"
+								>Caviste</AnimatedText
 						>
-						<AnimatedText client:load delay={0.8} className="text-center lg:text-right"
-							><a href="/contact">Agenda</a></AnimatedText
+						<AnimatedText href="/agenda" title="Agenda" client:load delay={0.8} className="text-center lg:text-right"
+							>Agenda</AnimatedText
 						>
-						<AnimatedText client:load delay={1} className="text-center lg:text-right"
-							><a href="/contact">Equipe</a></AnimatedText
+						<AnimatedText href="/equipe" title="Equipe" client:load delay={1} className="text-center lg:text-right"
+							>Equipe</AnimatedText
 						>
-						<AnimatedText client:load delay={1.2} className="text-center lg:text-right"
-							><a href="/contact">Contact</a></AnimatedText
+						<AnimatedText href="/contact" title="Contact" client:load delay={1.2} className="text-center lg:text-right"
+							>Contact</AnimatedText
 						>
 					</ul>
 				</nav>
@@ -102,9 +102,9 @@ const optimizedPlanteImage = await getImage({
 
 		<div class="relative flex-1 h-1/2 lg:h-full">
 			<div
-				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex flex-col w-full text-dark font-bold uppercase lg:top-12 lg:left-1/2 lg:-translate-x-1/2"
+				class="absolute top-0 left-1/2 -translate-x-1/2 z-10 flex flex-col w-full text-dark font-bold uppercase lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
 			>
-				<AnimatedText client:load delay={0.2} className="w-full">
+				<AnimatedText href="/" title="Logo du restaurant" client:load delay={0.2} className="w-full">
 					<Image src={LogoComplete} alt="Logo du restaurant" class="w-60 mx-auto" />
 				</AnimatedText>
 

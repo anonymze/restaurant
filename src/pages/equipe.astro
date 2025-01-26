@@ -35,7 +35,7 @@ const team = await sanityClient.fetch<SanityDocument<Team[]>>(TEAM_QUERY);
 			</div>
 		</section>
 
-		<article class="bg-stone-50 py-10 px-4">
+		<article class="bg-stone-50 px-4">
 			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 				{
 						team.map((member) => (

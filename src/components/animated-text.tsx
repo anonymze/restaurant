@@ -4,13 +4,17 @@ import { motion } from "framer-motion";
 
 interface AnimatedTextProps {
 	children: ReactNode;
+	href: string;
+	title: string;
 	className?: string;
 	delay?: number;
 }
 
-export default function AnimatedText({ children, className, delay = 0 }: AnimatedTextProps) {
+export default function AnimatedText({ children, href, title, className, delay = 0 }: AnimatedTextProps) {
 	return (
-		<motion.span
+		<motion.a
+			href={href}
+			title={title}
 			initial={{ opacity: 0, y: -10 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{
@@ -28,6 +32,6 @@ export default function AnimatedText({ children, className, delay = 0 }: Animate
 			className={className}
 		>
 			{children}
-		</motion.span>
+		</motion.a>
 	);
 }

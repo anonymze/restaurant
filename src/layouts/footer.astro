@@ -9,14 +9,16 @@ import { motion } from "framer-motion";
 import { EMAIL_CONTACT } from "astro:env/client";
 const id_current_year = "current-year";
 
+const currentUrl = Astro.url.pathname;
+
 const siteMap = [
-	{ name: "Accueil", href: "/" },
-	{ name: "Concept", href: "/concept" },
-	{ name: "Cuisine", href: "/cuisine" },
-	{ name: "Caviste", href: "/caviste" },
-	{ name: "Agenda", href: "/agenda" },
-	{ name: "Equipe", href: "/equipe" },
-	{ name: "Contact", href: "/contact" },
+	{ name: "Accueil", href: currentUrl.startsWith("/en") ? "/en" : "/" },
+	{ name: "Concept", href: currentUrl.startsWith("/en") ? "/en/concept" : "/concept" },
+	{ name: "Cuisine", href: currentUrl.startsWith("/en") ? "/en/cuisine" : "/cuisine" },
+	{ name: "Caviste", href: currentUrl.startsWith("/en") ? "/en/caviste" : "/caviste" },
+	{ name: "Agenda", href: currentUrl.startsWith("/en") ? "/en/agenda" : "/agenda" },
+	{ name: "Equipe", href: currentUrl.startsWith("/en") ? "/en/equipe" : "/equipe" },
+	{ name: "Contact", href: currentUrl.startsWith("/en") ? "/en/contact" : "/contact" },
 ];
 ---
 

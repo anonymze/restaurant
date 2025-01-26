@@ -10,9 +10,9 @@ const currentUrl = Astro.url.pathname;
 const navigation = [
 	{ name: "Concept", href: currentUrl.startsWith("/en") ? "/en/concept" : "/concept" },
 	{ name: "Cuisine", href: currentUrl.startsWith("/en") ? "/en/cuisine" : "/cuisine" },
-	{ name: "Equipe", href: currentUrl.startsWith("/en") ? "/en/equipe" : "/equipe" },
 	{ name: "Caviste", href: currentUrl.startsWith("/en") ? "/en/caviste" : "/caviste" },
 	{ name: "Agenda", href: currentUrl.startsWith("/en") ? "/en/agenda" : "/agenda" },
+	{ name: "Equipe", href: currentUrl.startsWith("/en") ? "/en/equipe" : "/equipe" },
 	{ name: "Contact", href: currentUrl.startsWith("/en") ? "/en/contact" : "/contact" },
 ];
 ---

@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import WineTableImg from "@/assets/images/wine_table.webp";
+import WineWallImg from "@/assets/images/wine_wall.webp";
+import FishImg from "@/assets/images/fish.webp";
 import { motion } from "framer-motion";
 ---
 
@@ -55,7 +56,7 @@ import { motion } from "framer-motion";
 					transition={{ duration: 0.5 }}
 					className="w-full md:w-[90%] h-72 md:ml-auto"
 				>
-					<Image src={WineTableImg} alt="Repas du restaurant" class="w-full h-full object-cover" />
+					<Image src={FishImg} alt="Repas du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 				<motion.div
 					client:load
@@ -65,7 +66,7 @@ import { motion } from "framer-motion";
 					client:load
 					className="w-full md:w-[90%] h-72 md:mr-auto"
 				>
-					<Image src={WineTableImg} alt="Plat poisson du restaurant" class="w-full h-full object-cover" />
+					<Image src={FishImg} alt="Plat poisson du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 			</div>
 		</div>
@@ -83,9 +84,9 @@ import { motion } from "framer-motion";
 		</p>
 	
 		<div class="flex flex-col md:flex-row items-center justify-between gap-10 mt-10">
-			<Image src={FishImg} alt="Samedi sauvage" class="w-full h-full object-cover" />
-			<Image src={FishImg} alt="Samedi sauvage" class="w-full h-full object-cover" />
-			<Image src={FishImg} alt="Samedi sauvage" class="w-full h-full object-cover" />
+			<Image src={WineWallImg}  alt="Samedi sauvage" width={700} height={700} class="w-full max-h-[28rem] md:w-80 md:h-96 object-cover" />
+			<Image src={FishImg} alt="Samedi sauvage" width={700} height={700} class="w-full max-h-[28rem] md:w-80 md:h-96 object-cover" />
+			<Image src={WineWallImg} alt="Samedi sauvage" width={700} height={700} class="w-full max-h-[28rem] md:w-80 md:h-96 object-cover" />
 		</div>
 	</div>
 </section>

@@ -4,6 +4,8 @@ import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from "sanity:client";
 import type { Wine } from "@/types/wine";
 import { Image } from "astro:assets";
+import CaveImg from "@/assets/images/cave.webp";
+import TableLargeImg from "@/assets/images/table_large.webp";
 
 const WINE_QUERY = `*[_type == "wine"] | order(position asc) {
 	"image": image.asset->url
@@ -38,6 +40,23 @@ const wines = await sanityClient.fetch<SanityDocument<Wine[]>>(WINE_QUERY);
 					<br />
 					<br />
 					<span>Alors tchin !</span>
+				</p>
+			</div>
+
+			<div class="flex flex-col md:flex-row gap-10 ">
+				<Image src={TableLargeImg} alt="Carte des boissons" width={1200} height={1000} />
+				<Image src={CaveImg} alt="Caveà vin" class="max-w-20 object-cover mx-auto" width={600} height={1200} />
+			</div>
+		</section>
+
+		<section class="container mx-auto max-w-6xl space-y-12 mt-18">
+			<div class="mb-12 max-w-2xl mx-auto">
+				<div class="flex justify-start items-center gap-3 mb-6">
+					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+					<h2 class="text-xl text-primary font-normal uppercase">Notre carte des boissons</h2>
+				</div>
+				<p class="text-lg text-left text-stone-600 leading-relaxed my-6">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi excepturi ratione voluptates accusamus adipisci esse assumenda exercitationem harum. Iusto tempore inventore commodi, distinctio saepe culpa. Quam molestiae accusamus sunt natus.
 				</p>
 			</div>
 		</section>

@@ -48,7 +48,7 @@ import { motion } from "framer-motion";
 					initial={{ opacity: 0, x: 50 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5 }}
-					className="w-[90%] h-72 ml-auto"
+					className="w-full md:w-[90%] h-72  md:ml-auto"
 				>
 					<Image src={TablesImg} alt="Tables du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
@@ -58,7 +58,7 @@ import { motion } from "framer-motion";
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
 					client:load
-					className="w-[90%] h-72 mr-auto"
+					className="w-full md:w-[90%] h-72 md:mr-auto"
 				>
 					<Image src={Tables2Img} alt="Comptoir du restaurant" class="w-full h-full object-cover" />
 				</motion.div>

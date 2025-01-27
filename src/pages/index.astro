@@ -10,6 +10,7 @@ import FlagEN from "@/assets/icons/flag-en.svg";
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 import type { Work } from "@/types/work";
+import type { ActuFirst } from "@/types/actu_first";
 
 const optimizedHomeImage = await getImage({
 	src: HomeImg,
@@ -20,6 +21,9 @@ const optimizedHomeImage = await getImage({
 
 const WORK_QUERY = `*[_type == "work"][0]`;
 const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
+
+const ACTU_QUERY = `*[_type == "actuFirst"]`;
+const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 ---
 
 <Layout overflow={false} header={false} footer={false}>
@@ -137,10 +141,11 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 									class="underline underline-offset-2">En savoir plus</a
 								>
 							</li>
-							<li class="text-left">
-								Pour la soirée de la Saint-Valentin, le vendredi 14 février, nos cuisiniers ont concocté un
-								merveilleux menu. <br />
-							</li>
+							{
+								actu.map((actu) => {
+									return <li class="text-left">{actu.description}</li>;
+								})
+							}
 						</ul>
 						<p class="text-left mt-3">
 							Consultez le menu <a href="/en/cuisine" class="underline underline-offset-2">ici</a>.

@@ -6,7 +6,7 @@ import type { Team } from "@/types/team";
 import { Card, CardContent } from "@/components/ui/card";
 import { Image } from "astro:assets";
 
-const TEAM_QUERY = `*[_type == "team"]{
+const TEAM_QUERY = `*[_type == "team"] | order(position asc){
 	firstname,
 	lastname,
 	role,

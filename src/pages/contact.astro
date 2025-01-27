@@ -20,21 +20,14 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 						<h1 class="text-xl text-primary font-normal">Contactez-nous</h1>
 					</div>
 					<h2 class="text-3xl font-serif text-stone-800 leading-tight">Nous sommes à votre écoute</h2>
-					<p class="text-lg text-left text-stone-600  leading-relaxed my-6">
-						Notre sommelier a rempli notre cave à vin avec plus de 100 références, venant du gaillacois, des
-						quatre coins de la France mais aussi avec une sélection de vins étrangers. Tous nos vins sont
-						certifiés bios, biodynamiques ou naturels. Nous privilégions évidement les domaines à taille
-						humaine, avec plusieurs petites exploitations, et aussi avec une philosophie tournée autour du
-						respect de son terroir et de son environnement.
-	
+					<p class="text-lg text-left text-stone-600 leading-relaxed my-6">
+						N'hésitez pas à nous contacter pour toute question ou demande spéciale. Nous prenons uniquement
+						les réservations par téléphone.
+
 						<br />
 						<br />
-						La gamme quant à elle est sans cesse renouvelée afin de vous proposer toujours de nouvelles découvertes.
-						Vous trouverez ci-dessous notre dernière liste de boissons. <span class="font-bold"
-							>Tous nos vins, ainsi que boissons sans alcool et spiritueux sont disponibles à l'achat caviste,
-							avec une remise de 20% par rapport au prix sur table</span
-						>. <br /><br />
-						<span class="font-extrabold">Alors tchin !</span>
+						Vous souhaitez organiser une petite ou une grande fête, dans nos locaux ou chez vous ? Nous serons
+						ravis de vous aider ! Capacité maximale sur place : environ 70 personnes, selon le menu.
 					</p>
 				</div>
 			</section>
@@ -43,14 +36,17 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				class="flex flex-col items-center justify-center gap-12 max-w-2xl mx-auto md:flex-row md:items-start"
 			>
 				<section class="min-w-72" aria-labelledby="contact-info">
-					<h2 id="contact-info" class="text-2xl text-center font-serif text-stone-800 mb-4 whitespace-nowrap md:text-left">
+					<h2
+						id="contact-info"
+						class="text-2xl text-center font-serif text-stone-800 mb-4 whitespace-nowrap md:text-left"
+					>
 						Informations de contact
 					</h2>
 					<address class="not-italic">
 						<ul class="space-y-4">
 							<li class="flex items-start justify-center md:justify-start">
 								<MapPin className="w-6 h-6 text-primary mr-3 mt-1" aria-hidden="true" />
-								<span>3 Le Fond du Barri <br> 81140 Le Verdier</span>
+								<span>3 Le Fond du Barri <br /> 81140 Le Verdier</span>
 							</li>
 							<li class="flex items-center justify-center md:justify-start">
 								<Phone className="w-6 h-6 text-primary mr-3" aria-hidden="true" />
@@ -122,7 +118,8 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 <script>
 	const form = document.querySelector("form");
 	const button = form?.querySelector("button");
-	const errorMessage = "Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
+	const errorMessage =
+		"Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
 
 	const validForm = () => {
 		if (!button) return;
@@ -134,7 +131,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 		const message = document.createElement("p");
 		message.textContent = "Votre email a été envoyé avec succès !";
 		message.style.color = "green";
-		
+
 		form.appendChild(message);
 		form.reset();
 	};
@@ -158,15 +155,14 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				body: JSON.stringify({
 					email: emailValue,
 				}),
-			})
-				.then((response) => {
-					if (response.ok) {
-						window.sessionStorage.setItem("newsletter-sent", "true");
-						validForm();
-					} else {
-						alert(errorMessage);
-					}
-				})
+			}).then((response) => {
+				if (response.ok) {
+					window.sessionStorage.setItem("newsletter-sent", "true");
+					validForm();
+				} else {
+					alert(errorMessage);
+				}
+			});
 		} catch (error) {
 			alert(errorMessage);
 		}

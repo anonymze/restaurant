@@ -18,14 +18,18 @@ const team = await sanityClient.fetch<SanityDocument<Team[]>>(TEAM_QUERY);
 
 <Layout overflow>
 	<main class="bg-stone-50 py-16 px-4 md:py-24">
-		<div class="container mx-auto max-w-6xl space-y-12">
+		<section class="container mx-auto max-w-6xl space-y-12">
 			<div class="mb-12 max-w-2xl mx-auto">
 				<div class="flex justify-start items-center gap-3 mb-6">
 					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
 					<h1 class="text-xl text-primary font-normal">Notre équipe</h1>
 				</div>
+				<h2 class="text-3xl font-serif text-stone-800 leading-tight">Une équipe soudée et passionnée</h2>
+				<p class="text-lg text-left text-stone-600 leading-relaxed my-6">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni laborum illum nesciunt aspernatur libero, consequatur placeat quam veniam? Beatae tempora, alias doloremque quasi voluptatum fugiat ab tempore non ex maxime.
+				</p>
 			</div>
-		</div>
+		</section>
 
 		<article class="bg-stone-50 px-4">
 			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

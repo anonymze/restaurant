@@ -1,45 +1,30 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
-import EspaceImg from "@/assets/images/espace.webp";
-// import Cave2Img from "@/assets/images/plat.webp";
+import HomeImg from "@/assets/images/home.webp";
 import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
 import AnimatedText from "@/components/animated-text";
 import LogoComplete from "@/assets/images/logo_complete.webp";
 import FlagEN from "@/assets/icons/flag-en.svg";
 
-const optimizedPlanteImage = await getImage({
-	src: EspaceImg,
+const optimizedHomeImage = await getImage({
+	src: HomeImg,
 	format: "webp",
-	widths: [240, 540, 720, 980, EspaceImg.width],
+	widths: [360, 720, 980, 1200, 1600, 1920, 2560],
 	loading: "eager",
 });
-
-// const optimizedPlatImage = await getImage({
-// 	src: Cave2Img,
-// 	format: "webp",
-// 	widths: [240, 540, 720, 980, Cave2Img.width],
-// 	loading: "eager",
-// });
 ---
 
 <Layout overflow={false} header={false} footer={false}>
 	<Fragment slot="head-preload">
 		<link
 			rel="preload"
-			href={optimizedPlanteImage.src}
+			href={optimizedHomeImage.src}
 			as="image"
-			imagesrcset={optimizedPlanteImage.srcSet.attribute}
-			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${EspaceImg.width}px`}
+			imagesrcset={optimizedHomeImage.srcSet.attribute}
+			imagesizes={`(max-width: 360px) 360px, (max-width: 720px) 720px, (max-width: 980px) 980px, (max-width: 1600px) 1600px, (max-width: 1920px) 1920px, (max-width: 2560px) 2560px`}
 		/>
-		<!-- <link
-			rel="preload"
-			href={optimizedPlatImage.src}
-			as="image"
-			imagesrcset={optimizedPlatImage.srcSet.attribute}
-			imagesizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${Cave2Img.width}px`}
-		/> -->
 	</Fragment>
 
 	<main class="relative flex flex-col w-full h-full lg:flex-row">
@@ -78,11 +63,11 @@ const optimizedPlanteImage = await getImage({
 			</div>
 
 			<Image
-				src={optimizedPlanteImage.src}
-				width={980}
+				src={optimizedHomeImage.src}
+				width={1920}
 				height={1200}
-				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${EspaceImg.width}px`}
-				alt="Un plat du restaurant"
+				sizes={`(max-width: 360px) 360px, (max-width: 720px) 720px, (max-width: 980px) 980px, (max-width: 1600px) 1600px, (max-width: 1920px) 1920px, (max-width: 2560px) 2560px`}
+				alt="Une table du restaurant"
 				class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
 				fetchpriority="high"
 				onload="this.classList.remove('opacity-0')"
@@ -124,17 +109,6 @@ const optimizedPlanteImage = await getImage({
 					</div>
 				</div>
 			</div>
-			<!-- 
-			<Image
-				src={optimizedPlatImage.src}
-				width={980}
-				height={1200}
-				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${Cave2Img.width}px`}
-				alt="Un plat du restaurant"
-				class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
-				fetchpriority="high"
-				onload="this.classList.remove('opacity-0')"
-			/> -->
 
 			<div class="absolute inset-0 z-10 m-auto text-center w-fit h-fit"></div>
 

@@ -66,32 +66,32 @@ const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 						/>
 					</li>
 					<li>
-						<AnimatedText href="/en/concept" title="Lien vers la page concept" client:load delay={0.2}
+						<AnimatedText href="/en/concept" title="Lien vers la page concept" className="uppercase" client:load delay={0.2}
 							>Concept</AnimatedText
 						>
 					</li>
 					<li>
-						<AnimatedText href="/en/cuisine" title="Lien vers la page cuisine" client:load delay={0.3}
+						<AnimatedText href="/en/cuisine" title="Lien vers la page cuisine" className="uppercase" client:load delay={0.3}
 							>Cuisine</AnimatedText
 						>
 					</li>
 					<li>
-						<AnimatedText href="/en/caviste" title="Lien vers la page caviste" client:load delay={0.4}
+						<AnimatedText href="/en/caviste" title="Lien vers la page caviste" className="uppercase" client:load delay={0.4}
 							>Caviste</AnimatedText
 						>
 					</li>
 					<li>
-						<AnimatedText href="/en/agenda" title="Lien vers la page agenda" client:load delay={0.5}
+						<AnimatedText href="/en/agenda" title="Lien vers la page agenda" className="uppercase" client:load delay={0.5}
 							>Concept</AnimatedText
 						>
 					</li>
 					<li>
-						<AnimatedText href="/en/equipe" title="Lien vers la page équipe" client:load delay={0.6}
+						<AnimatedText href="/en/equipe" title="Lien vers la page équipe" className="uppercase" client:load delay={0.6}
 							>Cuisine</AnimatedText
 						>
 					</li>
 					<li>
-						<AnimatedText href="/en/contact" title="Lien vers la page contact" client:load delay={0.7}
+						<AnimatedText href="/en/contact" title="Lien vers la page contact" className="uppercase" client:load delay={0.7}
 							>Caviste</AnimatedText
 						>
 					</li>
@@ -106,15 +106,15 @@ const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 			<div
 				class="absolute top-1/2 -translate-y-1/2 left-0 z-10 m-auto text-center w-full h-fit flex items-center"
 			>
-				<div class="flex-1">
+				<div class="flex-1 ml-8">
 					<h2
 						id="hero-heading"
-						class="px-2 py-1 text-[2rem] text-white text-shadow w-fit mx-auto uppercase font-serif whitespace-nowrap"
+						class="px-2 py-1 text-[2rem] text-white text-shadow w-fit mx-auto uppercase whitespace-nowrap"
 					>
 						Restaurant – Bar – Caviste
 					</h2>
 					<div class="text-white w-fit mx-auto max-w-3xl mt-5">
-						<p class="p-2 text-shadow font-serif">
+						<p class="p-2 text-shadow">
 							Mauvaise Herbe a ouvert ses portes au printemps 2024 dans le village du Verdier, en pleine
 							campagne tarnaise. Notre cuisine est caractérisée par la créativité, les produits du terroir et
 							les plantes sauvages. Nous servons le déjeuner tous les jours du mardi au samedi, et le dîner le
@@ -132,7 +132,7 @@ const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 					</div>
 				</div>
 				<div class="flex-1">
-					<div class="bg-white/90 max-w-96 h-fit p-5 rounded-xl text-primary mx-auto">
+					<div class="bg-white/90 max-w-96 h-fit py-5 px-7 rounded-xl text-primary mx-auto">
 						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Actualités</h3>
 						<ul class="list-disc list-inside space-y-3">
 							<li class="text-left">
@@ -151,7 +151,7 @@ const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 							Consultez le menu <a href="/en/cuisine" class="underline underline-offset-2">ici</a>.
 						</p>
 					</div>
-					<div class="bg-white/90 max-w-96 h-fit p-5 rounded-xl text-primary mx-auto mt-8">
+					<div class="bg-white/90 max-w-96 h-fit py-5 px-7  rounded-xl text-primary mx-auto mt-8">
 						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Horaires d'ouverture</h3>
 						<ul class="space-y-2">
 							<li class="text-center text-sm font-bold">

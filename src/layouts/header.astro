@@ -26,7 +26,7 @@ const navigation = [
 			<a href={currentUrl.startsWith("/en") ? "/en" : "/"} class="-m-1.5 p-1.5">
 				<span class="sr-only">Votre Restaurant</span>
 				<span class="flex items-center gap-2 text-2xl whitespace-nowrap font-serif text-stone-800"
-					><Image src={LogoComplete} alt="Logo du restaurant" class="w-auto h-12" /></span
+					><Image src={LogoComplete} alt="Logo du restaurant" class="w-auto h-14" /></span
 				>
 			</a>
 		</div>
@@ -64,7 +64,7 @@ const navigation = [
 					<a
 						href={item.href}
 						class={cn(
-							"p-3 text-sm font-semibold leading-6 hover:text-primary transition-colors",
+							"p-3 text-sm font-semibold leading-6 hover:text-primary transition-colors uppercase",
 							currentUrl === item.href && " text-primary!"
 						)}
 					>
@@ -73,7 +73,7 @@ const navigation = [
 				))
 			}
 		</div>
-		<div class="hidden lg:flex md:flex-1 md:justify-end lg:max-w-36 xl:max-w-80">
+		<!-- <div class="hidden lg:flex md:flex-1 md:justify-end lg:max-w-36 xl:max-w-80">
 			{
 				currentUrl.startsWith("/en") ? (
 					<a href={currentUrl.replace("/en", "")}>
@@ -85,7 +85,7 @@ const navigation = [
 					</a>
 				)
 			}
-		</div>
+		</div> -->
 	</nav>
 
 	<!-- Mobile menu -->
@@ -127,14 +127,14 @@ const navigation = [
 							navigation.map((item) => (
 								<a
 									href={item.href}
-									class="-mx-3 block  px-3 py-4 text-base font-semibold leading-7 text-stone-900 hover:bg-gray-50"
+									class="-mx-3 block  px-3 py-4 text-base font-semibold leading-7 text-stone-900 hover:bg-gray-50 uppercase"
 								>
 									{item.name}
 								</a>
 							))
 						}
 					</div>
-					<div class="py-6">
+					<!-- <div class="py-6">
 						{
 							currentUrl.startsWith("/en") ? (
 								<a href={currentUrl.replace("/en", "")}>
@@ -146,7 +146,7 @@ const navigation = [
 								</a>
 							)
 						}
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

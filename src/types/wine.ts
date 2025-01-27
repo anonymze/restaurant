@@ -1,3 +1,5 @@
 export interface Wine {
-	file: string;
+	image: string;
+	position: number;
 }
+

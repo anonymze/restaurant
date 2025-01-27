@@ -3,11 +3,12 @@ import Layout from "@/layouts/layout.astro";
 import type { SanityDocument } from "@sanity/client";
 import { sanityClient } from 'sanity:client';
 import type { Wine } from "@/types/wine";
+import { Image } from "astro:assets";
 
-const WINE_QUERY = `*[_type == "wine"][0]{
-	"file": file.asset->url
+const WINE_QUERY = `*[_type == "wine"]{
+	"image": image.asset->url
 }`;
-const wine = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
+const wines = await sanityClient.fetch<SanityDocument<Wine[]>>(WINE_QUERY);
 ---
 
 <Layout overflow>
@@ -39,18 +40,17 @@ const wine = await sanityClient.fetch<SanityDocument<Wine>>(WINE_QUERY);
 			</div>
 		</section>
 
-		<article class="container mx-auto max-w-6xl">
-			<iframe
-				src={wine?.file}
-				class="w-full h-[1200px] border-0"
-				title="Calendrier des événements"
-				loading="lazy"></iframe>
-			<noscript>
-				<p class="text-center">
-					Le PDF ne peut pas être affiché. {" "}
-					<a href={wine?.file} class="text-primary underline underline-offset-4"> Télécharger le PDF </a>
-				</p>
-			</noscript>
+		<article class="container mx-auto max-w-6xl space-y-4">
+			{wines.map((wine) => (
+				<div class="flex flex-col items-center justify-center">
+					<Image
+						width={1000}
+						height={1200}
+						src={wine.image}
+						alt={"Photo de l'évènement"}
+					/>
+				</div>
+			))}
 		</article>
 	</main>
 </Layout>

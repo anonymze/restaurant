@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import FishImg from "@/assets/images/fish.webp";
+import WineTableImg from "@/assets/images/wine_table.webp";
 import { motion } from "framer-motion";
 ---
 
@@ -55,7 +55,7 @@ import { motion } from "framer-motion";
 					transition={{ duration: 0.5 }}
 					className="w-full md:w-[90%] h-72 md:ml-auto"
 				>
-					<Image src={FishImg} alt="Repas du restaurant" class="w-full h-full object-cover" />
+					<Image src={WineTableImg} alt="Repas du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 				<motion.div
 					client:load
@@ -65,7 +65,7 @@ import { motion } from "framer-motion";
 					client:load
 					className="w-full md:w-[90%] h-72 md:mr-auto"
 				>
-					<Image src={FishImg} alt="Plat poisson du restaurant" class="w-full h-full object-cover" />
+					<Image src={WineTableImg} alt="Plat poisson du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 			</div>
 		</div>

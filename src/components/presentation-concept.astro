@@ -1,11 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import CaveImg from "@/assets/images/cave.webp";
-import Eclairage2 from "@/assets/images/eclairage_2.webp";
+import TablesImg from "@/assets/images/tables.webp";
+import Tables2Img from "@/assets/images/tables_2.webp";
 import { motion } from "framer-motion";
 ---
 
-<section class="bg-stone-50 py-10 px-4 md:py-16" id="concept">
+<section 
+	class="bg-stone-50 py-10 px-4 md:py-16" 
+	id="concept" 
+	aria-labelledby="concept-title"
+>
 	<div class="container mx-auto max-w-6xl">
 		<div class="grid gap-10 md:grid-cols-2 items-center">
 			<!-- Text Content -->
@@ -15,7 +19,7 @@ import { motion } from "framer-motion";
 						<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
 						<span class="text-sm font-medium uppercase tracking-wider text-primary"> Notre concept </span>
 					</div>
-					<h2 class="text-3xl font-serif text-stone-800 leading-tight">Pourquoi Mauvaise Herbe ?</h2>
+					<h2 id="concept-title" class="text-3xl font-serif text-stone-800 leading-tight">Pourquoi Mauvaise Herbe ?</h2>
 				</div>
 				<p class="text-lg text-stone-600 leading-relaxed">
 					Une mauvaise herbe peut être tellement de choses différentes, ça n’est qu’une question de point de
@@ -39,25 +43,25 @@ import { motion } from "framer-motion";
 			</div>
 
 			<!-- Image Grid -->
-			<div class="grid grid-cols-2 gap-8 md:pb-14">
+			<div class="flex flex-col gap-10">
 				<motion.div
 					client:load
-					initial={{ opacity: 0, y: 50 }}
-					animate={{ opacity: 1, y: 0 }}
+					initial={{ opacity: 0, x: 50 }}
+					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5 }}
-					className="aspect-square md:aspect-[8/10] overflow-hidden "
+					className="w-[90%] h-72 ml-auto"
 				>
-					<Image src={CaveImg} alt="Cave du restaurant" class="w-full h-full object-cover" />
+					<Image src={TablesImg} alt="Cave du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 				<motion.div
 					client:load
-					initial={{ opacity: 0, y: -50 }}
-					animate={{ opacity: 1, y: 0 }}
+					initial={{ opacity: 0, x: -50 }}
+					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
 					client:load
-					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
+					className="w-[90%] h-72 mr-auto"
 				>
-					<Image src={Eclairage2} alt="Comptoir du restaurant" class="w-full h-full object-cover" />
+					<Image src={Tables2Img} alt="Comptoir du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 			</div>
 		</div>

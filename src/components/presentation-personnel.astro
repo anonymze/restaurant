@@ -5,7 +5,7 @@ import Dessert2Img from "@/assets/images/dessert_2.webp";
 import { motion } from "framer-motion";
 ---
 
-<section class="py-10 px-4 md:py-16" id="service">
+<section class="py-10 px-4 md:py-16" id="service" aria-labelledby="service-title">
 	<div class="container mx-auto max-w-6xl">
 		<div class="grid gap-12 md:grid-cols-2 items-center">
 			<!-- Text Content -->
@@ -15,10 +15,10 @@ import { motion } from "framer-motion";
 						<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
 						<span class="text-sm font-medium uppercase tracking-wider text-primary"> Notre Service </span>
 					</div>
-					<h2 class="text-3xl font-serif text-stone-800 leading-tight">Les menus</h2>
+					<h2 id="personnel-title" class="text-3xl font-serif text-stone-800 leading-tight">Les menus</h2>
 				</div>
 
-				<h3 class="text-2xl font-serif text-stone-800 leading-tight">La semaine</h3>
+				<h3 class="text-xl font-serif text-stone-800 leading-tight">La semaine</h3>
 
 				<ul class="list-disc list-inside">
 					<li class="text-md text-stone-600 leading-relaxed">Menu du midi en semaine : 19.50 €</li>
@@ -29,17 +29,21 @@ import { motion } from "framer-motion";
 
 				<p class="text-md text-stone-600 leading-relaxed">Fromages + 7 €</p>
 
-				<h3 class="text-2xl font-serif text-stone-800 leading-tight">Le vendredi</h3>
+				<h3 class="text-xl font-serif text-stone-800 leading-tight">Le vendredi</h3>
 
-				<p class="text-lg text-stone-600 leading-relaxed">
+				<p class="text-stone-600 leading-relaxed">
 					Tous les vendredis midi chez Mauvaise Herbe, la pêche du jour en plat principal !
 				</p>
-				
+
 				<ul class="list-disc list-inside">
 					<li class="text-md text-stone-600 leading-relaxed">1er vendredi du mois : Fish n' Chips</li>
 					<li class="text-md text-stone-600 leading-relaxed">2ème : Burger</li>
-					<li class="text-md text-stone-600 leading-relaxed">3ème : Moules/frites (août-janvier), Paella (février-juillet)</li>
-					<li class="text-md text-stone-600 leading-relaxed">4ème : Curry (variation entre les cuisines asiatiques)</li>
+					<li class="text-md text-stone-600 leading-relaxed">
+						3ème : Moules/frites (août-janvier), Paella (février-juillet)
+					</li>
+					<li class="text-md text-stone-600 leading-relaxed">
+						4ème : Curry (variation entre les cuisines asiatiques)
+					</li>
 					<li class="text-md text-stone-600 leading-relaxed">5ème vendredi : Sushi</li>
 				</ul>
 			</div>
@@ -78,6 +82,18 @@ import { motion } from "framer-motion";
 				</motion.div>
 			</div>
 		</div>
+	</div>
+
+	<div class="container mx-auto max-w-6xl mt-10">
+		<h3 class="text-xl font-serif text-stone-800 leading-tight mb-6">Samedi sauvage</h3>
+
+		<p class="text-md text-stone-600 leading-relaxed">
+			Environ une fois par mois, nous organisons les « Samedis sauvages », au cours desquels nous servons un
+			menu dégustation mettant l'accent sur les produits sauvages. Les Samedi sauvages seront annoncés <a
+				href="/agenda"
+				title="Lien vers la page agenda">ici</a
+			>
+		</p>
 	</div>
 </section>
 

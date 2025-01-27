@@ -14,16 +14,13 @@ const wines = await sanityClient.fetch<SanityDocument<Wine[]>>(WINE_QUERY);
 <Layout overflow>
 	<main class="bg-stone-50 py-16 px-4 md:py-24">
 		<section class="container mx-auto max-w-6xl space-y-12">
-			<div class="text-center mb-12">
-				<h1 class="text-4xl font-serif text-stone-800 mb-4">Notre carte des boissons</h1>
-				<div class="flex justify-center items-center gap-3 mb-6">
+			<div class="mb-12 max-w-2xl mx-auto">
+				<div class="flex justify-start items-center gap-3 mb-6">
 					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
-					<span class="text-sm font-medium uppercase tracking-wider text-primary">
-						Une cave nature et bio
-					</span>
-					<div class="h-0.5 w-8 bg-primary" aria-hidden="true"></div>
+					<h1 class="text-xl text-primary font-normal">Notre cave</h1>
 				</div>
-				<p class="text-lg text-left text-stone-600 max-w-2xl mx-auto leading-relaxed my-8">
+				<h2 class="text-3xl font-serif text-stone-800 leading-tight">Une cave nature et bio</h2>
+				<p class="text-lg text-left text-stone-600  leading-relaxed my-6">
 					Notre sommelier a rempli notre cave à vin avec plus de 100 références, venant du gaillacois, des
 					quatre coins de la France mais aussi avec une sélection de vins étrangers. Tous nos vins sont
 					certifiés bios, biodynamiques ou naturels. Nous privilégions évidement les domaines à taille
@@ -36,23 +33,20 @@ const wines = await sanityClient.fetch<SanityDocument<Wine[]>>(WINE_QUERY);
 					Vous trouverez ci-dessous notre dernière liste de boissons. <span class="font-bold"
 						>Tous nos vins, ainsi que boissons sans alcool et spiritueux sont disponibles à l'achat caviste,
 						avec une remise de 20% par rapport au prix sur table</span
-					>. <br><br>
+					>. <br /><br />
 					<span class="font-extrabold">Alors tchin !</span>
 				</p>
 			</div>
 		</section>
 
 		<article class="container mx-auto max-w-6xl space-y-4">
-			{wines.map((wine) => (
-				<div class="flex flex-col items-center justify-center">
-					<Image
-						width={1000}
-						height={1200}
-						src={wine.image}
-						alt={"Photo de l'évènement"}
-					/>
-				</div>
-			))}
+			{
+				wines.map((wine) => (
+					<div class="flex flex-col items-center justify-center">
+						<Image width={1000} height={1200} src={wine.image} alt={"Photo de l'évènement"} />
+					</div>
+				))
+			}
 		</article>
 	</main>
 </Layout>

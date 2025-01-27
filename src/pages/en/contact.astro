@@ -73,7 +73,7 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 								<li><span class="underline underline-offset-4">Deuxième service</span> : {work.starting_work_2} - {work.ending_work_2}</li>
 							</>
 						) : (
-							<li><span class="underline underline-offset-4">Service toute la journée</span> :  {work.starting_work} - {work.ending_work}</li>
+							<li><span class="underline underline-offset-4">Service de la journée</span> :  {work.starting_work} - {work.ending_work}</li>
 						)}
 					</ul>
 				</section>

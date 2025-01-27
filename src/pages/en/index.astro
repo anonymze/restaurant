@@ -7,6 +7,9 @@ import { cn } from "@/utils/libs/tailwind";
 import AnimatedText from "@/components/animated-text";
 import LogoComplete from "@/assets/images/logo_complete.webp";
 import FlagFR from "@/assets/icons/flag-fr.svg";
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import type { Work } from "@/types/work";
 
 const optimizedHomeImage = await getImage({
 	src: HomeImg,
@@ -14,6 +17,9 @@ const optimizedHomeImage = await getImage({
 	widths: [360, 720, 980, 1200, 1600, 1920, 2560],
 	loading: "eager",
 });
+
+const WORK_QUERY = `*[_type == "work"][0]`;
+const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 ---
 
 <Layout overflow={false} header={false} footer={false}>
@@ -35,7 +41,7 @@ const optimizedHomeImage = await getImage({
 				src={optimizedHomeImage.src}
 				width={980}
 				height={1200}
-				sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 980px) 720px, (max-width: 1600px) 980px, ${optimizedHomeImage.width}px`}
+				sizes={`(max-width: 360px) 360px, (max-width: 720px) 720px, (max-width: 980px) 980px, (max-width: 1600px) 1600px, (max-width: 1920px) 1920px, (max-width: 2560px) 2560px`}
 				alt="Restaurant ambiance photograph"
 				class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
 				fetchpriority="high"
@@ -47,7 +53,13 @@ const optimizedHomeImage = await getImage({
 					class="flex gap-6 items-center justify-end lg:gap-14 h-14 pr-8 text-white text-2xl font-bold text-shadow"
 				>
 					<li class="mr-auto">
-						<Image src={LogoComplete} alt="Mauvaise herbe restaurant logo" class="w-48 ml-3 drop-shadow" />
+						<Image
+							src={LogoComplete}
+							width={200}
+							height={180}
+							alt="Mauvaise herbe restaurant logo"
+							class="w-56 ml-3 drop-shadow"
+						/>
 					</li>
 					<li>
 						<AnimatedText href="/en/concept" title="Lien vers la page concept" client:load delay={0.2}
@@ -87,21 +99,90 @@ const optimizedHomeImage = await getImage({
 				</ul>
 			</nav>
 
-			<div class="absolute top-1/2 -translate-y-1/2 left-0 z-10 m-auto text-center w-full h-fit">
-				<h2
-					id="hero-heading"
-					class="px-2 py-1 text-[2rem] text-white text-shadow backdrop-blur-xs w-fit mx-auto uppercase font-serif whitespace-nowrap"
-				>
-					Restaurant – Bar – Caviste
-				</h2>
-				<div class="text-white w-fit mx-auto max-w-3xl mt-5">
-					<p class="p-2 text-shadow backdrop-blur-xs font-serif">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis est perferendis, expedita
-						obcaecati quasi adipisci qui fuga nostrum nobis veniam omnis officia cupiditate fugit optio
-						repellat veritatis deleniti ut earum? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Corporis est perferendis, expedita obcaecati quasi adipisci qui fuga nostrum nobis veniam omnis
-						officia cupiditate fugit optio repellat veritatis deleniti ut earum?
-					</p>
+			<div
+				class="absolute top-1/2 -translate-y-1/2 left-0 z-10 m-auto text-center w-full h-fit flex items-center"
+			>
+				<div class="flex-1">
+					<h2
+						id="hero-heading"
+						class="px-2 py-1 text-[2rem] text-white text-shadow w-fit mx-auto uppercase font-serif whitespace-nowrap"
+					>
+						Restaurant – Bar – Caviste
+					</h2>
+					<div class="text-white w-fit mx-auto max-w-3xl mt-5">
+						<p class="p-2 text-shadow font-serif">
+							Mauvaise Herbe a ouvert ses portes au printemps 2024 dans le village du Verdier, en pleine
+							campagne tarnaise. Notre cuisine est caractérisée par la créativité, les produits du terroir et
+							les plantes sauvages. Nous servons le déjeuner tous les jours du mardi au samedi, et le dîner le
+							vendredi et le samedi soir. Nous proposons un menu du jour unique tous les midis et le samedi
+							soir. Le vendredi soir, nos cuisiniers préparent de délicieux street food pour toute la famille.
+							En semaine, le bar est ouvert le soir avec diverses activités culturelles pour tous les âges.
+
+							<br /><br />
+							Nous sommes aussi caviste et grâce à notre sommelier, notre cave est remplie de vins naturels et
+							biologiques, et de saveurs passionnantes provenant à la fois de produits locaux et internationaux.
+
+							<br /><br />
+							<span class="font-bold">Soyez les bienvenus au restaurant Mauvaise Herbe !</span>
+						</p>
+					</div>
+				</div>
+				<div class="flex-1">
+					<div class="bg-white/90 max-w-96 h-fit p-5 rounded-xl text-primary mx-auto">
+						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Actualités</h3>
+						<ul class="list-disc list-inside space-y-3">
+							<li class="text-left">
+								Venez proposer vos projets culturels chez Mauvaise Herbe ! <a
+									href="/en/contact"
+									class="underline underline-offset-2">En savoir plus</a
+								>
+							</li>
+							<li class="text-left">
+								Pour la soirée de la Saint-Valentin, le vendredi 14 février, nos cuisiniers ont concocté un
+								merveilleux menu. <br />
+							</li>
+						</ul>
+						<p class="text-left mt-3">
+							Consultez le menu <a href="/en/cuisine" class="underline underline-offset-2">ici</a>.
+						</p>
+					</div>
+					<div class="bg-white/90 max-w-96 h-fit p-5 rounded-xl text-primary mx-auto mt-8">
+						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Horaires d'ouverture</h3>
+						<ul class="space-y-2">
+							<li class="text-center text-sm font-bold">
+								{
+									work.days_of_work.map((working_day, idx) => {
+										return (idx > 0 ? " - " : "") + working_day;
+									})
+								}
+							</li>
+							{
+								work.starting_work_2 && work.ending_work_2 ? (
+									<>
+										<li>
+											Premier service : <br />{" "}
+											<span class="text-sm font-bold">
+												{work.starting_work} - {work.ending_work}
+											</span>
+										</li>
+										<li>
+											Deuxième service : <br />{" "}
+											<span class="text-sm font-bold">
+												{work.starting_work_2} - {work.ending_work_2}
+											</span>
+										</li>
+									</>
+								) : (
+									<li>
+										Service de la journée : <br />{" "}
+										<span class="text-sm font-bold">
+											{work.starting_work} - {work.ending_work}
+										</span>
+									</li>
+								)
+							}
+						</ul>
+					</div>
 				</div>
 			</div>
 

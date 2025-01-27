@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import CuissonImg from "@/assets/images/cuisson.webp";
-import Dessert2Img from "@/assets/images/dessert_2.webp";
+import FishImg from "@/assets/images/fish.webp";
 import { motion } from "framer-motion";
 ---
 
@@ -48,37 +47,25 @@ import { motion } from "framer-motion";
 				</ul>
 			</div>
 
-			<!-- Image Grid -->
-			<div class="grid grid-cols-2 gap-8">
+			<div class="flex flex-col gap-10">
 				<motion.div
 					client:load
-					initial={{ opacity: 0, y: 50 }}
-					animate={{ opacity: 1, y: 0 }}
+					initial={{ opacity: 0, x: 50 }}
+					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5 }}
-					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
+					className="w-[90%] h-72 ml-auto"
 				>
-					<Image
-						src={CuissonImg}
-						loading="eager"
-						fetchpriority="high"
-						alt="Cuisson d'un aliment"
-						class="w-full h-full object-cover"
-					/>
+					<Image src={FishImg} alt="Repas du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 				<motion.div
 					client:load
-					initial={{ opacity: 0, y: -50 }}
-					animate={{ opacity: 1, y: 0 }}
+					initial={{ opacity: 0, x: -50 }}
+					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
-					className="aspect-square md:aspect-[8/10] overflow-hidden"
+					client:load
+					className="w-[90%] h-72 mr-auto"
 				>
-					<Image
-						src={Dessert2Img}
-						loading="eager"
-						fetchpriority="high"
-						alt="Dessert avec chantilly"
-						class="w-full h-full object-cover"
-					/>
+					<Image src={FishImg} alt="Plat poisson du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 			</div>
 		</div>
@@ -86,7 +73,7 @@ import { motion } from "framer-motion";
 
 	<div class="container mx-auto max-w-6xl mt-10">
 		<h3 class="text-xl font-serif text-stone-800 leading-tight mb-6">Samedi sauvage</h3>
-
+	
 		<p class="text-md text-stone-600 leading-relaxed">
 			Environ une fois par mois, nous organisons les « Samedis sauvages », au cours desquels nous servons un
 			menu dégustation mettant l'accent sur les produits sauvages. Les Samedi sauvages seront annoncés <a
@@ -94,8 +81,16 @@ import { motion } from "framer-motion";
 				title="Lien vers la page agenda">ici</a
 			>
 		</p>
+	
+		<div class="flex items-center justify-between gap-10 mt-10">
+			<Image src={FishImg} alt="Samedi sauvage" class="w-full h-full object-cover" />
+			<Image src={FishImg} alt="Samedi sauvage" class="w-full h-full object-cover" />
+			<Image src={FishImg} alt="Samedi sauvage" class="w-full h-full object-cover" />
+		</div>
 	</div>
 </section>
+
+
 
 <style>
 	#service {

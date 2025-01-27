@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import FlowerImg from "@/assets/images/flower.webp";
 import DessertImg from "@/assets/images/dessert.webp";
-import TableImg from "@/assets/images/table.webp";
 import { motion } from "framer-motion";
 ---
 
@@ -21,7 +21,7 @@ import { motion } from "framer-motion";
 					transition={{ duration: 0.5 }}
 					className="aspect-square md:aspect-[8/10] overflow-hidden "
 				>
-					<Image src={DessertImg} alt="Dessert avec sauce" class="w-full h-full object-cover" />
+					<Image src={FlowerImg} alt="Repas avec des fleurs" class="w-full h-full object-cover" />
 				</motion.div>
 				<motion.div
 					client:load
@@ -31,7 +31,7 @@ import { motion } from "framer-motion";
 					client:load
 					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
 				>
-					<Image src={TableImg} alt="Table du restaurant" class="w-full h-full object-cover" />
+					<Image src={DessertImg} alt="Dessert du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
 			</div>
 			<!-- Text Content -->

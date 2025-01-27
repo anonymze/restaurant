@@ -8,6 +8,7 @@ import type { Work } from "@/types/work";
 
 const WORK_QUERY = `*[_type == "work"][0]`;
 const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
+console.log(work);
 ---
 
 <Layout overflow>
@@ -63,20 +64,21 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</section>
 
 				<section aria-labelledby="hours-info">
-					<h2 id="hours-info" class="text-2xl text-center font-serif text-stone-800 mb-4 md:text-left">
+					<h2 id="hours-info" class="text-2xl text-center font-serif text-stone-800 mb-3 md:text-left">
 						Horaires d'ouverture
 					</h2>
-					<ul class="space-y-2">
-						<li class="text-center md:text-left">
-							{
-								work.days_of_work.map((working_day, idx) => {
-									return (idx > 0 ? " - " : "") + working_day;
-								})
-							}
-
-							<li class="text-center md:text-left">{work.starting_work} - {work.ending_work}</li>
-						</li>
-					</ul>
+					<p class="text-lg">
+						{work.first_day_work}
+						<br />
+						{work.hours_first_day_work}
+					</p>
+					{
+						work.second_day_work && work.hours_second_day_work ? (
+							<p class="text-lg mt-4">
+								{work.second_day_work} <br /> {work.hours_second_day_work}
+							</p>
+						) : null
+					}
 				</section>
 			</div>
 

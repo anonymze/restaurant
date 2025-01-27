@@ -1,7 +1,6 @@
 export interface Work {
-	starting_work: string;
-	ending_work: string;
-	days_of_work: string[];
-	ending_work_2?: string;
-	starting_work_2?: string;
+	first_day_work: string;
+	hours_first_day_work: string;
+	second_day_work?: string;
+	hours_second_day_work?: string;
 }

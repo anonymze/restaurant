@@ -154,38 +154,7 @@ const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 					<div class="bg-white/90 max-w-96 h-fit py-5 px-7  rounded-xl text-primary mx-auto">
 						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Horaires d'ouverture</h3>
 						<ul class="space-y-2">
-							<li class="text-center text-sm font-bold">
-								{
-									work.days_of_work.map((working_day, idx) => {
-										return (idx > 0 ? " - " : "") + working_day;
-									})
-								}
-							</li>
-							{
-								work.starting_work_2 && work.ending_work_2 ? (
-									<>
-										<li>
-											Premier service : <br />{" "}
-											<span class="text-sm font-bold">
-												{work.starting_work} - {work.ending_work}
-											</span>
-										</li>
-										<li>
-											Deuxième service : <br />{" "}
-											<span class="text-sm font-bold">
-												{work.starting_work_2} - {work.ending_work_2}
-											</span>
-										</li>
-									</>
-								) : (
-									<li>
-										Service de la journée : <br />{" "}
-										<span class="text-sm font-bold">
-											{work.starting_work} - {work.ending_work}
-										</span>
-									</li>
-								)
-							}
+
 						</ul>
 					</div>
 				</div>

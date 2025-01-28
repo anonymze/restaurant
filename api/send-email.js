@@ -26,7 +26,6 @@ export const POST = async (req) => {
 
 const sendEmailTo = async ({ apiKey, templateId, data }) => {
 	const msg = {
-		// TODO
 		to: "mmauvaise.herbe81@gmail.com",
 		from: "contact@mauvaise-herbe-restaurant.fr",
 		subject: "Newsletter Mauvaise Herbe",

@@ -13,7 +13,6 @@ export default defineConfig({
     locales: ["fr", "en"],
     defaultLocale: "fr",
   },
-	// TODO
 	site: "https://www.mauvaise-herbe-restaurant.fr",
 	adapter: vercel({
 		webAnalytics: {

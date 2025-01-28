@@ -17,6 +17,7 @@ export const POST = async (req) => {
 			},
 		});
 	} catch (error) {
+		console.log(error);
 		return new Response("KO", { status: 500 });
 	}
 
@@ -34,10 +35,5 @@ const sendEmailTo = async ({ apiKey, templateId, data }) => {
 
 	sgMail.setApiKey(apiKey);
 
-	return sgMail.send(msg).then((response) => {
-		return {
-			statusCode: response[0].statusCode,
-			headers: response[0].headers,
-		};
-	});
+	return sgMail.send(msg);
 };

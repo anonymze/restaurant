@@ -4,6 +4,9 @@ import sgMail from "@sendgrid/mail";
 export const POST = async (req) => {
 	const { email } = await req.json();
 
+	console.log(email);
+	console.log(process.env.SENDGRID_API_KEY);
+
 	if (!email) {
 		return new Response("KO", { status: 400 });
 	}

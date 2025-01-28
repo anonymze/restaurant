@@ -28,6 +28,15 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 
 const ACTU_QUERY = `*[_type == "actuFirst"]`;
 const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
+
+const navigation = [
+	{ name: "Concept", href: "/concept" },
+	{ name: "Cuisine", href: "/cuisine" },
+	{ name: "Caviste", href: "/caviste" },
+	{ name: "Agenda", href: "/agenda" },
+	{ name: "Equipe", href: "/equipe" },
+	{ name: "Contact", href: "/contact" },
+];
 ---
 
 <Layout overflow={false} header={false} footer={false} title="Accueil">
@@ -60,88 +69,50 @@ const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 				style="opacity: 0;"
 			/>
 
-			<nav class="absolute right-0 w-full top-8 z-10" aria-label="Navigation première partie">
-				<ul class="flex gap-6 items-center justify-end lg:gap-14 h-14 pr-8 text-white text-2xl text-shadow">
-					<motion.li
-						className="mr-auto"
-						client:load
-						initial={{ opacity: 0, y: -10 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{
-							y: {
-								type: "spring",
-								stiffness: 80,
-								damping: 6,
-								delay: 0.2,
-							},
-							opacity: {
-								duration: 0.2,
-								delay: 0.2,
-							},
-						}}
-					>
-						<Image
-							src={LogoComplete}
-							width={400}
-							height={300}
-							alt="Mauvaise herbe restaurant logo"
-							class="w-56 ml-3 drop-shadow mt-5"
-						/>
-					</motion.li>
-					<li>
-						<AnimatedText
-							href="/concept"
-							title="Lien vers la page concept"
-							className="uppercase"
-							client:load
-							delay={0.2}>Concept</AnimatedText
-						>
-					</li>
-					<li>
-						<AnimatedText
-							href="/cuisine"
-							title="Lien vers la page cuisine"
-							className="uppercase"
-							client:load
-							delay={0.4}>Cuisine</AnimatedText
-						>
-					</li>
-					<li>
-						<AnimatedText
-							href="/caviste"
-							title="Lien vers la page caviste"
-							className="uppercase"
-							client:load
-							delay={0.6}>Caviste</AnimatedText
-						>
-					</li>
-					<li>
-						<AnimatedText
-							href="/agenda"
-							title="Lien vers la page agenda"
-							className="uppercase"
-							client:load
-							delay={0.8}>Agenda</AnimatedText
-						>
-					</li>
-					<li>
-						<AnimatedText
-							href="/equipe"
-							title="Lien vers la page équipe"
-							className="uppercase"
-							client:load
-							delay={1}>Equipe</AnimatedText
-						>
-					</li>
-					<li>
-						<AnimatedText
-							href="/contact"
-							title="Lien vers la page contact"
-							className="uppercase"
-							client:load
-							delay={1.2}>Contact</AnimatedText
-						>
-					</li>
+			<motion.div
+				className="absolute right-0 w-full top-0 z-10"
+				client:load
+				initial={{ opacity: 0, y: -10 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{
+					y: {
+						type: "spring",
+						stiffness: 80,
+						damping: 6,
+						delay: 0.2,
+					},
+					opacity: {
+						duration: 0.2,
+						delay: 0.2,
+					},
+				}}
+			>
+				<Image
+					src={LogoComplete}
+					width={400}
+					height={300}
+					alt="Mauvaise herbe restaurant logo"
+					class="w-56 ml-3 drop-shadow mt-5"
+				/>
+			</motion.div>
+
+			<nav class="hidden lg:block absolute right-6 w-full top-8 z-10">
+				<ul class="flex gap-6 items-center justify-end lg:gap-14 h-14 pr-8 text-white text-xl xl:text-2xl text-shadow">
+					{
+						navigation.map((nav, idx) => {
+							return (
+								<AnimatedText
+									href={nav.href}
+									title={`Lien vers la page ${nav.name}`}
+									className="uppercase"
+									client:load
+									delay={0.2 * idx}
+								>
+									{nav.name}
+								</AnimatedText>
+							);
+						})
+					}
 					<!-- <li>
 						<AnimatedText href="/" title="Change de langue" className="align-middle" client:load delay={0.8}>
 							<FlagEN class="w-12 h-12 hover:scale-110 transition-all duration-200" />

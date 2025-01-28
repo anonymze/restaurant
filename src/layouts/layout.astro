@@ -6,26 +6,31 @@ import Footer from "./footer.astro";
 import MobileMenuScript from "@/components/mobile-menu-script.astro";
 
 interface Props {
+	title: string;
+	lang?: "fr" | "en";
 	overflow?: boolean;
 	header?: boolean;
 	footer?: boolean;
 }
 
-const { overflow, header = true, footer = true }: Props = Astro.props;
+const { overflow, lang = "fr", title, header = true, footer = true }: Props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Restaurant" />
+		<meta
+			name="description"
+			content="Le restaurant Mauvaise Herbe est situé au Verdier dans le Tarn. Une cuisine créative mettant en valeur les produits du terroir et la gastronomie locale. Restaurant, bar et cave à vins naturels. Nous proposons une cuisine de saison avec des produits locaux. Notre cave est remplie de vins naturels et biologiques sélectionnés avec soin. Venez découvrir notre ambiance chaleureuse et conviviale au cœur de la campagne tarnaise."
+		/>
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preload" href="/fonts/wotfard/wotfard-regular.woff2" as="font" type="font/woff2" />
 		<slot name="head-preload" />
-		<title>Restaurant</title>
+		<title>Mauvaise Herbe | {title}</title>
 		<ClientRouter />
 		<style>
 			html {

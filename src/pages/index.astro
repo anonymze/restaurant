@@ -26,7 +26,7 @@ const ACTU_QUERY = `*[_type == "actuFirst"]`;
 const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 ---
 
-<Layout overflow={false} header={false} footer={false}>
+<Layout overflow={false} header={false} footer={false} title="Accueil">
 	<Fragment slot="head-preload">
 		<link
 			rel="preload"

@@ -16,7 +16,7 @@ const TEAM_QUERY = `*[_type == "team"] | order(position asc){
 const team = await sanityClient.fetch<SanityDocument<Team[]>>(TEAM_QUERY);
 ---
 
-<Layout overflow>
+<Layout overflow title="Equipe">
 	<main class="bg-stone-50 py-16 px-4 md:py-24">
 		<section class="container mx-auto max-w-6xl space-y-12">
 			<div class="mb-12 max-w-2xl mx-auto">

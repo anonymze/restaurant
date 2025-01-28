@@ -13,7 +13,7 @@ const WINE_QUERY = `*[_type == "wine"] | order(position asc) {
 const wines = await sanityClient.fetch<SanityDocument<Wine[]>>(WINE_QUERY);
 ---
 
-<Layout overflow>
+<Layout overflow title="Cave">
 	<main class="bg-stone-50 py-16 px-4 md:py-24">
 		<section class="container mx-auto max-w-6xl space-y-12">
 			<div class="mb-12 max-w-2xl mx-auto">

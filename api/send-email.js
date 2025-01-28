@@ -23,7 +23,7 @@ export const POST = async (req) => {
 	return new Response("OK", { status: 200 });
 };
 
-export const sendEmailTo = async ({ apiKey, templateId, data }) => {
+const sendEmailTo = async ({ apiKey, templateId, data }) => {
 	const msg = {
 		// TODO
 		to: "metier.yann@gmail.com",

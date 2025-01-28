@@ -3,5 +3,6 @@ export interface Team {
 	firstname: string;
 	role: string;
 	image: string;
-	description: string;
+	position: number;
+	description?: string;
 }

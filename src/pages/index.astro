@@ -96,6 +96,98 @@ const navigation = [
 				/>
 			</motion.div>
 
+			<div class="absolute top-10 right-10 flex lg:hidden z-10">
+				<button
+					type="button"
+					id="menu-open"
+					class="inline-flex items-center justify-center p-2.5 text-white"
+				>
+					<span class="sr-only">Ouvrir le menu principal</span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="h-6 w-6"
+						aria-hidden="true"
+					>
+						<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line
+							x1="4"
+							x2="20"
+							y1="18"
+							y2="18"></line>
+					</svg>
+				</button>
+			</div>
+
+			<div id="mobile-menu" class="hidden lg:hidden" role="dialog" aria-modal="true">
+				<div class="fixed inset-0 z-50"></div>
+				<div
+					class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+				>
+					<div class="flex items-center justify-between">
+						<a href="/" class="-m-1.5 p-1.5">
+							<span class="sr-only">Votre Restaurant</span>
+							<span class="flex items-center gap-2 text-xl font-serif whitespace-nowrap text-stone-800"
+								><Image src={LogoComplete} alt="Logo du restaurant" class="w-auto h-12" /></span
+							>
+						</a>
+						<button type="button" id="menu-close" class="mr-4 mt-4 p-2.5 text-stone-700">
+							<span class="sr-only">Fermer le menu</span>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="h-6 w-6"
+								aria-hidden="true"
+							>
+								<path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>
+							</svg>
+						</button>
+					</div>
+					<div class="mt-6 flow-root">
+						<div class="-my-6 divide-y divide-gray-500/10">
+							<div class="flex flex-col space-y-4 py-5">
+								{
+									navigation.map((item) => (
+										<a
+											href={item.href}
+											class="-mx-3 block  px-3 py-4 text-base font-semibold leading-7 text-stone-900 hover:bg-gray-50 uppercase"
+										>
+											{item.name}
+										</a>
+									))
+								}
+							</div>
+							<!-- <div class="py-6">
+								{
+									currentUrl.startsWith("/en") ? (
+										<a href={currentUrl.replace("/en", "")}>
+											<FlagFR class="w-9 h-9 hover:scale-110 transition-all duration-200" />
+										</a>
+									) : (
+										<a href={"/en" + currentUrl}>
+											<FlagEN class="w-9 h-9 hover:scale-110 transition-all duration-200" />
+										</a>
+									)
+								}
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<nav class="hidden lg:block absolute right-6 w-full top-8 z-10">
 				<ul class="flex gap-6 items-center justify-end lg:gap-14 h-14 pr-8 text-white text-xl xl:text-2xl text-shadow">
 					{

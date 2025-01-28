@@ -8,4 +8,4 @@ Disallow: /admin/
 Disallow: /private/
 
 # Allow all bots to access your sitemap
-Sitemap: http://localhost:4321/sitemap-index.xml
+Sitemap: https://www.mauvaise-herbe-restaurant.fr/sitemap-index.xml

@@ -54,7 +54,7 @@ const team = await sanityClient.fetch<SanityDocument<Team[]>>(TEAM_QUERY);
 									{member.lastname + " " + member.firstname}
 								</h3>
 								<p class="text-sm font-medium text-primary">{member.role}</p>
-								<p class="text-sm text-stone-600">{member.description}</p>
+								{member.description && <p class="text-sm text-stone-600">{member.description}</p>}
 							</CardContent>
 						</Card>
 					))

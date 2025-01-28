@@ -8,7 +8,6 @@ import type { Work } from "@/types/work";
 
 const WORK_QUERY = `*[_type == "work"][0]`;
 const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
-console.log(work);
 ---
 
 <Layout overflow>

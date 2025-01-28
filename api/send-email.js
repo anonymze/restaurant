@@ -11,7 +11,6 @@ export const POST = async (req) => {
 	try {
 		await sendEmailTo({
 			apiKey: process.env.SENDGRID_API_KEY,
-			sendEmailTo: "metier.yann@gmail.com",
 			templateId: process.env.SENDGRID_EMAIL_RESERVATION_NOTIFICATION,
 			data: {
 				email,
@@ -26,10 +25,9 @@ export const POST = async (req) => {
 
 export const sendEmailTo = async ({ apiKey, templateId, data }) => {
 	const msg = {
-		// TODO "email restaurateur"
+		// TODO
 		to: "metier.yann@gmail.com",
-		// TODO "email domain name"
-		from: "metier.game@gmail.com",
+		from: "contact@mauvaise-herbe-restaurant.fr",
 		templateId,
 		dynamic_template_data: data,
 	};
@@ -37,7 +35,6 @@ export const sendEmailTo = async ({ apiKey, templateId, data }) => {
 	sgMail.setApiKey(apiKey);
 
 	return sgMail.send(msg).then((response) => {
-		console.log(response);
 		return {
 			statusCode: response[0].statusCode,
 			headers: response[0].headers,

@@ -43,9 +43,15 @@ const wines = await sanityClient.fetch<SanityDocument<Wine[]>>(WINE_QUERY);
 				</p>
 			</div>
 
-			<div class="flex flex-col md:flex-row gap-10 ">
+			<div class="flex flex-col md:flex-row gap-10">
 				<Image src={TableLargeImg} alt="Carte des boissons" width={1200} height={1000} />
-				<Image src={CaveImg} alt="Caveà vin" class="max-w-20 object-cover mx-auto" width={600} height={1200} />
+				<Image
+					src={CaveImg}
+					alt="Caveà vin"
+					class="max-w-20 object-cover mx-auto"
+					width={600}
+					height={1200}
+				/>
 			</div>
 		</section>
 
@@ -56,8 +62,8 @@ const wines = await sanityClient.fetch<SanityDocument<Wine[]>>(WINE_QUERY);
 					<h2 class="text-xl text-primary font-normal uppercase">Notre carte des boissons</h2>
 				</div>
 				<p class="text-lg text-left text-stone-600 leading-relaxed my-6">
-					<!-- TODO -->
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi excepturi ratione voluptates accusamus adipisci esse assumenda exercitationem harum. Iusto tempore inventore commodi, distinctio saepe culpa. Quam molestiae accusamus sunt natus.
+					Découvrez notre sélection de boissons, soigneusement choisis pour vous offrir une bonne expérience.
+					Notre carte est régulièrement mise à jour avec de nouvelles découvertes passionnantes.
 				</p>
 			</div>
 		</section>

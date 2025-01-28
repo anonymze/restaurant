@@ -6,6 +6,9 @@ import type { Team } from "@/types/team";
 import { Card, CardContent } from "@/components/ui/card";
 import { Image } from "astro:assets";
 
+const blurredBase64 =
+	"data:image/webp;base64,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";
+
 const TEAM_QUERY = `*[_type == "team"] | order(position asc){
 	firstname,
 	lastname,
@@ -41,21 +44,33 @@ const team = await sanityClient.fetch<SanityDocument<Team[]>>(TEAM_QUERY);
 					team.map((member) => (
 						<Card className="bg-stone-50 border-none overflow-hidden rounded-none">
 							<div class="aspect-[4/3] overflow-hidden">
-								<Image
-									width={400}
-									height={300}
-									src={member.image}
-									alt={member.lastname + " " + member.firstname}
-									class="w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105"
-								/>
+								<div class="relative w-full h-full">
+									<Image
+										src={blurredBase64}
+										width={600}
+										height={500}
+										alt=""
+										class="absolute inset-0 w-full h-full object-cover"
+									/>
+									<Image
+										width={600}
+										height={500}
+										src={member.image}
+										alt={member.lastname + " " + member.firstname}
+										class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 hover:scale-105 opacity-0"
+										fetchpriority="high"
+										onload="this.style.opacity = 1"
+										style="opacity: 0;"
+									/>
+								</div>
 							</div>
 							<CardContent className="p-6 text-center">
 								<h3 class="text-xl font-serif text-stone-800 mb-1">
 									{member.lastname + " " + member.firstname}
 								</h3>
 								<p class="text-sm font-medium text-primary">{member.role}</p>
-								
-								{member.description && <p class="text-sm text-stone-600">{member.description}</p>}								
+
+								{member.description && <p class="text-sm text-stone-600">{member.description}</p>}
 							</CardContent>
 						</Card>
 					))

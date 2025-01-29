@@ -83,6 +83,9 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      simple-stack-query:
+        specifier: ^0.2.0
+        version: 0.2.0(lightningcss@1.28.2)(terser@5.37.0)
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
@@ -708,6 +711,14 @@ packages:
   '@babel/types@7.26.3':
     resolution: {integrity: sha512-vN5p+1kl59GVKMvTHt55NzzmYVxprfJD+ql7U9NFIfKCBkYE55LYtS+WtPlaYOyzydrKI8Nezd+aZextrd+FMA==}
     engines: {node: '>=6.9.0'}
+
+  '@clack/core@0.3.5':
+    resolution: {integrity: sha512-5cfhQNH+1VQ2xLQlmzXMqUoiaH0lRBq9/CLW9lTyMbuKLC3+xEK01tHVvyut++mLOn5urSHmkm6I0Lg9MaJSTQ==}
+
+  '@clack/prompts@0.7.0':
+    resolution: {integrity: sha512-0MhX9/B4iL6Re04jPrttDm+BsP8y6mS7byuv0BvXgdXhbV5PdlsHt55dvNsuBCPZ7xq1oTAOOuotR9NFbQyMSA==}
+    bundledDependencies:
+      - is-unicode-supported
 
   '@dnd-kit/accessibility@3.1.1':
     resolution: {integrity: sha512-2P+YgaXF+gRsIihwwY1gCsQSYnu9Zyj2py8kY5fFvUM1qm2WA2u639R6YNVfU4GWr+ZM5mqEsfHZZLoRONbemw==}
@@ -5146,6 +5157,15 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
+  simple-stack-query@0.2.0:
+    resolution: {integrity: sha512-7y+b+DmeBDkwU/GVD/nz9zElqjo+FY1V9oAIE+W2UVB5SGWqGLrZwkd4c2wz4Z6hNZFroQk9SIz+oOhtaX20Ag==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      signal-polyfill: ^0.1.2
+    peerDependenciesMeta:
+      signal-polyfill:
+        optional: true
+
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
 
@@ -5746,6 +5766,10 @@ packages:
 
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
+
+  vite-plugin-simple-scope@2.0.2:
+    resolution: {integrity: sha512-UvF++rRZbmGK4A+JsTo0YVKw55wk5IyBTgURspzlkjbt66FXWMOND5yZmGB/2CtFky7wKNz6LHB2B6gHCVrfAw==}
+    engines: {node: '>=18.14.1'}
 
   vite@5.4.11:
     resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
@@ -6870,6 +6894,17 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@clack/core@0.3.5':
+    dependencies:
+      picocolors: 1.1.1
+      sisteransi: 1.0.5
+
+  '@clack/prompts@0.7.0':
+    dependencies:
+      '@clack/core': 0.3.5
+      picocolors: 1.1.1
+      sisteransi: 1.0.5
 
   '@dnd-kit/accessibility@3.1.1(react@19.0.0)':
     dependencies:
@@ -11879,6 +11914,21 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
+  simple-stack-query@0.2.0(lightningcss@1.28.2)(terser@5.37.0):
+    dependencies:
+      '@clack/prompts': 0.7.0
+      kleur: 4.1.5
+      vite-plugin-simple-scope: 2.0.2(lightningcss@1.28.2)(terser@5.37.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - terser
+
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
@@ -12446,6 +12496,20 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
+
+  vite-plugin-simple-scope@2.0.2(lightningcss@1.28.2)(terser@5.37.0):
+    dependencies:
+      typescript: 5.7.2
+      vite: 5.4.11(lightningcss@1.28.2)(terser@5.37.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - terser
 
   vite@5.4.11(lightningcss@1.28.2)(terser@5.37.0):
     dependencies:

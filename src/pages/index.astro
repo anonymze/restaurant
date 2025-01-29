@@ -97,11 +97,7 @@ const navigation = [
 			</motion.div>
 
 			<div class="absolute top-10 right-10 flex lg:hidden z-10">
-				<button
-					type="button"
-					id="menu-open"
-					class="inline-flex items-center justify-center p-2.5 text-white"
-				>
+				<button type="button" id="menu-open" class="inline-flex items-center justify-center p-2.5 text-white">
 					<span class="sr-only">Ouvrir le menu principal</span>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +185,9 @@ const navigation = [
 			</div>
 
 			<nav class="hidden lg:block absolute right-6 w-full top-8 z-10">
-				<ul class="flex gap-6 items-center justify-end lg:gap-14 h-14 pr-8 text-white text-xl xl:text-2xl text-shadow-2">
+				<ul
+					class="flex gap-6 items-center justify-end lg:gap-14 h-14 pr-8 text-white text-xl xl:text-2xl text-shadow-2"
+				>
 					{
 						navigation.map((nav, idx) => {
 							return (
@@ -244,7 +242,7 @@ const navigation = [
 				<div class="flex-1 hidden lg:flex items-center gap-10 flex-col mt-10 md:mt-0">
 					<div class="bg-white/75 w-96 h-fit py-5 px-7 rounded-xl text-primary mx-auto">
 						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Actualités</h3>
-						<ul class="list-disc list-inside space-y-3">
+						<ul class="custom-bullet list-inside space-y-3">
 							<li class="text-left">
 								Venez proposer vos projets culturels chez Mauvaise Herbe ! <a
 									href="/contact"
@@ -290,3 +288,10 @@ const navigation = [
 		</section>
 	</main>
 </Layout>
+
+<style>
+	.custom-bullet {
+		list-style-image: url("/src/assets/icons/mini-logo.svg");
+		list-style-type: disc; /* fallback */
+	}
+</style>

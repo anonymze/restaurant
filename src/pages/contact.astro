@@ -81,25 +81,6 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 				</section>
 			</div>
 
-			<form class="flex flex-col items-center gap-4 max-w-2xl mx-auto">
-				<label for="email" class="font-bold text-xl">Vous souhaitez recevoir nos actualités ?</label>
-				<p class="text-stone-600">Entrez votre adresse-email pour vous inscrire à la newsletter :</p>
-				<div class="flex gap-4 w-full">
-					<input
-						id="email"
-						name="email"
-						type="email"
-						required
-						placeholder="votre@email.com"
-						class="flex-1 border-2 border-primary py-1 px-3 rounded-xs"
-					/>
-					<button
-						class="bg-primary text-white p-2 rounded-xs disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary hover:bg-primary/90"
-						>Envoyer</button
-					>
-				</div>
-			</form>
-
 			<article aria-label="Localisation" class="aspect-video overflow-hidden">
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.6975934936427!2d1.839593276335543!3d43.98630303082283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12adccb806197ca9%3A0x56a155854c6fdae1!2s3%20Le%20Fond%20du%20Barri%2C%2081140%20Le%20Verdier!5e0!3m2!1sfr!2sfr!4v1736184143353!5m2!1sfr!2sfr"
@@ -116,56 +97,3 @@ const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 	</main>
 </Layout>
 
-<script>
-	const form = document.querySelector("form");
-	const button = form?.querySelector("button");
-	const errorMessage =
-		"Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
-
-	const validForm = () => {
-		if (!button) return;
-		if (!form) return;
-
-		button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-		button.disabled = true;
-
-		const message = document.createElement("p");
-		message.textContent = "Votre email a été envoyé avec succès !";
-		message.style.color = "green";
-
-		form.appendChild(message);
-		form.reset();
-	};
-
-	form?.addEventListener("submit", (e) => {
-		e.preventDefault();
-
-		if (window.sessionStorage.getItem("newsletter-sent")) {
-			validForm();
-			return;
-		}
-
-		const email = form.querySelector("input[name='email']") as HTMLInputElement;
-		const emailValue = email.value;
-
-		if (!emailValue) return;
-
-		try {
-			fetch("/api/send-email", {
-				method: "POST",
-				body: JSON.stringify({
-					email: emailValue,
-				}),
-			}).then((response) => {
-				if (response.ok) {
-					window.sessionStorage.setItem("newsletter-sent", "true");
-					validForm();
-				} else {
-					alert(errorMessage);
-				}
-			});
-		} catch (error) {
-			alert(errorMessage);
-		}
-	});
-</script>

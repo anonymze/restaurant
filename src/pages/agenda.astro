@@ -22,10 +22,9 @@ const events = await sanityClient.fetch<SanityDocument<Event[]>>(EVENT_QUERY);
 				<h2 class="text-3xl font-serif text-stone-800 leading-tight">Qu'est-ce qui se passe ?</h2>
 				<p class="text-lg text-left text-stone-600 leading-relaxed my-6">
 					Mardi culture, Mercredi musical, Jeux-di... Le bar est ouvert le soir en semaine et nous espérons
-					remplir ces soirées d'activités amusantes et sociales pour tous les âges et nous avons besoin de
-					vos suggestions et de vos compétences pour y parvenir ! Écrivez-nous un courriel, appelez-nous ou
-					venez nous parler sur place de ce que vous aimeriez vivre, organiser ou réaliser chez Mauvaise
-					Herbe. <a
+					remplir ces soirées d'activités amusantes et sociales pour tous les âges et nous avons besoin de vos
+					suggestions et de vos compétences pour y parvenir ! Écrivez-nous un courriel, appelez-nous ou venez
+					nous parler sur place de ce que vous aimeriez vivre, organiser ou réaliser chez Mauvaise Herbe. <a
 						class="text-primary underline underline-offset-2"
 						title="Lien vers la page contact"
 						href="/contact">Contactez-nous !</a
@@ -33,23 +32,93 @@ const events = await sanityClient.fetch<SanityDocument<Event[]>>(EVENT_QUERY);
 
 					<br />
 					<br />
-					Ci-dessous, nous publions toutes les dernières infos, du programme mensuel aux menus spéciaux ainsi
-					que notre newsletter.
+					Ci-dessous, nous publions toutes les dernières infos, du programme mensuel aux menus spéciaux ainsi que
+					notre newsletter.
 				</p>
 			</div>
 		</section>
 
+		<form class="flex flex-col items-center gap-4 max-w-2xl mx-auto mb-16">
+			<label for="email" class="font-bold text-xl">Vous souhaitez recevoir nos actualités ?</label>
+			<p class="text-stone-600">Entrez votre adresse-email pour vous inscrire à la newsletter :</p>
+			<div class="flex gap-4 w-full">
+				<input
+					id="email"
+					name="email"
+					type="email"
+					required
+					placeholder="votre@email.com"
+					class="flex-1 border-2 border-primary py-1 px-3 rounded-xs"
+				/>
+				<button
+					class="bg-primary text-white p-2 rounded-xs disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary hover:bg-primary/90"
+					>Envoyer</button
+				>
+			</div>
+		</form>
+
 		<article class="container mx-auto max-w-6xl space-y-4">
-			{events.map((event) => (
-				<div class="flex flex-col items-center justify-center">
-					<Image
-						width={1000}
-						height={1200}
-						src={event.image}
-						alt={"Photo de l'évènement"}
-					/>
-				</div>
-			))}
+			{
+				events.map((event) => (
+					<div class="flex flex-col items-center justify-center">
+						<Image width={1000} height={1200} src={event.image} alt={"Photo de l'évènement"} />
+					</div>
+				))
+			}
 		</article>
 	</main>
 </Layout>
+
+<script>
+	const form = document.querySelector("form");
+	const button = form?.querySelector("button");
+	const errorMessage =
+		"Une erreur est survenue lors de l'envoi de l'email. Contactez-nous directement par téléphone s'il vous plaît.";
+
+	const validForm = () => {
+		if (!button) return;
+		if (!form) return;
+
+		button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+		button.disabled = true;
+
+		const message = document.createElement("p");
+		message.textContent = "Votre email a été envoyé avec succès !";
+		message.style.color = "green";
+
+		form.appendChild(message);
+		form.reset();
+	};
+
+	form?.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		if (window.sessionStorage.getItem("newsletter-sent")) {
+			validForm();
+			return;
+		}
+
+		const email = form.querySelector("input[name='email']") as HTMLInputElement;
+		const emailValue = email.value;
+
+		if (!emailValue) return;
+
+		try {
+			fetch("/api/send-email", {
+				method: "POST",
+				body: JSON.stringify({
+					email: emailValue,
+				}),
+			}).then((response) => {
+				if (response.ok) {
+					window.sessionStorage.setItem("newsletter-sent", "true");
+					validForm();
+				} else {
+					alert(errorMessage);
+				}
+			});
+		} catch (error) {
+			alert(errorMessage);
+		}
+	});
+</script>

@@ -6,7 +6,6 @@ import { getImage } from "astro:assets";
 import { cn } from "@/utils/libs/tailwind";
 import AnimatedText from "@/components/animated-text";
 import LogoComplete from "@/assets/images/logo_complete.webp";
-import FlagEN from "@/assets/icons/flag-en.svg";
 import { sanityClient } from "sanity:client";
 import type { SanityDocument } from "@sanity/client";
 import type { Work } from "@/types/work";
@@ -26,7 +25,7 @@ const optimizedHomeImage = await getImage({
 const WORK_QUERY = `*[_type == "work"][0]`;
 const work = await sanityClient.fetch<SanityDocument<Work>>(WORK_QUERY);
 
-const ACTU_QUERY = `*[_type == "actuFirst"]`;
+const ACTU_QUERY = `*[_type == "actuFirst"] | order(position asc)`;
 const actu = await sanityClient.fetch<SanityDocument<ActuFirst[]>>(ACTU_QUERY);
 
 const navigation = [

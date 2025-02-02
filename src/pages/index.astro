@@ -237,27 +237,41 @@ const navigation = [
 							<br /><br />
 							<span class="font-bold">Soyez les bienvenus au restaurant Mauvaise Herbe !</span>
 						</p>
+
+						<a
+							href="/agenda"
+							title="Lien pour s'inscrire à notre newsletter"
+							class="text-center block mt-5 text-primary text-shadow-2"
+							>Inscrivez-vous à notre newsletter <span class="font-bold underline underline-offset-2"
+								>ici</span
+							></a
+						>
 					</div>
 				</div>
 				<div class="flex-1 hidden md:flex items-center gap-10 flex-col mt-10 md:mt-0">
 					<div class="bg-white/75 w-96 h-fit py-5 px-7 rounded-xl text-primary mx-auto">
 						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Actualités</h3>
-						<ul class="custom-bullet list-inside space-y-3">
-							<li class="text-left">
-								Venez proposer vos projets culturels chez Mauvaise Herbe ! <a
-									href="/contact"
-									class="underline underline-offset-2">En savoir plus</a
-								>
-							</li>
+						<ul class="custom-bullet list-inside space-y-3 text-left">
 							{
-								actu.map((actu) => {
-									return <li class="text-left">{actu.description}</li>;
+								actu.map((actu, idx) => {
+									return (
+											<li>
+												{actu.description}{" "}
+												{idx === 0 && (
+													<a href="/cuisine" class="underline underline-offset-2">
+														En savoir plus
+													</a>
+												)}
+												{idx === 1 && (
+													<a href="/agenda" class="underline underline-offset-2">
+														En savoir plus
+													</a>
+												)}
+											</li>
+									);
 								})
 							}
 						</ul>
-						<p class="text-left mt-3">
-							Consultez le menu <a href="/cuisine" class="underline underline-offset-2">ici</a>.
-						</p>
 					</div>
 					<div class="bg-white/75 w-96 h-fit py-5 px-7 rounded-xl text-primary mx-auto">
 						<h3 class="text-center text-xl font-bold drop-shadow mb-2 uppercase">Horaires d'ouverture</h3>

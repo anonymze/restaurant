@@ -91,6 +91,7 @@ const events = await sanityClient.fetch<SanityDocument<Event[]>>(EVENT_QUERY);
 	};
 
 	form?.addEventListener("submit", (e) => {
+	console.log('ici')
 		e.preventDefault();
 
 		if (window.sessionStorage.getItem("newsletter-sent")) {

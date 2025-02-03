@@ -190,6 +190,7 @@ const navigation = [
 					{
 						navigation.map((nav, idx) => {
 							return (
+								<li>
 								<AnimatedText
 									href={nav.href}
 									title={`Lien vers la page ${nav.name}`}
@@ -199,6 +200,7 @@ const navigation = [
 								>
 									{nav.name}
 								</AnimatedText>
+								</li>
 							);
 						})
 					}

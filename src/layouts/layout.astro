@@ -11,9 +11,10 @@ interface Props {
 	overflow?: boolean;
 	header?: boolean;
 	footer?: boolean;
+	media?: boolean;
 }
 
-const { overflow, title, lang = "fr", header = true, footer = true }: Props = Astro.props;
+const { overflow, title, lang = "fr", header = true, footer = true, media = false }: Props = Astro.props;
 ---
 
 <!doctype html>
@@ -39,7 +40,7 @@ const { overflow, title, lang = "fr", header = true, footer = true }: Props = As
 			}
 		</style>
 	</head>
-	<body class:list={["h-dvh", !overflow && "overflow-hidden"]}>
+	<body class:list={["h-dvh", !overflow && ! media && "overflow-hidden", media && "overflow-auto md:overflow-hidden"]}>
 		{header && <Header />}
 		<slot />
 		{footer && <Footer />}

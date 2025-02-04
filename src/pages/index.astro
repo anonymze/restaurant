@@ -368,14 +368,12 @@ const navigation = [
 	</main>
 </Layout>
 
-<style>
+<style  define:vars={{ lol: optimizedHomeImage.src }}>
 	.custom-bullet {
 		list-style-image: url("/src/assets/icons/mini-logo.svg");
 		list-style-type: disc; /* fallback */
 	}
-</style>
 
-<style define:vars={{ lol: optimizedHomeImage.src }}>
 	.background {
 		background-image: url({lol});
 		background-attachment: fixed;

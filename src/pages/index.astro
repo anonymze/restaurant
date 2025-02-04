@@ -375,9 +375,9 @@ const navigation = [
 	}
 </style>
 
-<style>
+<style define:vars={{ optimizedHomeImage: optimizedHomeImage.src }}>
 	.background {
-		background-image: url("/src/assets/images/home.webp");
+		background-image: url(optimizedHomeImage);
 		background-attachment: fixed;
 		background-size: cover;
 		background-position: center;

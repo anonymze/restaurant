@@ -1,8 +1,8 @@
 {
 	"crons": [
 		{
-			"path": "/api/trigger-deploy.js", 
-			"schedule": "0 */24 * * *"      
+			"path": "/api/trigger-deploy.js",
+			"schedule": "0 0 * * *"      
 		}
 	]
 }

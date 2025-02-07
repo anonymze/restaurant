@@ -1,0 +1,12 @@
+{
+	"crons": [
+		{
+			"path": "/api/trigger-deploy.js", 
+			"schedule": "0 */12 * * *"      
+		}
+	],
+	"github": {
+		"enabled": true,
+		"silent": false
+	}
+}

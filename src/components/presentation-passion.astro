@@ -14,8 +14,8 @@ import { motion } from "framer-motion";
 					client:load
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5 }}
-					className="aspect-square md:aspect-[8/10] overflow-hidden "
+					transition={{ duration: 0.7 }}
+					className="aspect-square md:aspect-[8/10] overflow-hidden only-desktop-animation"
 				>
 					<Image src={FlowerImg} alt="Repas avec des fleurs" class="w-full h-full object-cover" />
 				</motion.div>
@@ -23,9 +23,8 @@ import { motion } from "framer-motion";
 					client:load
 					initial={{ opacity: 0, y: -50 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
-					client:load
-					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20"
+					transition={{ duration: 0.7, delay: 0.2 }}
+					className="aspect-square md:aspect-[8/10] overflow-hidden md:translate-y-20 only-desktop-animation"
 				>
 					<Image src={DessertImg} alt="Dessert du restaurant" class="w-full h-full object-cover" />
 				</motion.div>

@@ -20,11 +20,11 @@ import { motion } from "framer-motion";
 					</h2>
 				</div>
 				<p class="text-lg text-stone-600 leading-relaxed">
-					Une mauvaise herbe peut être tellement de choses différentes, ça n’est qu’une question de point de
-					vue. La ronce n’est plus mauvaise avec des mûres dessus. Il existe dans nos jardins et nos forêts
+					Une mauvaise herbe peut être tellement de choses différentes, ça n'est qu'une question de point de
+					vue. La ronce n'est plus mauvaise avec des mûres dessus. Il existe dans nos jardins et nos forêts
 					d'innombrables plantes considérées comme des « mauvaises herbes » qui sont non seulement
-					comestibles, mais aussi délicieuses. On ne devrait jamais dire qu’une chose ou qu’une personne est
-					mauvaise, alors qu’on ne la connait pas.
+					comestibles, mais aussi délicieuses. On ne devrait jamais dire qu'une chose ou qu'une personne est
+					mauvaise, alors qu'on ne la connait pas.
 					<br />
 					<br />
 					Avec de la connaissance et du temps (et de longues promenades !), nous pouvons élargir nos horizons et
@@ -45,8 +45,8 @@ import { motion } from "framer-motion";
 					client:load
 					initial={{ opacity: 0, x: 50 }}
 					animate={{ opacity: 1, x: 0 }}
-					transition={{ duration: 0.5 }}
-					className="w-full md:w-[90%] h-72  md:ml-auto"
+					transition={{ duration: 0.7 }}
+					className="w-full md:w-[90%] h-72 md:ml-auto only-desktop-animation"
 				>
 					<Image src={TablesImg} alt="Tables du restaurant" class="w-full h-full object-cover" />
 				</motion.div>
@@ -55,8 +55,7 @@ import { motion } from "framer-motion";
 					initial={{ opacity: 0, x: -50 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
-					client:load
-					className="w-full md:w-[90%] h-72 md:mr-auto"
+					className="w-full md:w-[90%] h-72 md:mr-auto only-desktop-animation"
 				>
 					<Image src={Tables2Img} alt="Comptoir du restaurant" class="w-full h-full object-cover" />
 				</motion.div>

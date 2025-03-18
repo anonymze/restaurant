@@ -40,3 +40,10 @@ body {
 
 	box-shadow: var(--perfect-shadow);
 } */
+
+@media (max-width: 768px) {
+	.only-desktop-animation {
+		transform: none !important;
+		opacity: 1 !important;
+	}
+}

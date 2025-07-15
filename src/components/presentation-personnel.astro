@@ -1,10 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import WineWallImg from "@/assets/images/wine_wall.webp";
-import FishImg from "@/assets/images/fish.webp";
-import Dessert2Img from "@/assets/images/dessert_2.webp";
-import SteakImg from "@/assets/images/steak.webp";
 import BurgerImg from "@/assets/images/burger.webp";
+import FishImg from "@/assets/images/fish.webp";
+import SteakImg from "@/assets/images/steak.webp";
+import WineWallImg from "@/assets/images/wine_wall.webp";
+import { Image } from "astro:assets";
 import { motion } from "framer-motion";
 ---
 
@@ -22,7 +21,7 @@ import { motion } from "framer-motion";
 				</div>
 
 				<ul class="list-disc list-inside -mt-5">
-					<li class="text-md text-stone-600 leading-relaxed">Menu du midi en semaine : 19.50 €</li>
+					<li class="text-md text-stone-600 leading-relaxed">Menu du jours en semaine, midi : 19.50 €, soir : 25 €</li>
 					<li class="text-md text-stone-600 leading-relaxed">Vendredi soir : 25 ou 30 €  (plat 15 ou 20 €)</li>
 					<li class="text-md text-stone-600 leading-relaxed">Menu du samedi, midi et soir : 30 €</li>
 					<li class="text-md text-stone-600 leading-relaxed">Samedi sauvage, midi et soir : 45 €</li>
@@ -70,11 +69,11 @@ import { motion } from "framer-motion";
 		<div class="flex-1">
 			<h3 class="text-xl font-serif text-stone-800 leading-tight mb-1">Samedi sauvage</h3>
 			<p class="text-md text-stone-600 leading-relaxed">
-				Environ une fois par mois, nous organisons les « Samedis sauvages », au cours desquels nous servons un
-				menu dégustation mettant l'accent sur les produits sauvages. Les Samedis sauvages seront annoncés <a
+			Quelques fois par ans, nous organisons les « Samedis sauvages », au cours desquels nous servons un menu dégustation mettant l'accent sur les produits sauvages. Les Samedis sauvages seront annoncés
+ <a
 					href="/agenda"
 					class="text-primary underline underline-offset-3 mr-1"
-					title="Lien vers la page agenda">ici</a
+					title="Lien vers la page agenda">sur la page Agenda</a
 				>.
 			</p>
 			<div class="h-1 w-12 bg-primary mt-8" aria-hidden="true"></div>
@@ -103,8 +102,7 @@ import { motion } from "framer-motion";
 			width={700}
 			height={700}
 			class="w-full max-h-[28rem] md:w-80 md:h-96 object-cover object-bottom"
-			
+
 		/>
 	</div>
 </section>
-
